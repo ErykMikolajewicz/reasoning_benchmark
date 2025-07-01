@@ -1,17 +1,17 @@
 import json
 import os
 
-from chess import Color, Board
+from chess import Board, Color
 
 from src.models_adapter import send_messages
 from src.prompts import main_prompt, extraction_prompt
+from src.helpers import color_to_string
 
 BENCHMARKING_MODEL = os.environ["BENCHMARKING_MODEL"]
 EXTRACTION_MODEL = os.environ["EXTRACTION_MODEL"]
-color_to_string = lambda color: {True: "white", False: "black"}[color]
 
 
-def llm_move(board: Board, color: Color):
+def simple_move(board: Board, color: Color):
     color_string = color_to_string(color)
     ascii_board = str(board)
     board_prompt = f"Board:/n{ascii_board}\nYou are {color_string}"
