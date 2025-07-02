@@ -1,14 +1,14 @@
 import json
-import os
 
 from chess import Board, Color
 
 from src.models_adapter import send_messages
 from src.prompts import main_prompt, extraction_prompt
 from src.helpers import color_to_string
+from src.settings import settings
 
-BENCHMARKING_MODEL = os.environ["BENCHMARKING_MODEL"]
-EXTRACTION_MODEL = os.environ["EXTRACTION_MODEL"]
+BENCHMARKING_MODEL = settings.benchmark.BENCHMARKING_MODEL
+EXTRACTION_MODEL = settings.benchmark.EXTRACTION_MODEL
 
 
 def simple_move(board: Board, color: Color):

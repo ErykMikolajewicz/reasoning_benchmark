@@ -1,38 +1,31 @@
 import math
+from itertools import cycle, islice
 
 from dotenv import load_dotenv; load_dotenv()
-from chess import WHITE
+from chess import WHITE, BLACK
 import matplotlib.pyplot as plt
 import concurrent.futures
 
-from src.game import Game
+from src.game import run_game
+from src.settings import settings
 
-NUM_GAMES = 12
+NUM_GAMES = settings.benchmark.PLAYS_NUMBER
 
-def run_game(llm_color):
-    game = Game()
-    with game:
-        try:
-            game_result, scores = game.play(llm_color=llm_color)
-        except RuntimeError:
-            game_result, scores = None, game.position_scores
-    return game_result, [score.pov(llm_color).score() for score in scores]
-
-llm_color = WHITE  # lub wylosuj np. random.choice([WHITE, BLACK])
+color_generator = cycle([WHITE, BLACK])
 results = []
 all_scores = []
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_GAMES) as executor:
-    futures = [executor.submit(run_game, llm_color) for _ in range(NUM_GAMES)]
+    futures = [executor.submit(run_game, llm_color) for llm_color in islice(color_generator, NUM_GAMES)]
     for future in concurrent.futures.as_completed(futures):
         game_result, scores = future.result()
         results.append(game_result)
         all_scores.append(scores)
 
-ncols = math.ceil(math.sqrt(NUM_GAMES))
-nrows = math.ceil(NUM_GAMES / ncols)
+n_cols = math.ceil(math.sqrt(NUM_GAMES))
+n_rows = math.ceil(NUM_GAMES / n_cols)
 
-fig, axes = plt.subplots(nrows=nrows, ncols=ncols, figsize=(4*ncols, 3*nrows), sharex=False, sharey=True)
+fig, axes = plt.subplots(nrows=n_rows, ncols=n_cols, figsize=(4*n_cols, 3*n_rows), sharex=False, sharey=True)
 if NUM_GAMES > 1:
     axes = axes.flatten()
 else:

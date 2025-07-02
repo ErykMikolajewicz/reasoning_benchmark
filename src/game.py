@@ -2,8 +2,9 @@ import chess.engine
 from chess import Board, WHITE, Color
 
 from src.strategy import simple_move
+from src.settings import settings
 
-MAX_MOVES = 30
+MAX_MOVES = settings.benchmark.MAX_MOVES
 
 
 class Game:
@@ -72,3 +73,13 @@ class Game:
         info = self.engine.analyse(self.board, limit=chess.engine.Limit(depth=20))
         score = info["score"]
         self.position_scores.append(score)
+
+
+def run_game(llm_color):
+    game = Game()
+    with game:
+        try:
+            game_result, scores = game.play(llm_color=llm_color)
+        except RuntimeError:
+            game_result, scores = None, game.position_scores
+    return game_result, [score.pov(llm_color).score() for score in scores]
