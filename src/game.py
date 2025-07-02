@@ -63,7 +63,7 @@ class Game:
             print(f'LLM move: {move}')
             self.board.push_san(move)
         else:
-            result = self.engine.play(self.board, chess.engine.Limit(depth=1))
+            result = self.engine.play(self.board, chess.engine.Limit(depth=1, time=0.0005))
             move = result.move
             print(f'Engine move: {move}')
             self.board.push(move)
