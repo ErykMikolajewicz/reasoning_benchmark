@@ -10,13 +10,14 @@ from src.game import run_game
 from src.settings import settings
 
 NUM_GAMES = settings.benchmark.PLAYS_NUMBER
+STRATEGY = settings.benchmark.STRATEGY
 
 color_generator = cycle([WHITE, BLACK])
 results = []
 all_scores = []
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_GAMES) as executor:
-    futures = [executor.submit(run_game, llm_color) for llm_color in islice(color_generator, NUM_GAMES)]
+    futures = [executor.submit(run_game, llm_color, STRATEGY) for llm_color in islice(color_generator, NUM_GAMES)]
     for future in concurrent.futures.as_completed(futures):
         game_result, scores = future.result()
         results.append(game_result)

@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Optional
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -11,6 +12,8 @@ class BenchmarkSettings(BaseSettings):
 
     BENCHMARKING_MODEL: str
     EXTRACTION_MODEL: str
+
+    STRATEGY: Optional[str] = None
 
     model_config = SettingsConfigDict(
         env_file=BENCHMARK_SETTINGS_FILE_PATH, env_file_encoding="utf-8", case_sensitive=True, frozen=True
