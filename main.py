@@ -9,6 +9,7 @@ import concurrent.futures
 
 from src.game import run_game
 from src.settings import settings
+from src.models_adapter import LLMAdapter
 
 NUM_GAMES = settings.benchmark.PLAYS_NUMBER
 STRATEGY = settings.benchmark.STRATEGY
@@ -38,14 +39,11 @@ else:
     axes = [axes]
 
 for i, (position_scores, ax) in enumerate(zip(all_scores, axes)):
-    ax.plot(position_scores)
+    ax.plot(range(1, len(position_scores) + 1), position_scores)
     ax.set_title(f'Game {i+1}')
     ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
     ax.set_xlabel('Move')
     ax.set_ylabel('Score')
-
-for ax in axes[len(all_scores):]:
-    ax.axis('off')
 
 plt.tight_layout()
 plt.show()
@@ -53,3 +51,9 @@ plt.show()
 print("Results:", results)
 print('Games scores:', games_score)
 print('Average score:', average_game_score)
+
+prompt_tokens, reasoning_tokens, text_tokens, total_cost = LLMAdapter.get_usage()
+print('Prompt tokens:', prompt_tokens)
+print('Reasoning tokens:', reasoning_tokens)
+print('Text tokens:', text_tokens)
+print('Benchmark cost:', total_cost)

@@ -4,6 +4,7 @@ import chess.engine
 from chess import Board, WHITE, Color
 
 from src.strategy import strategies
+from src.models_adapter import LLMAdapter
 from src.settings import settings
 from src.enums import GameResult
 from src.conts import MAX_POSITION_SCORE, WIN_BONUS, MIN_POSITION_SCORE
@@ -12,13 +13,14 @@ MAX_MOVES = settings.benchmark.MAX_MOVES
 
 
 class Game:
-    def __init__(self, llm_strategy: Callable[[Board, Color], str]):
+    def __init__(self, llm_strategy: Callable[[LLMAdapter, Board, Color], str]):
         self._board = Board()
         self._current_move = 1
         self._illegal_moves = 0
         self._whose_turn = WHITE
         self.position_scores: list[float] = []
         self._engine = None
+        self._llm_adapter = LLMAdapter()
         self._llm_strategy = llm_strategy
         self._is_game_ended = False
         self._match_result = None
@@ -91,7 +93,7 @@ class Game:
     def _make_move(self, llm_color: Color):
         print(f'Move number: {self._current_move}')
         if self._whose_turn == llm_color:
-            move = self._llm_strategy(self._board, llm_color)
+            move = self._llm_strategy(self._llm_adapter, self._board, llm_color)
             print(f'LLM move: {move}')
             self._board.push_san(move)
         else:
