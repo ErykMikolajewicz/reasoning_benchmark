@@ -10,9 +10,12 @@ import concurrent.futures
 from src.game import run_game
 from src.settings import settings
 from src.models_adapter import LLMAdapter
+from src.logging_config import setup_logging
 
 NUM_GAMES = settings.benchmark.PLAYS_NUMBER
 STRATEGY = settings.benchmark.STRATEGY
+
+setup_logging()
 
 color_generator = cycle([WHITE, BLACK])
 results = []

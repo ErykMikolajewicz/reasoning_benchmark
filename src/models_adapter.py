@@ -1,8 +1,11 @@
 from decimal import Decimal, ROUND_UP
 from dataclasses import dataclass
 import threading
+import logging
 
 from litellm import ModelResponse, completion, completion_cost
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -31,11 +34,13 @@ class LLMAdapter:
             model=model,
             messages=messages)
 
-        print(response['usage'])
+        answer = response.choices[0].message.content
+        logger.debug(answer)
+        logger.debug(f'Request usage: {response['usage']}')
 
         self._add_tokens(model, response)
 
-        return response.choices[0].message.content
+        return answer
 
     def _add_tokens(self, model: str, response: ModelResponse):
 

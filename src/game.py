@@ -1,4 +1,5 @@
 from typing import Callable, Optional
+import logging
 
 import chess.engine
 from chess import Board, WHITE, Color
@@ -10,6 +11,8 @@ from src.enums import GameResult
 from src.conts import MAX_POSITION_SCORE, WIN_BONUS, MIN_POSITION_SCORE
 
 MAX_MOVES = settings.benchmark.MAX_MOVES
+
+logger = logging.getLogger(__name__)
 
 
 class Game:
@@ -38,11 +41,12 @@ class Game:
             try:
                 self._make_move(llm_color)
             except ValueError:
-                print('ILLEGAL MOVE!!!!!!!!!!!!!!!!!!!!!!!')
                 self._illegal_moves += 1
+                logger.warning(f'Illegal move, number: {self._illegal_moves}')
                 if self._illegal_moves < 3:
                     continue
                 else:
+                    logger.warning(f'Illegal moves, number exceeded!')
                     self._is_game_ended = True
                     self._match_result = GameResult.LOSS
                     raise RuntimeError('To many invalid moves')
@@ -73,6 +77,7 @@ class Game:
 
     def get_game_score(self) -> float:
         if not self._is_game_ended:
+            logger.error('Try get game score to early!')
             raise RuntimeError('Game not ended!')
 
         match self._match_result:
@@ -91,15 +96,15 @@ class Game:
         return game_score
 
     def _make_move(self, llm_color: Color):
-        print(f'Move number: {self._current_move}')
+        logger.info(f'Move number: {self._current_move}')
         if self._whose_turn == llm_color:
             move = self._llm_strategy(self._llm_adapter, self._board, llm_color)
-            print(f'LLM move: {move}')
+            logger.info(f'LLM move: {move}')
             self._board.push_san(move)
         else:
             result = self.__engine.play(self._board, chess.engine.Limit(depth=1, time=0.0005))
             move = result.move
-            print(f'Engine move: {move}')
+            logger.info(f'Engine move: {move}')
             self._board.push(move)
 
     def _score_position(self, llm_color: Color):
