@@ -1,5 +1,8 @@
+import math
 from typing import Callable, Optional
+from statistics import mean
 import logging
+from itertools import repeat, islice, chain
 
 import chess.engine
 from chess import Board, WHITE, Color
@@ -8,9 +11,11 @@ from src.strategy import strategies
 from src.models_adapter import LLMAdapter
 from src.settings import settings
 from src.enums import GameResult
-from src.conts import MAX_POSITION_SCORE, WIN_BONUS, MIN_POSITION_SCORE
+from src.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, TIE_SCORE
 
 MAX_MOVES = settings.benchmark.MAX_MOVES
+MAX_ILLEGAL_MOVES = settings.benchmark.MAX_ILLEGAL_MOVES
+DEBUT_OFFSET = settings.benchmark.DEBUT_OFFSET
 
 logger = logging.getLogger(__name__)
 
@@ -37,18 +42,18 @@ class Game:
         self.__engine = None
 
     def play(self, llm_color: Color):
-        while self._current_move < MAX_MOVES and not self._board.is_game_over():
+        while self._current_move <= MAX_MOVES and not self._board.is_game_over():
             try:
                 self._make_move(llm_color)
             except ValueError:
                 self._illegal_moves += 1
                 logger.warning(f'Illegal move, number: {self._illegal_moves}')
-                if self._illegal_moves < 3:
+                if self._illegal_moves < MAX_ILLEGAL_MOVES:
                     continue
                 else:
                     logger.warning(f'Illegal moves, number exceeded!')
                     self._is_game_ended = True
-                    self._match_result = GameResult.LOSS
+                    self._match_result = GameResult.LOSS_INVALID_MOVE
                     raise RuntimeError('To many invalid moves')
 
             self._current_move += 1
@@ -80,18 +85,35 @@ class Game:
             logger.error('Try get game score to early!')
             raise RuntimeError('Game not ended!')
 
+        try:
+            relevant_scores = self.position_scores[DEBUT_OFFSET:]
+        except IndexError:
+            relevant_scores = []
+
+        after_debut_moves = MAX_MOVES - DEBUT_OFFSET
+
         match self._match_result:
             case GameResult.WIN:
-                return MAX_MOVES * MAX_POSITION_SCORE + WIN_BONUS
+                padding_source = repeat(MAX_POSITION_SCORE)
             case GameResult.TIE:
-                return MAX_MOVES * MAX_POSITION_SCORE
+                padding_source = repeat(TIE_SCORE)
+            case GameResult.LOSS:
+                padding_source = repeat(MIN_POSITION_SCORE)
+            case game_result if math.isnan(game_result):  # GameResult.LOSS_INVALID_MOVE:
+                padding_source = repeat(MIN_POSITION_SCORE)
+            case _:
+                # Party is not ended, and moves should not require padding
+                class PaddingGuard:
+                    def __iter__(self):
+                        return self
 
-        adjustment_score = []
-        for position_score in self.position_scores:
-            adjustment_to_0_position_score = position_score - MIN_POSITION_SCORE
-            adjustment_score.append(adjustment_to_0_position_score)
+                    def __next__(self):
+                        raise RuntimeError("Unexpected padding score requested!")
+                padding_source = PaddingGuard()
 
-        game_score = sum(adjustment_score)
+        scores_with_padding = islice(chain(relevant_scores, padding_source), after_debut_moves)
+
+        game_score = mean(scores_with_padding)
 
         return game_score
 
@@ -128,6 +150,6 @@ def run_game(llm_color: Color, llm_strategy: Optional[str] = None) -> (Optional[
         try:
             game_result, position_scores = game.play(llm_color=llm_color)
         except RuntimeError:
-            game_result, position_scores = None, game.position_scores
+            game_result, position_scores = GameResult.LOSS_INVALID_MOVE, game.position_scores
     game_score = game.get_game_score()
     return game_result, position_scores, game_score

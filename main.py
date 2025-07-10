@@ -14,6 +14,7 @@ from src.logging_config import setup_logging
 
 NUM_GAMES = settings.benchmark.PLAYS_NUMBER
 STRATEGY = settings.benchmark.STRATEGY
+MAX_WORKERS = settings.application.MAX_WORKERS
 
 setup_logging()
 
@@ -22,7 +23,7 @@ results = []
 all_scores = []
 games_score = []
 
-with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_GAMES) as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
     futures = [executor.submit(run_game, llm_color, STRATEGY) for llm_color in islice(color_generator, NUM_GAMES)]
     for future in concurrent.futures.as_completed(futures):
         game_result, position_scores, game_score = future.result()
