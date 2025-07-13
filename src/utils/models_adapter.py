@@ -1,19 +1,12 @@
 from decimal import Decimal, ROUND_UP
-from dataclasses import dataclass
 import threading
 import logging
 
 from litellm import ModelResponse, completion, completion_cost
 
+from src.metrics.models import ModelUsage
+
 logger = logging.getLogger(__name__)
-
-
-@dataclass
-class ModelUsage:
-    prompt_tokens: int = 0
-    reasoning_tokens: int = 0
-    text_tokens: int = 0
-    total_cost_dollar: Decimal = Decimal(0.)
 
 
 class LLMAdapter:
@@ -60,15 +53,16 @@ class LLMAdapter:
         model_usage.total_cost_dollar += cost_decimal.quantize(Decimal('0.01'), rounding=ROUND_UP)
 
     @classmethod
-    def get_usage(cls):
-        prompt_tokens, reasoning_tokens, text_tokens, total_cost = 0, 0, 0, Decimal(0.)
+    def get_usage(cls) -> ModelUsage:
+        all_usage = ModelUsage()
         with threading.Lock():
             threads_usage = cls._threads_adapters.values()
             for thread_usage in threads_usage:
                 models_usage = thread_usage.values()
                 for model_usage in models_usage:
-                    prompt_tokens += model_usage.prompt_tokens
-                    reasoning_tokens += model_usage.reasoning_tokens
-                    text_tokens += model_usage.text_tokens
-                    total_cost += model_usage.total_cost_dollar
-        return prompt_tokens, reasoning_tokens, text_tokens, total_cost
+                    all_usage += model_usage
+                    # all_usage.prompt_tokens += model_usage.prompt_tokens
+                    # all_usage.reasoning_tokens += model_usage.reasoning_tokens
+                    # all_usage.text_tokens += model_usage.text_tokens
+                    # all_usage.total_cost_dollar += model_usage.total_cost_dollar
+        return all_usage

@@ -8,16 +8,18 @@ import matplotlib.pyplot as plt
 import concurrent.futures
 
 from src.share.logging_config import setup_logging
-
 from src.chess_logic.game import run_game
 from src.share.settings import settings
 from src.utils.models_adapter import LLMAdapter
+from src.metrics.serialization import save_metrics
+from src.metrics.models import BenchmarkingResult
 
 setup_logging()
 
 NUM_GAMES = settings.benchmark.PLAYS_NUMBER
 STRATEGY = settings.benchmark.STRATEGY
 MAX_WORKERS = settings.application.MAX_WORKERS
+BENCHMARKING_MODEL = settings.benchmark.BENCHMARKING_MODEL
 
 color_generator = cycle([WHITE, BLACK])
 results = []
@@ -53,12 +55,20 @@ for i, (position_scores, ax) in enumerate(zip(all_scores, axes)):
 plt.tight_layout()
 plt.show()
 
+usage = LLMAdapter.get_usage()
+
 print("Results:", results)
 print('Games scores:', games_score)
 print('Average score:', average_game_score)
 
-prompt_tokens, reasoning_tokens, text_tokens, total_cost = LLMAdapter.get_usage()
-print('Prompt tokens:', prompt_tokens)
-print('Reasoning tokens:', reasoning_tokens)
-print('Text tokens:', text_tokens)
-print('Benchmark cost:', total_cost)
+print('Prompt tokens:', usage.prompt_tokens)
+print('Reasoning tokens:', usage.reasoning_tokens)
+print('Text tokens:', usage.text_tokens)
+print('Benchmark cost:', usage.total_cost_dollar)
+
+model_name = BENCHMARKING_MODEL.replace('/', '-')
+benchmarking_result = BenchmarkingResult(model_name=model_name,
+                                         usage=usage,
+                                         scores=games_score,
+                                         party_results=results)
+save_metrics(benchmarking_result)

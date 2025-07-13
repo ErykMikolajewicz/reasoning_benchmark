@@ -1,7 +1,8 @@
-from enum import Enum
+from enum import Enum, auto
 
-class GameResult(float, Enum):
-    WIN = 1.
-    TIE = 0.5
-    LOSS = 0.
-    LOSS_INVALID_MOVE = float('nan')
+class GameResult(str, Enum):
+    WIN = 'WIN'
+    TIE = 'TIE'
+    LOSS = 'LOSS'
+    LOSS_INVALID_MOVE = 'LOSS_INVALID_MOVE'
+    MAX_MOVES = 'MAX_MOVES'

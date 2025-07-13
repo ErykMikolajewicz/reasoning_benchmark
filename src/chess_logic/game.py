@@ -64,7 +64,7 @@ class Game:
 
         match self._board.result(), llm_color:
             case "*", _:
-                match_result = None
+                match_result = GameResult.MAX_MOVES
             case "1-0", True:
                 match_result = GameResult.WIN
             case "1-0", False:
@@ -99,9 +99,9 @@ class Game:
                 padding_source = repeat(TIE_SCORE)
             case GameResult.LOSS:
                 padding_source = repeat(MIN_POSITION_SCORE)
-            case game_result if math.isnan(game_result):  # GameResult.LOSS_INVALID_MOVE:
+            case GameResult.LOSS_INVALID_MOVE:
                 padding_source = repeat(MIN_POSITION_SCORE)
-            case _:
+            case GameResult.MAX_MOVES:
                 # Party is not ended, and moves should not require padding
                 class PaddingGuard:
                     def __iter__(self):
@@ -110,6 +110,8 @@ class Game:
                     def __next__(self):
                         raise RuntimeError("Unexpected padding score requested!")
                 padding_source = PaddingGuard()
+            case _:
+                raise RuntimeError('Invalid game result status!')
 
         scores_with_padding = islice(chain(relevant_scores, padding_source), after_debut_moves)
 
