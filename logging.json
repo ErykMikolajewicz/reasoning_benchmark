@@ -17,7 +17,7 @@
       "class": "logging.handlers.RotatingFileHandler",
       "level": "INFO",
       "formatter": "default",
-      "filename": "app.log",
+      "filename": "logs/app.log",
       "maxBytes": 10485760,
       "backupCount": 3,
       "encoding": "utf8"
@@ -28,7 +28,7 @@
     "handlers": ["console", "file"]
   },
   "loggers": {
-    "reasoning_benchmark": {
+    "src": {
       "level": "INFO",
       "handlers": ["console", "file"],
       "propagate": false

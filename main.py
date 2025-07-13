@@ -7,16 +7,17 @@ from chess import WHITE, BLACK
 import matplotlib.pyplot as plt
 import concurrent.futures
 
-from src.game import run_game
-from src.settings import settings
-from src.models_adapter import LLMAdapter
-from src.logging_config import setup_logging
+from src.share.logging_config import setup_logging
+
+from src.chess_logic.game import run_game
+from src.share.settings import settings
+from src.utils.models_adapter import LLMAdapter
+
+setup_logging()
 
 NUM_GAMES = settings.benchmark.PLAYS_NUMBER
 STRATEGY = settings.benchmark.STRATEGY
 MAX_WORKERS = settings.application.MAX_WORKERS
-
-setup_logging()
 
 color_generator = cycle([WHITE, BLACK])
 results = []

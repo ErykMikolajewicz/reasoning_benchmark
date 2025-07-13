@@ -2,10 +2,10 @@ import json
 
 from chess import Board, Color
 
-from src.models_adapter import LLMAdapter
-from src.prompts import move_prompt, extraction_prompt, move_formated
-from src.helpers import color_to_string
-from src.settings import settings
+from src.utils.models_adapter import LLMAdapter
+from src.chess_logic.prompts import move_prompt, extraction_prompt, move_formated
+from src.utils.helpers import color_to_string
+from src.share.settings import settings
 
 BENCHMARKING_MODEL = settings.benchmark.BENCHMARKING_MODEL
 EXTRACTION_MODEL = settings.benchmark.EXTRACTION_MODEL

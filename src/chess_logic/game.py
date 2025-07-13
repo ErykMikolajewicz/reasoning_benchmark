@@ -7,11 +7,11 @@ from itertools import repeat, islice, chain
 import chess.engine
 from chess import Board, WHITE, Color
 
-from src.strategy import strategies
-from src.models_adapter import LLMAdapter
-from src.settings import settings
-from src.enums import GameResult
-from src.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, TIE_SCORE
+from src.chess_logic.strategy import strategies
+from src.utils.models_adapter import LLMAdapter
+from src.share.settings import settings
+from src.share.enums import GameResult
+from src.share.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, TIE_SCORE
 
 MAX_MOVES = settings.benchmark.MAX_MOVES
 MAX_ILLEGAL_MOVES = settings.benchmark.MAX_ILLEGAL_MOVES
