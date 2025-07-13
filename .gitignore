@@ -12,3 +12,4 @@ wheels/
 /settings/
 
 /.idea
+/logs/*.log
