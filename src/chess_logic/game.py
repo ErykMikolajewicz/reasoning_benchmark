@@ -1,4 +1,3 @@
-import math
 from typing import Callable, Optional
 from statistics import mean
 import logging

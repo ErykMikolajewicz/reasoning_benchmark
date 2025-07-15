@@ -16,7 +16,7 @@ from src.metrics.models import BenchmarkingResult
 
 setup_logging()
 
-NUM_GAMES = settings.benchmark.PLAYS_NUMBER
+NUM_GAMES = settings.application.PLAYS_NUMBER
 STRATEGY = settings.benchmark.STRATEGY
 MAX_WORKERS = settings.application.MAX_WORKERS
 BENCHMARKING_MODEL = settings.benchmark.BENCHMARKING_MODEL
@@ -67,8 +67,10 @@ print('Text tokens:', usage.text_tokens)
 print('Benchmark cost:', usage.total_cost_dollar)
 
 model_name = BENCHMARKING_MODEL.replace('/', '-')
+
 benchmarking_result = BenchmarkingResult(model_name=model_name,
                                          usage=usage,
                                          scores=games_score,
-                                         party_results=results)
+                                         party_results=results,
+                                         benchmark_settings=settings.benchmark)
 save_metrics(benchmarking_result)
