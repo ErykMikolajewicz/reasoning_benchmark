@@ -39,6 +39,10 @@ class ApplicationSettings(BaseSettings):
 
     APPEND_RESULTS: bool
 
+    RETRY_NUMBER: int
+    MINIMUM_WAIT_SECONDS: int
+    MAXIMUM_WAIT_SECONDS: int
+
     model_config = SettingsConfigDict(
         env_file=APPLICATION_SETTINGS_FILE_PATH, env_file_encoding="utf-8", case_sensitive=True, frozen=True
     )

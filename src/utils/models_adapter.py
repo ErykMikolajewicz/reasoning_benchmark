@@ -3,8 +3,15 @@ import threading
 import logging
 
 from litellm import ModelResponse, completion, completion_cost
+from litellm.exceptions import RateLimitError
+from tenacity import retry, retry_if_exception_type, wait_random, stop_after_attempt
 
 from src.metrics.models import ModelUsage
+from src.share.settings import settings
+
+RETRY_NUMBER = settings.application.RETRY_NUMBER
+MINIMUM_WAIT_SECONDS = settings.application.MINIMUM_WAIT_SECONDS
+MAXIMUM_WAIT_SECONDS = settings.application.MAXIMUM_WAIT_SECONDS
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +29,9 @@ class LLMAdapter:
                 self.models_usage = {}
                 threads_adapters[thread_id] = self.models_usage
 
+    @retry(retry=retry_if_exception_type(RateLimitError),
+           wait=wait_random(MINIMUM_WAIT_SECONDS, MAXIMUM_WAIT_SECONDS),
+           stop=stop_after_attempt(RETRY_NUMBER))
     def send_messages(self, model: str, messages: list) -> str:
         response = completion(
             model=model,
@@ -43,9 +53,13 @@ class LLMAdapter:
             model_usage = ModelUsage()
             self.models_usage[model] = model_usage
 
-        model_usage.prompt_tokens += response.usage.prompt_tokens
-        model_usage.text_tokens += response.usage.completion_tokens_details.text_tokens
-        model_usage.reasoning_tokens += response.usage.completion_tokens_details.reasoning_tokens
+        usage = response.usage
+        model_usage.prompt_tokens += usage.prompt_tokens
+        if usage.completion_tokens_details.text_tokens is None:
+            model_usage.text_tokens += 0
+        else:
+            model_usage.text_tokens += usage.completion_tokens_details.text_tokens
+        model_usage.reasoning_tokens += usage.completion_tokens_details.reasoning_tokens
 
         cost_float = completion_cost(response, model)
         cost_decimal = Decimal(cost_float)
@@ -61,8 +75,4 @@ class LLMAdapter:
                 models_usage = thread_usage.values()
                 for model_usage in models_usage:
                     all_usage += model_usage
-                    # all_usage.prompt_tokens += model_usage.prompt_tokens
-                    # all_usage.reasoning_tokens += model_usage.reasoning_tokens
-                    # all_usage.text_tokens += model_usage.text_tokens
-                    # all_usage.total_cost_dollar += model_usage.total_cost_dollar
         return all_usage
