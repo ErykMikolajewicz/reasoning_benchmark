@@ -13,6 +13,7 @@ from src.share.settings import settings
 from src.utils.models_adapter import LLMAdapter
 from src.metrics.serialization import save_metrics
 from src.metrics.models import BenchmarkingResult
+from src.utils.models_adapter import models_extra_config
 
 setup_logging()
 
@@ -67,6 +68,13 @@ print('Text tokens:', usage.text_tokens)
 print('Benchmark cost:', usage.total_cost_dollar)
 
 model_name = BENCHMARKING_MODEL.replace('/', '-')
+try:
+    model_extra_config = models_extra_config[model_name]
+except KeyError:
+    model_extra_config = {}
+
+settings.benchmark.MODEL_EXTRA_CONFIG = model_extra_config
+
 
 benchmarking_result = BenchmarkingResult(model_name=model_name,
                                          usage=usage,

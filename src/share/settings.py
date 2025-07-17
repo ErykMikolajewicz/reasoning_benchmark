@@ -20,6 +20,8 @@ class BenchmarkSettings(BaseSettings):
 
     MAX_ILLEGAL_MOVES: int
 
+    MODEL_EXTRA_CONFIG: dict = {}
+
     @model_validator(mode='after')
     def check_extraction_strategy(self):
         if self.STRATEGY == 'move_and_extract' and self.EXTRACTION_MODEL is None:
@@ -27,7 +29,7 @@ class BenchmarkSettings(BaseSettings):
         return self
 
     model_config = SettingsConfigDict(
-        env_file=BENCHMARK_SETTINGS_FILE_PATH, env_file_encoding="utf-8", case_sensitive=True, frozen=True
+        env_file=BENCHMARK_SETTINGS_FILE_PATH, env_file_encoding="utf-8", case_sensitive=True, frozen=False
     )
 
 
