@@ -13,3 +13,6 @@ wheels/
 
 /.idea
 /logs/*.log
+
+/results/*.json
+/models_params/*.json

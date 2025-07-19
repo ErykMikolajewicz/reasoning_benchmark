@@ -4,8 +4,8 @@ from typing import Optional
 from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-BENCHMARK_SETTINGS_FILE_PATH = Path('settings') / 'benchmark.env'
-APPLICATION_SETTINGS_FILE_PATH = Path('settings') / 'application.env'
+BENCHMARK_SETTINGS_FILE_PATH = Path("settings") / "benchmark.env"
+APPLICATION_SETTINGS_FILE_PATH = Path("settings") / "application.env"
 
 
 class BenchmarkSettings(BaseSettings):
@@ -22,9 +22,9 @@ class BenchmarkSettings(BaseSettings):
 
     MODEL_EXTRA_CONFIG: dict = {}
 
-    @model_validator(mode='after')
+    @model_validator(mode="after")
     def check_extraction_strategy(self):
-        if self.STRATEGY == 'move_and_extract' and self.EXTRACTION_MODEL is None:
+        if self.STRATEGY == "move_and_extract" and self.EXTRACTION_MODEL is None:
             raise ValueError("EXTRACTION_MODEL can not be null in move_and_extract strategy!")
         return self
 

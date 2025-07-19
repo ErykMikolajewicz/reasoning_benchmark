@@ -1,17 +1,17 @@
-from typing import Callable, Optional
-from statistics import mean
 import logging
-from itertools import repeat, islice, chain
+from itertools import chain, islice, repeat
+from statistics import mean
+from typing import Callable, Optional
 
 import chess.engine
-from chess import Board, WHITE, Color
+from chess import WHITE, Board, Color
 
 from src.chess_logic.strategy import strategies
-from src.utils.models_adapter import LLMAdapter
-from src.share.settings import settings
-from src.share.enums import GameResult
-from src.share.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, TIE_SCORE
 from src.metrics.models import GameData
+from src.share.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, TIE_SCORE
+from src.share.enums import GameResult
+from src.share.settings import settings
+from src.utils.models_adapter import LLMAdapter
 
 MAX_MOVES = settings.benchmark.MAX_MOVES
 MAX_ILLEGAL_MOVES = settings.benchmark.MAX_ILLEGAL_MOVES
@@ -48,14 +48,14 @@ class Game:
                 self._make_move(llm_color)
             except ValueError:
                 self._illegal_moves += 1
-                logger.warning(f'Illegal move, number: {self._illegal_moves}')
+                logger.warning(f"Illegal move, number: {self._illegal_moves}")
                 if self._illegal_moves < MAX_ILLEGAL_MOVES:
                     continue
                 else:
-                    logger.warning(f'Illegal moves, number exceeded!')
+                    logger.warning(f"Illegal moves, number exceeded!")
                     self._is_game_ended = True
                     self._match_result = GameResult.LOSS_INVALID_MOVE
-                    raise RuntimeError('To many invalid moves')
+                    raise RuntimeError("To many invalid moves")
 
             self._current_move += 1
             self._score_position(llm_color)
@@ -83,8 +83,8 @@ class Game:
 
     def get_game_data(self) -> float:
         if not self._is_game_ended:
-            logger.error('Try get game score to early!')
-            raise RuntimeError('Game not ended!')
+            logger.error("Try get game score to early!")
+            raise RuntimeError("Game not ended!")
 
         try:
             relevant_scores = self.position_scores[DEBUT_OFFSET:]
@@ -110,9 +110,10 @@ class Game:
 
                     def __next__(self):
                         raise RuntimeError("Unexpected padding score requested!")
+
                 padding_source = PaddingGuard()
             case _:
-                raise RuntimeError('Invalid game result status!')
+                raise RuntimeError("Invalid game result status!")
 
         scores_with_padding = islice(chain(relevant_scores, padding_source), after_debut_moves)
 
@@ -121,15 +122,15 @@ class Game:
         return game_score
 
     def _make_move(self, llm_color: Color):
-        logger.info(f'Move number: {self._current_move}')
+        logger.info(f"Move number: {self._current_move}")
         if self._whose_turn == llm_color:
             move = self._llm_strategy(self._llm_adapter, self._board, llm_color)
-            logger.info(f'LLM move: {move}')
+            logger.info(f"LLM move: {move}")
             self._board.push_san(move)
         else:
             result = self.__engine.play(self._board, chess.engine.Limit(depth=1, time=0.0005))
             move = result.move
-            logger.info(f'Engine move: {move}')
+            logger.info(f"Engine move: {move}")
             self._board.push(move)
         self.moves_history.append(str(move))
 
@@ -148,7 +149,7 @@ def run_game(llm_color: Color, llm_strategy: Optional[str] = None) -> GameData:
     try:
         selected_strategy = strategies[llm_strategy]
     except KeyError:
-        raise ValueError('Invalid strategy!')
+        raise ValueError("Invalid strategy!")
     game = Game(selected_strategy)
     with game:
         try:
@@ -159,8 +160,5 @@ def run_game(llm_color: Color, llm_strategy: Optional[str] = None) -> GameData:
     game_history = game.moves_history
     game_score = game.get_game_data()
 
-    game_data = GameData(result=game_result,
-                         position_scores = position_scores,
-                         score=game_score,
-                         history=game_history)
+    game_data = GameData(result=game_result, position_scores=position_scores, score=game_score, history=game_history)
     return game_data

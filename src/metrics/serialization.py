@@ -1,6 +1,6 @@
-from pathlib import Path
 import json
 import logging
+from pathlib import Path
 from uuid import uuid4
 
 from src.metrics.models import BenchmarkingResult
@@ -13,17 +13,17 @@ logger = logging.getLogger(__name__)
 
 
 def save_metrics(benchmark_result: BenchmarkingResult):
-    result_dir = Path('results')
+    result_dir = Path("results")
 
     benchmark_settings = benchmark_result.benchmark_settings.model_dump()
     settings_hash = hash_dict(benchmark_settings)
 
-    result_path = result_dir / (benchmark_result.model_name + '-' + settings_hash + '.json')
+    result_path = result_dir / (benchmark_result.model_name + "-" + settings_hash + ".json")
 
     previous_result = None
     if APPEND_RESULTS:
         try:
-            with open(result_path, 'r', encoding='utf-8') as previous_result_file:
+            with open(result_path, "r", encoding="utf-8") as previous_result_file:
                 previous_result = json.load(previous_result_file)
             previous_result = BenchmarkingResult(**previous_result)
             benchmark_result.usage += previous_result.usage
@@ -33,6 +33,6 @@ def save_metrics(benchmark_result: BenchmarkingResult):
         except FileNotFoundError:
             pass
 
-    with open(result_path, 'w', encoding='utf-8') as result_file:
+    with open(result_path, "w", encoding="utf-8") as result_file:
         json_str = benchmark_result.model_dump_json(indent=4)
         result_file.write(json_str)

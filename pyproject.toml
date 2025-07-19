@@ -1,6 +1,6 @@
 [project]
 name = "reasoning-benchamrk"
-version = "0.18.0"
+version = "0.19.0"
 description = "Reasoning language models benchmark, by playing chess."
 readme = "README.md"
 requires-python = ">=3.13"
@@ -14,3 +14,23 @@ dependencies = [
     "scipy==1.16.*",
     "tenacity==9.1.*",
 ]
+
+[dependency-groups]
+dev = [
+    "black==25.1.*",
+    "isort==6.0.*",
+]
+
+
+[tool.black]
+line-length = 120
+target-version = ["py313"]
+exclude = '''
+/(
+    \.git
+  | \.venv
+)/
+'''
+
+[tool.isort]
+skip = [".venv"]

@@ -1,10 +1,10 @@
 from decimal import Decimal
-from typing import cast, Optional
+from typing import Optional, cast
 
 from pydantic import BaseModel
 
-from src.share.settings import BenchmarkSettings
 from src.share.enums import GameResult
+from src.share.settings import BenchmarkSettings
 
 addable_types = {int, float, Decimal, list}
 
@@ -40,7 +40,7 @@ class ModelUsage(AddableModel):
     prompt_tokens: int = 0
     reasoning_tokens: int = 0
     text_tokens: int = 0
-    total_cost_dollar: Decimal = Decimal(0.)
+    total_cost_dollar: Decimal = Decimal(0.0)
 
 
 class BenchmarkingResult(BaseModel):
