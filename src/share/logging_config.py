@@ -3,7 +3,7 @@ import logging.config
 
 from src.share.settings import settings
 
-with open("logging.json") as f:
+with open("settings/logging.json") as f:
     config = json.load(f)
 
 LOGGING_LEVEL = settings.application.LOGGING_LEVEL

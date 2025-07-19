@@ -6,10 +6,13 @@ from pathlib import Path
 
 from litellm import ModelResponse, completion, completion_cost
 from litellm.exceptions import RateLimitError
+from dotenv import load_dotenv
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_random
 
 from src.metrics.models import ModelUsage
 from src.share.settings import settings
+
+load_dotenv('settings/api_keys.env')
 
 RETRY_NUMBER = settings.application.RETRY_NUMBER
 MINIMUM_WAIT_SECONDS = settings.application.MINIMUM_WAIT_SECONDS

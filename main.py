@@ -13,11 +13,6 @@ from src.share.logging_config import setup_logging
 from src.share.settings import settings
 from src.utils.models_adapter import LLMAdapter, models_extra_config
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
-
 setup_logging()
 
 NUM_GAMES = settings.application.PLAYS_NUMBER

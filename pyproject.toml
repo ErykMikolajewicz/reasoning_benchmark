@@ -1,6 +1,6 @@
 [project]
 name = "reasoning-benchamrk"
-version = "0.19.0"
+version = "0.20.0"
 description = "Reasoning language models benchmark, by playing chess."
 readme = "README.md"
 requires-python = ">=3.13"
@@ -19,6 +19,7 @@ dependencies = [
 dev = [
     "black==25.1.*",
     "isort==6.0.*",
+    "scipy-stubs==1.16.*",
 ]
 
 
