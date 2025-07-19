@@ -1,10 +1,10 @@
 from decimal import Decimal
-from typing import cast
+from typing import cast, Optional
 
 from pydantic import BaseModel
 
-from src.share.enums import GameResult
 from src.share.settings import BenchmarkSettings
+from src.share.enums import GameResult
 
 addable_types = {int, float, Decimal, list}
 
@@ -29,6 +29,13 @@ class AddableModel(BaseModel):
         return model_class(**values)
 
 
+class GameData(BaseModel):
+    result: Optional[GameResult]
+    position_scores: list[float]
+    score: float
+    history: list[str]
+
+
 class ModelUsage(AddableModel):
     prompt_tokens: int = 0
     reasoning_tokens: int = 0
@@ -39,6 +46,5 @@ class ModelUsage(AddableModel):
 class BenchmarkingResult(BaseModel):
     model_name: str
     usage: ModelUsage
-    scores: list[float]
-    party_results: list[GameResult]
+    games_data: list[GameData]
     benchmark_settings: BenchmarkSettings

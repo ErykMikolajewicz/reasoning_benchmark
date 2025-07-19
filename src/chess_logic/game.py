@@ -11,6 +11,7 @@ from src.utils.models_adapter import LLMAdapter
 from src.share.settings import settings
 from src.share.enums import GameResult
 from src.share.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, TIE_SCORE
+from src.metrics.models import GameData
 
 MAX_MOVES = settings.benchmark.MAX_MOVES
 MAX_ILLEGAL_MOVES = settings.benchmark.MAX_ILLEGAL_MOVES
@@ -22,6 +23,7 @@ logger = logging.getLogger(__name__)
 class Game:
     def __init__(self, llm_strategy: Callable[[LLMAdapter, Board, Color], str]):
         self._board = Board()
+        self.moves_history = []
         self._current_move = 1
         self._illegal_moves = 0
         self._whose_turn = WHITE
@@ -40,7 +42,7 @@ class Game:
         self.__engine.quit()
         self.__engine = None
 
-    def play(self, llm_color: Color):
+    def play(self, llm_color: Color) -> GameResult:
         while self._current_move <= MAX_MOVES and not self._board.is_game_over():
             try:
                 self._make_move(llm_color)
@@ -77,9 +79,9 @@ class Game:
 
         self._match_result = match_result
 
-        return match_result, self.position_scores
+        return match_result
 
-    def get_game_score(self) -> float:
+    def get_game_data(self) -> float:
         if not self._is_game_ended:
             logger.error('Try get game score to early!')
             raise RuntimeError('Game not ended!')
@@ -129,6 +131,7 @@ class Game:
             move = result.move
             logger.info(f'Engine move: {move}')
             self._board.push(move)
+        self.moves_history.append(str(move))
 
     def _score_position(self, llm_color: Color):
         info = self.__engine.analyse(self._board, limit=chess.engine.Limit(depth=20))
@@ -141,7 +144,7 @@ class Game:
             self.position_scores.append(paws_score)
 
 
-def run_game(llm_color: Color, llm_strategy: Optional[str] = None) -> (Optional[GameResult], list[float], float):
+def run_game(llm_color: Color, llm_strategy: Optional[str] = None) -> GameData:
     try:
         selected_strategy = strategies[llm_strategy]
     except KeyError:
@@ -149,8 +152,15 @@ def run_game(llm_color: Color, llm_strategy: Optional[str] = None) -> (Optional[
     game = Game(selected_strategy)
     with game:
         try:
-            game_result, position_scores = game.play(llm_color=llm_color)
+            game_result = game.play(llm_color=llm_color)
         except RuntimeError:
-            game_result, position_scores = GameResult.LOSS_INVALID_MOVE, game.position_scores
-    game_score = game.get_game_score()
-    return game_result, position_scores, game_score
+            game_result = GameResult.LOSS_INVALID_MOVE
+    position_scores = game.position_scores
+    game_history = game.moves_history
+    game_score = game.get_game_data()
+
+    game_data = GameData(result=game_result,
+                         position_scores = position_scores,
+                         score=game_score,
+                         history=game_history)
+    return game_data

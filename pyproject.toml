@@ -1,6 +1,6 @@
 [project]
 name = "reasoning-benchamrk"
-version = "0.17.0"
+version = "0.18.0"
 description = "Reasoning language models benchmark, by playing chess."
 readme = "README.md"
 requires-python = ">=3.13"

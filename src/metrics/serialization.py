@@ -26,13 +26,10 @@ def save_metrics(benchmark_result: BenchmarkingResult):
             with open(result_path, 'r', encoding='utf-8') as previous_result_file:
                 previous_result = json.load(previous_result_file)
             previous_result = BenchmarkingResult(**previous_result)
-            total_usage = benchmark_result.usage + previous_result.usage
-            benchmark_result.usage = total_usage
-            new_scores = previous_result.scores
-            benchmark_result.scores.extend(new_scores)
+            benchmark_result.usage += previous_result.usage
+            prev_games_data = previous_result.games_data
+            benchmark_result.games_data += previous_result.games_data
 
-            new_party_results = previous_result.party_results
-            benchmark_result.party_results.extend(new_party_results)
         except FileNotFoundError:
             pass
 

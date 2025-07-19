@@ -71,11 +71,12 @@ class LLMAdapter:
 
         usage = response.usage
         model_usage.prompt_tokens += usage.prompt_tokens
-        if usage.completion_tokens_details.text_tokens is None:
+        completion_data = usage.completion_tokens_details
+        if completion_data.text_tokens is None:
             model_usage.text_tokens += 0
         else:
-            model_usage.text_tokens += usage.completion_tokens_details.text_tokens
-        model_usage.reasoning_tokens += usage.completion_tokens_details.reasoning_tokens
+            model_usage.text_tokens += completion_data.text_tokens
+        model_usage.reasoning_tokens += completion_data.reasoning_tokens
 
         cost_float = completion_cost(response, model)
         cost_decimal = Decimal(cost_float)

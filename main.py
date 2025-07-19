@@ -7,13 +7,14 @@ from chess import WHITE, BLACK
 import matplotlib.pyplot as plt
 import concurrent.futures
 
-from src.share.logging_config import setup_logging
+from src.share. logging_config import setup_logging
 from src.chess_logic.game import run_game
 from src.share.settings import settings
 from src.utils.models_adapter import LLMAdapter
 from src.metrics.serialization import save_metrics
 from src.metrics.models import BenchmarkingResult
 from src.utils.models_adapter import models_extra_config
+from src.metrics.models import GameData
 
 setup_logging()
 
@@ -23,18 +24,17 @@ MAX_WORKERS = settings.application.MAX_WORKERS
 BENCHMARKING_MODEL = settings.benchmark.BENCHMARKING_MODEL
 
 color_generator = cycle([WHITE, BLACK])
-results = []
-all_scores = []
-games_score = []
+games_results: list[GameData] = []
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
     futures = [executor.submit(run_game, llm_color, STRATEGY) for llm_color in islice(color_generator, NUM_GAMES)]
     for future in concurrent.futures.as_completed(futures):
-        game_result, position_scores, game_score = future.result()
-        results.append(game_result)
-        all_scores.append(position_scores)
-        games_score.append(game_score)
+        game_data = future.result()
+        games_results.append(game_data)
 
+all_scores = [game_data.position_scores for game_data in games_results]
+games_score = [game_data.score for game_data in games_results]
+party_results = [game_data.result for game_data in games_results]
 
 n_cols = math.ceil(math.sqrt(NUM_GAMES))
 n_rows = math.ceil(NUM_GAMES / n_cols)
@@ -58,7 +58,6 @@ plt.show()
 
 usage = LLMAdapter.get_usage()
 
-print("Results:", results)
 print('Games scores:', games_score)
 print('Average score:', average_game_score)
 
@@ -78,7 +77,6 @@ settings.benchmark.MODEL_EXTRA_CONFIG = model_extra_config
 
 benchmarking_result = BenchmarkingResult(model_name=model_name,
                                          usage=usage,
-                                         scores=games_score,
-                                         party_results=results,
+                                         games_data=games_results,
                                          benchmark_settings=settings.benchmark)
 save_metrics(benchmarking_result)
