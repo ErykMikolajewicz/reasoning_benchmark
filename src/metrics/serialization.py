@@ -1,9 +1,8 @@
 import json
 import logging
 from pathlib import Path
-from uuid import uuid4
 
-from src.metrics.models import BenchmarkingResult
+from src.models import BenchmarkingResult
 from src.share.settings import settings
 from src.utils.helpers import hash_dict
 

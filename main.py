@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from chess import BLACK, WHITE
 
 from src.chess_logic.game import run_game
-from src.metrics.models import BenchmarkingResult, GameData
+from src.models import BenchmarkingResult, GameData
 from src.metrics.serialization import save_metrics
 from src.share.logging_config import setup_logging
 from src.share.settings import settings

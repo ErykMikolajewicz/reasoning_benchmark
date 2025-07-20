@@ -7,11 +7,12 @@ import chess.engine
 from chess import WHITE, Board, Color
 
 from src.chess_logic.strategy import strategies
-from src.metrics.models import GameData
+from src.models import GameData
 from src.share.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, TIE_SCORE
 from src.share.enums import GameResult
 from src.share.settings import settings
 from src.utils.models_adapter import LLMAdapter
+from src.share.exceptions import InvalidMove
 
 MAX_MOVES = settings.benchmark.MAX_MOVES
 MAX_ILLEGAL_MOVES = settings.benchmark.MAX_ILLEGAL_MOVES
@@ -46,12 +47,14 @@ class Game:
         while self._current_move <= MAX_MOVES and not self._board.is_game_over():
             try:
                 self._make_move(llm_color)
-            except ValueError:
+            except InvalidMove as e:
                 self._illegal_moves += 1
                 logger.warning(f"Illegal move, number: {self._illegal_moves}")
                 if self._illegal_moves < MAX_ILLEGAL_MOVES:
                     continue
                 else:
+                    invalid_move = e.invalid_move
+                    self.moves_history.append(invalid_move)
                     logger.warning(f"Illegal moves, number exceeded!")
                     self._is_game_ended = True
                     self._match_result = GameResult.LOSS_INVALID_MOVE
@@ -126,7 +129,10 @@ class Game:
         if self._whose_turn == llm_color:
             move = self._llm_strategy(self._llm_adapter, self._board, llm_color)
             logger.info(f"LLM move: {move}")
-            self._board.push_san(move)
+            try:
+                self._board.push_san(move)
+            except ValueError:
+                raise InvalidMove(invalid_move=move)
         else:
             result = self.__engine.play(self._board, chess.engine.Limit(depth=1, time=0.0005))
             move = result.move
@@ -160,5 +166,9 @@ def run_game(llm_color: Color, llm_strategy: Optional[str] = None) -> GameData:
     game_history = game.moves_history
     game_score = game.get_game_data()
 
-    game_data = GameData(result=game_result, position_scores=position_scores, score=game_score, history=game_history)
+    game_data = GameData(result=game_result,
+                         position_scores=position_scores,
+                         score=game_score,
+                         history=game_history,
+                         llm_color=llm_color)
     return game_data

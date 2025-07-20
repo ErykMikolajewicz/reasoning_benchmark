@@ -7,9 +7,9 @@ from pathlib import Path
 from litellm import ModelResponse, completion, completion_cost
 from litellm.exceptions import RateLimitError
 from dotenv import load_dotenv
-from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_random
+from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_random, after_log
 
-from src.metrics.models import ModelUsage
+from src.models import ModelUsage
 from src.share.settings import settings
 
 load_dotenv('settings/api_keys.env')
@@ -47,6 +47,7 @@ class LLMAdapter:
         retry=retry_if_exception_type(RateLimitError),
         wait=wait_random(MINIMUM_WAIT_SECONDS, MAXIMUM_WAIT_SECONDS),
         stop=stop_after_attempt(RETRY_NUMBER),
+        after=after_log(logger, logging.WARNING)
     )
     def send_messages(self, model: str, messages: list) -> str:
 
