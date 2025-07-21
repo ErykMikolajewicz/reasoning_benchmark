@@ -26,7 +26,6 @@ def save_metrics(benchmark_result: BenchmarkingResult):
                 previous_result = json.load(previous_result_file)
             previous_result = BenchmarkingResult(**previous_result)
             benchmark_result.usage += previous_result.usage
-            prev_games_data = previous_result.games_data
             benchmark_result.games_data += previous_result.games_data
 
         except FileNotFoundError:

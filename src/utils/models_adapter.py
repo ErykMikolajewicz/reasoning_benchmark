@@ -4,15 +4,15 @@ import threading
 from decimal import ROUND_UP, Decimal
 from pathlib import Path
 
+from dotenv import load_dotenv
 from litellm import ModelResponse, completion, completion_cost
 from litellm.exceptions import RateLimitError
-from dotenv import load_dotenv
-from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_random, after_log
+from tenacity import after_log, retry, retry_if_exception_type, stop_after_attempt, wait_random
 
 from src.models import ModelUsage
 from src.share.settings import settings
 
-load_dotenv('settings/api_keys.env')
+load_dotenv("settings/api_keys.env")
 
 RETRY_NUMBER = settings.application.RETRY_NUMBER
 MINIMUM_WAIT_SECONDS = settings.application.MINIMUM_WAIT_SECONDS
@@ -47,7 +47,7 @@ class LLMAdapter:
         retry=retry_if_exception_type(RateLimitError),
         wait=wait_random(MINIMUM_WAIT_SECONDS, MAXIMUM_WAIT_SECONDS),
         stop=stop_after_attempt(RETRY_NUMBER),
-        after=after_log(logger, logging.WARNING)
+        after=after_log(logger, logging.WARNING),
     )
     def send_messages(self, model: str, messages: list) -> str:
 

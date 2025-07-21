@@ -5,22 +5,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import bootstrap
 
-models_short_name = {
-    "anthropic-claude-opus-4-20250514": "claude-opus-4",
-    "anthropic-claude-sonnet-4-20250514": "claude-sonnet-4",
-    "gemini-gemini-2.5-pro": "gemini-2.5-pro",
-    "gemini-gemini-2.5-flash": "gemini-2.5-flash",
-    "deepseek-deepseek-reasoner": "deepseek-reasoner",
-}
-
-
-def get_model_shorter_name(name: str):
-    try:
-        short_name = models_short_name[name]
-        return short_name
-    except KeyError:
-        return name
-
+import src.metrics.scoring as scoring
+from src.utils.helpers import get_model_shorter_name
 
 results_dir = Path("results")
 
@@ -33,9 +19,17 @@ for filepath in json_files:
         benchmark_result = json.load(benchmark_file)
     model_name = benchmark_result["model_name"]
     games_data = benchmark_result["games_data"]
-    scores = [game_data["score"] for game_data in games_data]
-    scores = np.array(scores, dtype=float)
+    games_score = []
+    for game_data in games_data:
+        llm_color = game_data["llm_color"]
+        game_history = game_data["history"]
+        game_result = game_data["result"]
+        position_scores = scoring.score_positions(game_history, llm_color)
+        game_score = scoring.get_game_score(position_scores, game_result)
+        games_score.append(game_score)
+    scores = np.array(games_score, dtype=float)
     results[model_name] = {"scores": scores}
+scoring.engine.quit()
 
 for benchmark_data in results.values():
     scores = benchmark_data["scores"]

@@ -51,18 +51,15 @@ In summary, OpenAI models handled the task best, while Claude models, despite th
 
 Planned next steps for the project include:
 
-1. **Separation of Scoring from Game Data**  
-   Refactor the code to split the scoring logic from the main game (party) data structures. This will allow for more advanced analyses and easier extension of evaluation methods.
-
-2. **Cloud-Based Benchmarking**  
+1. **Cloud-Based Benchmarking**  
    Enable running the benchmark in the cloud, which will be especially useful for long-running analyses and experiments requiring more resources.
 
-3. **Batch API Support**  
+2. **Batch API Support**  
    Implement support for batch API operations, making it possible to submit and process multiple games or tasks simultaneously.
 
-4. **Add Real Human Game Example**  
+3. **Add Real Human Game Example**  
    Include an example of a real human-played game to provide a reference point for evaluation and to help compare LLM performance against actual human decisions.
 
-5. **Implement More Chess Strategies for LLM**
+4. **Implement More Chess Strategies for LLM**
    Expand the set of prompts used to interact with the LLM, allowing assessment of how different instructions or phrasings affect performance and reasoning in chess tasks.
 

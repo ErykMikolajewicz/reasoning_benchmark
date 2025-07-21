@@ -6,6 +6,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BENCHMARK_SETTINGS_FILE_PATH = Path("settings") / "benchmark.env"
 APPLICATION_SETTINGS_FILE_PATH = Path("settings") / "application.env"
+ANALYZE_SETTINGS_FILE_PATH = Path("settings") / "analyze.env"
 
 
 class BenchmarkSettings(BaseSettings):
@@ -15,8 +16,6 @@ class BenchmarkSettings(BaseSettings):
     EXTRACTION_MODEL: Optional[str]
 
     STRATEGY: Optional[str] = None
-
-    DEBUT_OFFSET: int
 
     MAX_ILLEGAL_MOVES: int
 
@@ -50,9 +49,18 @@ class ApplicationSettings(BaseSettings):
     )
 
 
+class AnalyzeSettings(BaseSettings):
+    DEBUT_OFFSET: int
+
+    model_config = SettingsConfigDict(
+        env_file=ANALYZE_SETTINGS_FILE_PATH, env_file_encoding="utf-8", case_sensitive=True, frozen=True
+    )
+
+
 class Settings(BaseSettings):
     benchmark: BenchmarkSettings = BenchmarkSettings()
     application: ApplicationSettings = ApplicationSettings()
+    analyze: AnalyzeSettings = AnalyzeSettings()
 
     model_config = SettingsConfigDict(case_sensitive=True, frozen=True)
 

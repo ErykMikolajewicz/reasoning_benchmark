@@ -31,8 +31,6 @@ class AddableModel(BaseModel):
 
 class GameData(BaseModel):
     result: Optional[GameResult]
-    position_scores: list[float]
-    score: float
     history: list[str]
     llm_color: bool
 
