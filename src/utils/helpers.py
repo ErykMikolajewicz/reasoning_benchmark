@@ -1,14 +1,10 @@
 import hashlib
 import json
 
-from chess import BLACK, WHITE
+from chess import Board, Color
 
-colors_strings_dict = {WHITE: "white", BLACK: "black"}
-
-
-def color_to_string(color):
-    color_string = colors_strings_dict[color]
-    return color_string
+import src.chess_logic.prompts as prompts
+from src.share.conts import COLORS_STRING_DICT, MODELS_SHORT_NAME
 
 
 def hash_dict(dict_) -> str:
@@ -18,18 +14,23 @@ def hash_dict(dict_) -> str:
     return hash_str
 
 
-models_short_name = {
-    "anthropic-claude-opus-4-20250514": "claude-opus-4",
-    "anthropic-claude-sonnet-4-20250514": "claude-sonnet-4",
-    "gemini-gemini-2.5-pro": "gemini-2.5-pro",
-    "gemini-gemini-2.5-flash": "gemini-2.5-flash",
-    "deepseek-deepseek-reasoner": "deepseek-reasoner",
-}
-
-
 def get_model_shorter_name(name: str):
     try:
-        short_name = models_short_name[name]
+        short_name = MODELS_SHORT_NAME[name]
         return short_name
     except KeyError:
         return name
+
+
+def format_board_info(board: Board, llm_color: Color, last_opponent_move: str) -> str:
+    llm_color = COLORS_STRING_DICT[llm_color]
+    castling_rights = board.castling_xfen()
+    ascii_board = str(board)
+    full_board_info = prompts.board_prompt.format(
+        ascii_board=ascii_board,
+        castling_rights=castling_rights,
+        last_opponent_move=last_opponent_move,
+        llm_color=llm_color,
+    )
+
+    return full_board_info

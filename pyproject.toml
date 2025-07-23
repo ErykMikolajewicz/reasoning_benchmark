@@ -1,6 +1,6 @@
 [project]
 name = "reasoning-benchamrk"
-version = "0.22.0"
+version = "0.23.0"
 description = "Reasoning language models benchmark, by playing chess."
 readme = "README.md"
 requires-python = ">=3.13"
@@ -10,7 +10,7 @@ dependencies = [
     "matplotlib==3.10.*",
     "pydantic==2.11.*",
     "pydantic-settings==2.10.*",
-    "python-dotenv==1.1.*",
+    "python-dotenv==1.1.1",
     "scipy==1.16.*",
     "tenacity==9.1.*",
 ]

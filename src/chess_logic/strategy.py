@@ -1,23 +1,19 @@
 import json
+from typing import Dict, Optional
 
-from chess import Board, Color
-
-from src.chess_logic.prompts import extraction_prompt, move_formated, move_prompt
+import src.chess_logic.prompts as prompts
+from src.share.custom_types import GameStrategy
 from src.share.settings import settings
-from src.utils.helpers import color_to_string
 from src.utils.models_adapter import LLMAdapter
 
 BENCHMARKING_MODEL = settings.benchmark.BENCHMARKING_MODEL
 EXTRACTION_MODEL = settings.benchmark.EXTRACTION_MODEL
 
 
-def simple_move(llm_adapter: LLMAdapter, board: Board, color: Color):
-    color_string = color_to_string(color)
-    ascii_board = str(board)
-    board_prompt = f"Board:/n{ascii_board}\nYou are {color_string}"
+def simple_move(llm_adapter: LLMAdapter, board_info: str) -> str:
     move_and_thinking = llm_adapter.send_messages(
         model=BENCHMARKING_MODEL,
-        messages=[{"role": "system", "content": move_formated}, {"role": "user", "content": board_prompt}],
+        messages=[{"role": "system", "content": prompts.move_formated}, {"role": "user", "content": board_info}],
     )
 
     json_start_index = move_and_thinking.index("{")
@@ -29,20 +25,20 @@ def simple_move(llm_adapter: LLMAdapter, board: Board, color: Color):
     return move
 
 
-def move_and_extract(llm_adapter: LLMAdapter, board: Board, color: Color):
-    color_string = color_to_string(color)
-    ascii_board = str(board)
-    board_prompt = f"Board:/n{ascii_board}\nYou are {color_string}"
+def move_and_extract(llm_adapter: LLMAdapter, board_info: str) -> str:
     response = llm_adapter.send_messages(
         model=BENCHMARKING_MODEL,
-        messages=[{"role": "system", "content": move_prompt}, {"role": "user", "content": board_prompt}],
+        messages=[{"role": "system", "content": prompts.move_prompt}, {"role": "user", "content": board_info}],
     )
 
     move_and_thinking: str = response
 
     response = llm_adapter.send_messages(
         model=EXTRACTION_MODEL,
-        messages=[{"role": "system", "content": extraction_prompt}, {"role": "user", "content": move_and_thinking}],
+        messages=[
+            {"role": "system", "content": prompts.EXTRACTION_PROMPT},
+            {"role": "user", "content": move_and_thinking},
+        ],
     )
 
     move_str: str = response
@@ -54,4 +50,8 @@ def move_and_extract(llm_adapter: LLMAdapter, board: Board, color: Color):
     return move
 
 
-strategies = {None: simple_move, "simple_move": simple_move, "move_and_extract": move_and_extract}
+strategies: Dict[Optional[str], GameStrategy] = {
+    None: simple_move,
+    "simple_move": simple_move,
+    "move_and_extract": move_and_extract,
+}

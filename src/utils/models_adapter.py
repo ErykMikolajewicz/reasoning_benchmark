@@ -50,6 +50,9 @@ class LLMAdapter:
         after=after_log(logger, logging.WARNING),
     )
     def send_messages(self, model: str, messages: list) -> str:
+        for message in messages:
+            log = f'Message type: {message["role"]}, message:\n{message["content"]}'
+            logger.debug(log)
 
         model_file_name = model.replace("/", "-")
         model_params = models_extra_config.get(model_file_name, {})

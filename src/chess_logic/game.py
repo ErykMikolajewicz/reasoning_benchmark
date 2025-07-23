@@ -1,14 +1,16 @@
 import logging
-from typing import Callable, Optional
+from typing import Optional
 
 import chess.engine
 from chess import WHITE, Board, Color
 
 from src.chess_logic.strategy import strategies
 from src.models import GameData
+from src.share.custom_types import GameStrategy
 from src.share.enums import GameResult
 from src.share.exceptions import InvalidMove
 from src.share.settings import settings
+from src.utils.helpers import format_board_info
 from src.utils.models_adapter import LLMAdapter
 
 MAX_MOVES = settings.benchmark.MAX_MOVES
@@ -18,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 
 class Game:
-    def __init__(self, llm_strategy: Callable[[LLMAdapter, Board, Color], str]):
+    def __init__(self, llm_strategy: GameStrategy):
         self._board = Board()
         self.moves_history = []
         self._current_move = 1
@@ -81,7 +83,12 @@ class Game:
     def _make_move(self, llm_color: Color):
         logger.info(f"Move number: {self._current_move}")
         if self._whose_turn == llm_color:
-            move = self._llm_strategy(self._llm_adapter, self._board, llm_color)
+            try:
+                last_opponent_move = self.moves_history[-1]
+            except IndexError:
+                last_opponent_move = "None"
+            board_info = format_board_info(self._board, llm_color, last_opponent_move)
+            move = self._llm_strategy(self._llm_adapter, board_info)
             logger.info(f"LLM move: {move}")
             try:
                 self._board.push_san(move)
