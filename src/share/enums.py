@@ -1,9 +1,16 @@
-from enum import Enum, auto
+from enum import StrEnum
 
 
-class GameResult(str, Enum):
+class GameResult(StrEnum):
     WIN = "WIN"
     TIE = "TIE"
     LOSS = "LOSS"
     LOSS_INVALID_MOVE = "LOSS_INVALID_MOVE"
     MAX_MOVES = "MAX_MOVES"
+
+
+class ColorGenerator(StrEnum):
+    WHITE = "WHITE"
+    BLACK = "BLACK"
+    BOTH = "BOTH"
+    RANDOM = "RANDOM"

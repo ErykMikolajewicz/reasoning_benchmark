@@ -1,6 +1,7 @@
 import math
 from itertools import chain, islice, repeat
 from statistics import mean
+import os
 
 import chess.engine
 import matplotlib.pyplot as plt
@@ -14,6 +15,8 @@ MAX_MOVES = settings.benchmark.MAX_MOVES
 DEBUT_OFFSET = settings.analyze.DEBUT_OFFSET
 
 engine = chess.engine.SimpleEngine.popen_uci("/usr/games/stockfish")
+_CPU_COUNT = os.cpu_count()
+engine.configure({"Threads": _CPU_COUNT})
 
 
 def get_game_score(position_scores: list[float], match_result: GameResult) -> float:
@@ -63,12 +66,19 @@ def score_positions(moves: list[str], llm_color: Color) -> list[float]:
             return scores
         info = engine.analyse(board, limit=chess.engine.Limit(depth=20))
         score = info["score"]
-        centi_paws_score = score.pov(llm_color).score()
+        score_llm_point_of_view = score.pov(llm_color)
+        centi_paws_score = score_llm_point_of_view.score()
         if centi_paws_score is None:
             party_result = board.result()
             match party_result, llm_color:
                 case "*", _:
-                    raise RuntimeError("Invalid party result!")
+                    moves_to_mate = score_llm_point_of_view.moves
+                    if moves_to_mate > 0:
+                        scores.append(MAX_POSITION_SCORE)
+                    elif moves_to_mate < 0:
+                        scores.append(MIN_POSITION_SCORE)
+                    else:
+                        raise RuntimeError("Invalid game status!")
                 case "1-0", True:
                     scores.append(MAX_POSITION_SCORE)
                 case "1-0", False:

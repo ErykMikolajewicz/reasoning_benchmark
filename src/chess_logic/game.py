@@ -1,5 +1,6 @@
 import logging
 from typing import Optional
+import random
 
 import chess.engine
 from chess import WHITE, Board, Color
@@ -12,6 +13,7 @@ from src.share.exceptions import InvalidMove
 from src.share.settings import settings
 from src.utils.helpers import format_board_info
 from src.utils.models_adapter import LLMAdapter
+from src.share.conts import ENGINE_MULTI_PV, ENGINE_CENTI_PAWS_THRESHOLD, ENGINE_DEPTH
 
 MAX_MOVES = settings.benchmark.MAX_MOVES
 MAX_ILLEGAL_MOVES = settings.benchmark.MAX_ILLEGAL_MOVES
@@ -95,11 +97,27 @@ class Game:
             except ValueError:
                 raise InvalidMove(invalid_move=move)
         else:
-            result = self.__engine.play(self._board, chess.engine.Limit(depth=1, time=0.0005))
-            move = result.move
+            moves = self.__engine.analyse(self._board, chess.engine.Limit(depth=ENGINE_DEPTH), multipv=ENGINE_MULTI_PV)
+            acceptable_moves = self._choose_acceptable_moves(moves)
+            move = random.choice(acceptable_moves)
+            move = move['pv'][0]
+            move = self._board.san(move)
             logger.info(f"Engine move: {move}")
-            self._board.push(move)
-        self.moves_history.append(str(move))
+            self._board.push_san(move)
+        self.moves_history.append(move)
+
+    def _choose_acceptable_moves(self, engine_moves: list[chess.engine.InfoDict]) -> list[chess.engine.InfoDict]:
+        moves_engine_view = [move['score'].pov(self._whose_turn) for move in engine_moves]
+        max_score = max([score for move in moves_engine_view if (score := move.score()) is not None])
+        acceptable_moves = []
+        for move, move_engine_view in zip(engine_moves, moves_engine_view):
+            score = move_engine_view.score()
+            if score is None:
+                acceptable_moves.append(move)
+            else:
+                if score > max_score - ENGINE_CENTI_PAWS_THRESHOLD:
+                    acceptable_moves.append(move)
+        return acceptable_moves
 
 
 def run_game(llm_color: Color, llm_strategy: Optional[str] = None) -> GameData:

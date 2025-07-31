@@ -4,6 +4,8 @@ from typing import Optional
 from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from src.share.enums import ColorGenerator
+
 BENCHMARK_SETTINGS_FILE_PATH = Path("settings") / "benchmark.env"
 APPLICATION_SETTINGS_FILE_PATH = Path("settings") / "application.env"
 ANALYZE_SETTINGS_FILE_PATH = Path("settings") / "analyze.env"
@@ -37,6 +39,8 @@ class ApplicationSettings(BaseSettings):
 
     PLAYS_NUMBER: int
     MAX_WORKERS: int
+
+    COLOR_GENERATOR: ColorGenerator
 
     APPEND_RESULTS: bool
 

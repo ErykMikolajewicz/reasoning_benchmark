@@ -1,7 +1,5 @@
 import concurrent.futures
-from itertools import cycle, islice
-
-from chess import BLACK, WHITE
+from itertools import islice
 
 from src.chess_logic.game import run_game
 from src.metrics.serialization import save_metrics
@@ -9,15 +7,18 @@ from src.models import BenchmarkingResult, GameData
 from src.share.logging_config import setup_logging
 from src.share.settings import settings
 from src.utils.models_adapter import LLMAdapter, models_extra_config
+from src.utils.helpers import get_color_generator
 
 setup_logging()
 
 NUM_GAMES = settings.application.PLAYS_NUMBER
-STRATEGY = settings.benchmark.STRATEGY
 MAX_WORKERS = settings.application.MAX_WORKERS
+COLOR_GENERATOR = settings.application.COLOR_GENERATOR
+
+STRATEGY = settings.benchmark.STRATEGY
 BENCHMARKING_MODEL = settings.benchmark.BENCHMARKING_MODEL
 
-color_generator = cycle([WHITE, BLACK])
+color_generator = get_color_generator(COLOR_GENERATOR)
 games_results: list[GameData] = []
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
