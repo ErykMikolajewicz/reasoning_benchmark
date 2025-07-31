@@ -16,8 +16,11 @@ def simple_move(llm_adapter: LLMAdapter, board_info: str) -> str:
         messages=[{"role": "system", "content": prompts.move_formated}, {"role": "user", "content": board_info}],
     )
 
-    json_start_index = move_and_thinking.index("{")
-    json_end_index = move_and_thinking.rindex("}")
+    try:
+        json_start_index = move_and_thinking.index("{")
+        json_end_index = move_and_thinking.rindex("}")
+    except ValueError:
+        return f'Invalid move format: {move_and_thinking}'
     only_move = move_and_thinking[json_start_index : json_end_index + 1]
     move_json = json.loads(only_move)
     move = move_json["move"]
@@ -26,14 +29,12 @@ def simple_move(llm_adapter: LLMAdapter, board_info: str) -> str:
 
 
 def move_and_extract(llm_adapter: LLMAdapter, board_info: str) -> str:
-    response = llm_adapter.send_messages(
+    move_and_thinking = llm_adapter.send_messages(
         model=BENCHMARKING_MODEL,
         messages=[{"role": "system", "content": prompts.move_prompt}, {"role": "user", "content": board_info}],
     )
 
-    move_and_thinking: str = response
-
-    response = llm_adapter.send_messages(
+    move_str = llm_adapter.send_messages(
         model=EXTRACTION_MODEL,
         messages=[
             {"role": "system", "content": prompts.EXTRACTION_PROMPT},
@@ -41,12 +42,20 @@ def move_and_extract(llm_adapter: LLMAdapter, board_info: str) -> str:
         ],
     )
 
-    move_str: str = response
-    json_start_index = move_str.index("{")
-    json_end_index = move_str.rindex("}")
+    try:
+        json_start_index = move_str.index("{")
+        json_end_index = move_str.rindex("}")
+    except ValueError:
+        return f'Invalid move format: {move_str}'
     move_json = json.loads(move_str[json_start_index : json_end_index + 1])
     move = move_json["move"]
 
+    return move
+
+
+def human_play(_: LLMAdapter, board_info: str):
+    print(board_info)
+    move = input('Write move in SAN notation: ')
     return move
 
 
@@ -54,4 +63,7 @@ strategies: Dict[Optional[str], GameStrategy] = {
     None: simple_move,
     "simple_move": simple_move,
     "move_and_extract": move_and_extract,
+    "human_play": human_play
 }
+
+
