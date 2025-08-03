@@ -39,10 +39,15 @@ try:
     model_extra_config = models_extra_config[model_name]
 except KeyError:
     model_extra_config = {}
+settings.benchmark.model_extra_config = model_extra_config
 
-settings.benchmark.MODEL_EXTRA_CONFIG = model_extra_config
+ENGINE_SETTINGS = settings.engine.model_dump()
+settings.benchmark.engine_settings = ENGINE_SETTINGS
 
 benchmarking_result = BenchmarkingResult(
-    model_name=model_name, usage=usage, games_data=games_results, benchmark_settings=settings.benchmark
+    model_name=model_name,
+    usage=usage,
+    games_data=games_results,
+    benchmark_settings=settings.benchmark
 )
 save_metrics(benchmarking_result)

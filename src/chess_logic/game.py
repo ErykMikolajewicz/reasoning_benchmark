@@ -13,10 +13,13 @@ from src.share.exceptions import InvalidMove
 from src.share.settings import settings
 from src.utils.helpers import format_board_info
 from src.utils.models_adapter import LLMAdapter
-from src.share.conts import ENGINE_MULTI_PV, ENGINE_CENTI_PAWS_THRESHOLD, ENGINE_DEPTH
 
-MAX_MOVES = settings.benchmark.MAX_MOVES
 MAX_ILLEGAL_MOVES = settings.benchmark.MAX_ILLEGAL_MOVES
+MAX_MOVES = settings.benchmark.MAX_MOVES
+
+ANALYSE_DEPTH = settings.engine.ANALYSE_DEPTH
+MOVE_ACCEPTANCE_THRESHOLD_CENTI_PAWS = settings.engine.MOVE_ACCEPTANCE_THRESHOLD_CENTI_PAWS
+MULTI_PV = settings.engine.MULTI_PV
 
 logger = logging.getLogger(__name__)
 
@@ -97,7 +100,7 @@ class Game:
             except ValueError:
                 raise InvalidMove(invalid_move=move)
         else:
-            moves = self.__engine.analyse(self._board, chess.engine.Limit(depth=ENGINE_DEPTH), multipv=ENGINE_MULTI_PV)
+            moves = self.__engine.analyse(self._board, chess.engine.Limit(depth=ANALYSE_DEPTH), multipv=MULTI_PV)
             acceptable_moves = self._choose_acceptable_moves(moves)
             move = random.choice(acceptable_moves)
             move = move['pv'][0]
@@ -115,7 +118,7 @@ class Game:
             if score is None:
                 acceptable_moves.append(move)
             else:
-                if score > max_score - ENGINE_CENTI_PAWS_THRESHOLD:
+                if score > max_score - MOVE_ACCEPTANCE_THRESHOLD_CENTI_PAWS:
                     acceptable_moves.append(move)
         return acceptable_moves
 

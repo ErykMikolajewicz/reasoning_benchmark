@@ -12,6 +12,4 @@ MODELS_SHORT_NAME = {
     "deepseek-deepseek-reasoner": "deepseek-reasoner",
 }
 
-ENGINE_DEPTH = 1
-ENGINE_CENTI_PAWS_THRESHOLD = 50
-ENGINE_MULTI_PV = 4
+
