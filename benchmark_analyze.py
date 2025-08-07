@@ -43,7 +43,7 @@ for benchmark_data in results.values():
 
     res = bootstrap(
         [scores],
-        np.mean,
+        np.median,
         vectorized=False,
         n_resamples=5000,
         method="BCa",
@@ -68,17 +68,16 @@ positions = list(range(1, len(results) + 1))
 
 for i, benchmark_data in enumerate(results.values(), start=1):
     ax.scatter(benchmark_data["mean"], i, color="red", zorder=3)
-    ax.hlines(i, benchmark_data["ci_low"], benchmark_data["ci_high"], linewidth=8, alpha=0.7)
-    ax.fill_between([benchmark_data["ci_low"], benchmark_data["ci_high"]], i - 0.15, i + 0.15, alpha=0.15)
+    ax.hlines(i, benchmark_data["ci_low"], benchmark_data["ci_high"], linewidth=10, alpha=0.7)
 
 ax.set_yticks(positions)
 ax.set_yticklabels(get_model_shorter_name(key) for key in results.keys())
-ax.set_xlabel("Values")
+ax.set_xlabel("Pawn advantage.")
 ax.set_title("Box plots and confident intervals (bootstrap BCa)")
 
 ax.legend(
     [box["boxes"][0], ax.scatter([], [], color="red"), ax.hlines([], [], [], linewidth=8)],
-    ["Distribution", "Average", "95% CI (mean)"],
+    ["Quartiles Q2-Q3", "Average", "95% CI (median)"],
     loc="center left",
     bbox_to_anchor=(1, 0.5),
 )
@@ -91,4 +90,4 @@ for label, benchmark_data in sorted(results.items(), key=lambda x: x[1]["median"
     print(f"  Median: {benchmark_data['median']:.2f}")
     print(f"  Min:    {benchmark_data['min']:.2f}")
     print(f"  Max:    {benchmark_data['max']:.2f}")
-    print(f"  95% CI (mean): [{benchmark_data['ci_low']:.2f}, {benchmark_data['ci_high']:.2f}]")
+    print(f"  95% CI (median): [{benchmark_data['ci_low']:.2f}, {benchmark_data['ci_high']:.2f}]")
