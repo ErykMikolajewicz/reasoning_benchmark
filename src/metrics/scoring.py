@@ -6,6 +6,7 @@ import os
 import chess.engine
 import matplotlib.pyplot as plt
 from chess import Board, Color
+import numpy as np
 
 from src.share.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, TIE_SCORE
 from src.share.enums import GameResult
@@ -95,7 +96,7 @@ def score_positions(moves: list[str], llm_color: Color) -> list[float]:
     return scores
 
 
-def plot_parties_scores(parties_scores: list[list[float]]):
+def plot_parties_scores(parties_scores: list[list[float]], label: str):
     num_games = len(parties_scores)
     n_cols = math.ceil(math.sqrt(num_games))
     n_rows = math.ceil(num_games / n_cols)
@@ -107,11 +108,13 @@ def plot_parties_scores(parties_scores: list[list[float]]):
         axes = [axes]
 
     for i, (position_scores, ax) in enumerate(zip(parties_scores, axes)):
-        ax.plot(range(1, len(position_scores) + 1), position_scores)
+        ax.plot(range(1, len(position_scores[:-2]) + 1), position_scores[:-2])
         ax.set_title(f"Game {i+1}")
         ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
         ax.set_xlabel("Move")
         ax.set_ylabel("Score")
 
-    plt.tight_layout()
+    fig.suptitle(label, fontsize=16)
+
+    plt.tight_layout(rect=(0, 0, 1, 0.95))
     plt.show()
