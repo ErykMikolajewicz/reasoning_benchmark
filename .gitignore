@@ -1,18 +1,14 @@
-# Python-generated files
 __pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
+*.pyc
 
-# Virtual environments
 .venv
-/settings/api_keys.env
-/settings/
 
-/.idea
-/logs/*.log
+settings
 
-/results/*.json
-/models_params/*.json
+.idea
+
+logs/*.log
+
+results/*.json
+
+models_params/*.json

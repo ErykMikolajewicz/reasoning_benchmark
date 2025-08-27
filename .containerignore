@@ -1,0 +1,14 @@
+.git
+
+.venv
+
+__pycache__
+*.pyc
+
+*.log
+logs/
+
+results/
+plots/
+
+settings_example/
