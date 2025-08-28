@@ -14,3 +14,8 @@ class ColorGenerator(StrEnum):
     BLACK = "BLACK"
     BOTH = "BOTH"
     RANDOM = "RANDOM"
+
+
+class Environment(StrEnum):
+    LOCAL = "LOCAL"
+    GOOGLE_CLOUD = "GOOGLE_CLOUD"

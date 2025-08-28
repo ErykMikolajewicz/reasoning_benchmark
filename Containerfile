@@ -2,7 +2,7 @@ FROM python:3.13-slim-bookworm AS builder
 
 COPY pyproject.toml uv.lock ./
 RUN pip install --no-cache uv==0.8.*
-RUN uv sync --compile-bytecode
+RUN uv sync --compile-bytecode --group google-cloud
 
 
 FROM python:3.13-slim-bookworm
@@ -22,15 +22,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         stockfish \
     && rm -rf /var/lib/apt/lists/*
 
+RUN useradd -m benchmark_performer
+
+RUN mkdir /results /logs
+RUN chown -R benchmark_performer:benchmark_performer /logs /results
+
+USER benchmark_performer
+
+ENV PATH="/.venv/bin:$PATH"
+COPY --from=builder .venv /.venv
+
 COPY /src /src
 COPY /models_params /models_params
 COPY /settings /settings
 COPY main.py main.py
-
-RUN mkdir -p /src/results /src/logs
-
-RUN useradd -m benchmark_performer && chown -R benchmark_performer:benchmark_performer /src
-USER benchmark_performer
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 

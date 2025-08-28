@@ -3,7 +3,6 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.stats import bootstrap
 
 import src.metrics.scoring as scoring
 from src.utils.helpers import get_model_shorter_name
@@ -43,19 +42,6 @@ for benchmark_data in results.values():
     benchmark_data["min"] = np.min(scores)
     benchmark_data["max"] = np.max(scores)
 
-    res = bootstrap(
-        [scores],
-        np.median,
-        vectorized=False,
-        n_resamples=5000,
-        method="BCa",
-        confidence_level=0.95,
-        random_state=42,
-    )
-    ci = res.confidence_interval
-    benchmark_data["ci_low"] = ci.low
-    benchmark_data["ci_high"] = ci.high
-
 fig, ax = plt.subplots()
 
 box = ax.boxplot(
@@ -70,16 +56,15 @@ positions = list(range(1, len(results) + 1))
 
 for i, benchmark_data in enumerate(results.values(), start=1):
     ax.scatter(benchmark_data["mean"], i, color="red", zorder=3)
-    ax.hlines(i, benchmark_data["ci_low"], benchmark_data["ci_high"], linewidth=10, alpha=0.7)
 
 ax.set_yticks(positions)
 ax.set_yticklabels(get_model_shorter_name(key) for key in results.keys())
 ax.set_xlabel("Pawn advantage.")
-ax.set_title("Box plots and confident intervals (bootstrap BCa)")
+ax.set_title("Benchmark result")
 
 ax.legend(
     [box["boxes"][0], ax.scatter([], [], color="red"), ax.hlines([], [], [], linewidth=8)],
-    ["Quartiles Q2-Q3", "Average", "95% CI (median)"],
+    ["Quartiles Q2-Q3", "Average"],
     loc="center left",
     bbox_to_anchor=(1, 0.5),
 )
@@ -92,7 +77,6 @@ for label, benchmark_data in sorted(results.items(), key=lambda x: x[1]["median"
     print(f"  Median: {benchmark_data['median']:.2f}")
     print(f"  Min:    {benchmark_data['min']:.2f}")
     print(f"  Max:    {benchmark_data['max']:.2f}")
-    print(f"  95% CI (median): [{benchmark_data['ci_low']:.2f}, {benchmark_data['ci_high']:.2f}]")
 
 
 for model_name, benchmark_data in results.items():
