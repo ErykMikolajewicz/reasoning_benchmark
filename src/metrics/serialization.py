@@ -5,32 +5,63 @@ from pathlib import Path
 from src.models import BenchmarkingResult
 from src.share.settings import settings
 from src.utils.helpers import hash_dict
+from src.share.enums import Environment
 
 APPEND_RESULTS = settings.application.APPEND_RESULTS
+ENVIRONMENT = settings.environment.ENVIRONMENT
 
 logger = logging.getLogger(__name__)
 
 
 def save_metrics(benchmark_result: BenchmarkingResult):
-    result_dir = Path("results")
-
     benchmark_settings = benchmark_result.benchmark_settings.model_dump()
     settings_hash = hash_dict(benchmark_settings)
 
-    result_path = result_dir / (benchmark_result.model_name + "-" + settings_hash + ".json")
+    file_name = benchmark_result.model_name + "-" + settings_hash + ".json"
 
-    previous_result = None
-    if APPEND_RESULTS:
-        try:
-            with open(result_path, "r", encoding="utf-8") as previous_result_file:
-                previous_result = json.load(previous_result_file)
-            previous_result = BenchmarkingResult(**previous_result)
-            benchmark_result.usage += previous_result.usage
-            benchmark_result.games_data += previous_result.games_data
+    match ENVIRONMENT:
+        case Environment.LOCAL:
+            _save_local(benchmark_result, file_name)
+        case Environment.GOOGLE_CLOUD:
+            _save_local(benchmark_result, file_name)
 
-        except FileNotFoundError:
-            pass
+
+
+def _save_local(benchmark_result: BenchmarkingResult, file_name: str):
+    result_dir = Path("results")
+
+    result_path = result_dir / file_name
+
+    if APPEND_RESULTS and result_path.exists():
+        with open(result_path, "r", encoding="utf-8") as previous_result_file:
+            previous_result = json.load(previous_result_file)
+        benchmark_result = _append_results(benchmark_result, previous_result)
 
     with open(result_path, "w", encoding="utf-8") as result_file:
         json_str = benchmark_result.model_dump_json(indent=4)
         result_file.write(json_str)
+
+
+def _save_google_cloud(benchmark_result: BenchmarkingResult, file_name: str):
+    from google.cloud import storage
+
+    client = storage.Client()
+
+    bucket = client.bucket("reasoning_benchmark")
+
+    blob = bucket.blob(file_name)
+
+    if APPEND_RESULTS and blob.exists():
+        previous_result = blob.download_as_string()
+        previous_result = json.loads(previous_result)
+        benchmark_result = _append_results(benchmark_result, previous_result)
+
+    json_str = benchmark_result.model_dump_json(indent=4)
+    blob.upload_from_string(json_str, content_type="application/json")
+
+
+def _append_results(benchmark_result: BenchmarkingResult, previous_result: dict) -> BenchmarkingResult:
+    previous_result = BenchmarkingResult(**previous_result)
+    benchmark_result.usage += previous_result.usage
+    benchmark_result.games_data += previous_result.games_data
+    return benchmark_result

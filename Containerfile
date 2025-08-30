@@ -2,7 +2,7 @@ FROM python:3.13-slim-bookworm AS builder
 
 COPY pyproject.toml uv.lock ./
 RUN pip install --no-cache uv==0.8.*
-RUN uv sync --compile-bytecode --group google-cloud
+RUN uv sync --group google-cloud --no-dev --compile-bytecode
 
 
 FROM python:3.13-slim-bookworm
@@ -23,10 +23,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m benchmark_performer
-
-RUN mkdir /results /logs
-RUN chown -R benchmark_performer:benchmark_performer /logs /results
-
 USER benchmark_performer
 
 ENV PATH="/.venv/bin:$PATH"
