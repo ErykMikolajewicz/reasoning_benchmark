@@ -6,10 +6,9 @@ RUN uv sync --group google-cloud --no-dev --compile-bytecode
 
 
 FROM python:3.13-slim-bookworm
-ARG IMAGE_VERSION
 
 LABEL org.opencontainers.image.authors="Eryk Mikołajewicz <eryk.mikolajewicz@gmail.com>" \
-      org.opencontainers.image.version=${IMAGE_VERSION} \
+      org.opencontainers.image.version="1" \
       org.opencontainers.image.description="LLM reasoning benchmark, by playing chess." \
       org.opencontainers.image.source="https://github.com/ErykMikolajewicz/reasoning_benchmark" \
       maintainer="Eryk Mikołajewicz"
@@ -30,7 +29,6 @@ COPY --from=builder .venv /.venv
 
 COPY /src /src
 COPY /models_params /models_params
-COPY /settings /settings
 COPY main.py main.py
 
 ENTRYPOINT ["/usr/bin/tini", "--"]

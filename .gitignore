@@ -13,4 +13,4 @@ results/*.json
 
 models_params/*.json
 
-cloud_run/create_project.env
+cloud_run/.env

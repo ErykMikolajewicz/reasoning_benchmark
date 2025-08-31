@@ -1,12 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
-if [[ ! -f create_project.env ]]; then
-  echo "File create_project.env not found. Create it from create_project.env.example"
+if [[ ! -f .env ]]; then
+  echo "File create_project.env not found. Create it from .env.example"
   exit 1
 fi
 
-source create_project.env
+source .env
 
 echo "Creating project: $PROJECT_ID (llm-reasoning-benchmark)."
 gcloud projects create "$PROJECT_ID" --name="llm-reasoning-benchmark" --set-as-default
@@ -49,5 +49,14 @@ echo "Add to service account: $SA_NAME read only access to secrets in project $P
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
   --role="roles/secretmanager.secretAccessor"
+
+echo "Add desktop credentials for Python scripts"
+gcloud auth application-default login
+gcloud auth application-default set-quota-project "$PROJECT_ID"
+
+gcloud services enable iamcredentials.googleapis.com run.googleapis.com
+gcloud iam service-accounts add-iam-policy-binding "$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+  --member="user:$CLOUD_USER_EMAIL" \
+  --role="roles/iam.serviceAccountTokenCreator"
 
 echo "Project configuration ended! Now you should manually add your api keys to secret manager in Google Cloud UI."
