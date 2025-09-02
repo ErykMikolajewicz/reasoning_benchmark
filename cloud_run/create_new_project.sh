@@ -32,31 +32,41 @@ gcloud storage buckets add-iam-policy-binding "gs://$BUCKET_NAME" \
 
 echo "Creating repository: llm-benchmark-repository to store benchmark containers."
 gcloud services enable artifactregistry.googleapis.com
-gcloud artifacts repositories create "llm-benchmark-repository" --repository-format=docker --location="$LOCATION"
+gcloud artifacts repositories create "llm-benchmark-repository" \
+  --repository-format=docker \
+  --location="$LOCATION" \
+  --cleanup-policy="policy=KEEP,condition=keepCount=1"
 
 echo "Add to service account: $SA_NAME admin permissions on images repository: llm-benchmark-repository"
 gcloud artifacts repositories add-iam-policy-binding "llm-benchmark-repository" \
   --location="$LOCATION" \
   --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
-  --role="roles/artifactregistry.repoAdmin"
+  --role="roles/artifactregistry.writer"
 
-echo "Add to service account: $SA_NAME admin permissions for running images in Cloud Run"
+echo "Add service account $SA_NAME permissions to be executed by itself."
+gcloud iam service-accounts add-iam-policy-binding "$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+  --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/iam.serviceAccountUser"
+
+echo "Add to service account: $SA_NAME developer permissions for running images in Cloud Run"
+gcloud services enable run.googleapis.com
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
-  --role="roles/run.admin"
-
-echo "Add to service account: $SA_NAME read only access to secrets in project $PROJECT_ID"
-gcloud projects add-iam-policy-binding "$PROJECT_ID" \
-  --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
-  --role="roles/secretmanager.secretAccessor"
+  --role="roles/run.developer"
 
 echo "Add desktop credentials for Python scripts"
 gcloud auth application-default login
 gcloud auth application-default set-quota-project "$PROJECT_ID"
 
-gcloud services enable iamcredentials.googleapis.com run.googleapis.com
+echo "Enable api: IAM Service Account Credentials, and add permission to get token, for service account."
+gcloud services enable iamcredentials.googleapis.com
 gcloud iam service-accounts add-iam-policy-binding "$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
   --member="user:$CLOUD_USER_EMAIL" \
   --role="roles/iam.serviceAccountTokenCreator"
+
+echo "Add to service account: $SA_NAME read only access to secrets in project $PROJECT_ID"
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/secretmanager.secretAccessor"
 
 echo "Project configuration ended! Now you should manually add your api keys to secret manager in Google Cloud UI."
