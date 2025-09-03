@@ -43,16 +43,16 @@ gcloud artifacts repositories add-iam-policy-binding "llm-benchmark-repository" 
   --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
   --role="roles/artifactregistry.writer"
 
-echo "Add service account $SA_NAME permissions to be executed by itself."
-gcloud iam service-accounts add-iam-policy-binding "$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
-  --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
-  --role="roles/iam.serviceAccountUser"
+#echo "Add service account $SA_NAME permissions to be executed by itself."
+#gcloud iam service-accounts add-iam-policy-binding "$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+#  --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+#  --role="roles/iam.serviceAccountUser"
 
-echo "Add to service account: $SA_NAME developer permissions for running images in Cloud Run"
-gcloud services enable run.googleapis.com
+echo "Add to service account: $SA_NAME jobs editor permissions, to launch container as batch job."
+gcloud services enable batch.googleapis.com
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
-  --role="roles/run.developer"
+  --role="roles/batch.jobsEditor"
 
 echo "Add desktop credentials for Python scripts"
 gcloud auth application-default login
@@ -70,3 +70,8 @@ gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --role="roles/secretmanager.secretAccessor"
 
 echo "Project configuration ended! Now you should manually add your api keys to secret manager in Google Cloud UI."
+
+
+gcloud projects add-iam-policy-binding "llm-reasoning-benchmark" \
+  --member="serviceAccount:benchmark-runner@llm-reasoning-benchmark.iam.gserviceaccount.com" \
+  --role="roles/batch.jobsEditor"
