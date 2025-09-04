@@ -1,9 +1,10 @@
 import os
+from pathlib import Path
 
 import google.auth
 from googleapiclient.discovery import build
 from google.auth import impersonated_credentials
-from dotenv import load_dotenv
+from dotenv import load_dotenv, dotenv_values
 
 load_dotenv(".env")
 
@@ -22,11 +23,14 @@ MEM_MIB = "1024"
 
 TIMEOUT_SECONDS = 8 * 60 * 60
 
+ENVS_FILE_PATHS = ['application.env', 'benchmark.env', 'engine.env', 'analyze.env']
+SETTINGS_PATH = Path('../settings')
+container_envs = {}
+for envs_file_path in ENVS_FILE_PATHS:
+    envs_file_path = SETTINGS_PATH / envs_file_path
+    file_env = dotenv_values(envs_file_path)
+    container_envs.update(file_env)
 
-CONTAINER_ENVS = [
-    # {"name": "BENCHMARK_NAME", "value": "chess-tuned"},
-    # {"name": "GCS_OUTPUT_BUCKET", "value": "gs://twoj-bucket"},
-]
 
 source_creds, _ = google.auth.default(scopes=["https://www.googleapis.com/auth/cloud-platform"])
 target_creds = impersonated_credentials.Credentials(
@@ -41,8 +45,6 @@ batch = build("batch", "v1", credentials=target_creds, cache_discovery=False)
 PARENT = f"projects/{PROJECT_ID}/locations/{LOCATION}"
 JOB_FULL_NAME = f"{PARENT}/jobs/{JOB_NAME}"
 
-# Ułóż env-y w formacie Batch
-env_vars = {e["name"]: e["value"] for e in CONTAINER_ENVS} if CONTAINER_ENVS else {}
 
 body = {
     "taskGroups": [
@@ -55,7 +57,7 @@ body = {
                         }
                     }
                 ],
-                "environment": {"variables": env_vars} if env_vars else {},
+                "environment": {"variables": container_envs},
                 "computeResource": {
                     "cpuMilli": CPU_MILLI,
                     "memoryMib": MEM_MIB
@@ -78,4 +80,3 @@ body = {
 
 batch.projects().locations().jobs().create(parent=PARENT, jobId=JOB_NAME, body=body).execute()
 print(f"Created Batch job: {JOB_FULL_NAME}")
-

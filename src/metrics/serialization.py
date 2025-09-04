@@ -8,7 +8,7 @@ from src.utils.helpers import hash_dict
 from src.share.enums import Environment
 
 APPEND_RESULTS = settings.application.APPEND_RESULTS
-ENVIRONMENT = settings.environment.ENVIRONMENT
+ENVIRONMENT = settings.application.ENVIRONMENT
 
 logger = logging.getLogger(__name__)
 
