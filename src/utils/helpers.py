@@ -1,10 +1,10 @@
 import hashlib
 import json
-from itertools import cycle
 import random
+from itertools import cycle
 from typing import Generator
 
-from chess import Board, Color, BLACK, WHITE, COLORS
+from chess import BLACK, COLORS, WHITE, Board, Color
 
 import src.chess_logic.prompts as prompts
 from src.share.conts import COLORS_STRING_DICT, MODELS_SHORT_NAME
@@ -49,9 +49,11 @@ def get_color_generator(generator_name: str) -> Generator[Color, None, None]:
         case ColorGenerator.BOTH:
             color_generator = cycle(COLORS)
         case ColorGenerator.RANDOM:
+
             def color_generator():
                 while True:
                     yield random.choice(COLORS)
+
         case _:
             raise NotImplementedError
 

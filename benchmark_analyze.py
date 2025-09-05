@@ -29,7 +29,7 @@ for filepath in json_files:
         game_score = scoring.get_game_score(position_scores, game_result)
         games_score.append(game_score)
     scores = np.array(games_score, dtype=float)
-    results[model_name] = {"scores": scores, 'positions_scores': positions_scores}
+    results[model_name] = {"scores": scores, "positions_scores": positions_scores}
 scoring.engine.quit()
 
 for benchmark_data in results.values():
@@ -80,4 +80,4 @@ for label, benchmark_data in sorted(results.items(), key=lambda x: x[1]["median"
 
 
 for model_name, benchmark_data in results.items():
-    scoring.plot_parties_scores([benchmark_data['positions_scores'][1]], model_name)
+    scoring.plot_parties_scores([benchmark_data["positions_scores"][1]], model_name)

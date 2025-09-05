@@ -1,11 +1,12 @@
 import json
 import logging.config
 
-from src.share.settings import settings
 from src.share.enums import Environment
+from src.share.settings import settings
 
 LOGGING_LEVEL = settings.application.LOGGING_LEVEL
 ENVIRONMENT = settings.application.ENVIRONMENT
+
 
 def set_file_logging():
     with open("settings/logging.json") as f:
@@ -18,6 +19,7 @@ def set_file_logging():
 
 def set_google_cloud_logging():
     from google.cloud import logging as gcl
+
     client = gcl.Client()
     client.setup_logging()
 

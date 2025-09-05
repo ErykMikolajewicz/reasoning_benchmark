@@ -1,12 +1,12 @@
 import math
+import os
 from itertools import chain, islice, repeat
 from statistics import mean
-import os
 
 import chess.engine
 import matplotlib.pyplot as plt
-from chess import Board, Color
 import numpy as np
+from chess import Board, Color
 
 from src.share.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, TIE_SCORE
 from src.share.enums import GameResult

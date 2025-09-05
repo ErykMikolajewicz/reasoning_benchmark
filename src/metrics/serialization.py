@@ -3,9 +3,9 @@ import logging
 from pathlib import Path
 
 from src.models import BenchmarkingResult
+from src.share.enums import Environment
 from src.share.settings import settings
 from src.utils.helpers import hash_dict
-from src.share.enums import Environment
 
 APPEND_RESULTS = settings.application.APPEND_RESULTS
 ENVIRONMENT = settings.application.ENVIRONMENT
@@ -23,8 +23,7 @@ def save_metrics(benchmark_result: BenchmarkingResult):
         case Environment.LOCAL:
             _save_local(benchmark_result, file_name)
         case Environment.GOOGLE_CLOUD:
-            _save_local(benchmark_result, file_name)
-
+            _save_google_cloud(benchmark_result, file_name)
 
 
 def _save_local(benchmark_result: BenchmarkingResult, file_name: str):
