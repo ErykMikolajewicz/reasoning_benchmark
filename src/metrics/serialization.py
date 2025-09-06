@@ -46,7 +46,7 @@ def _save_google_cloud(benchmark_result: BenchmarkingResult, file_name: str):
 
     client = storage.Client()
 
-    bucket = client.bucket("reasoning_benchmark")
+    bucket = client.bucket("llm-reasoning-benchmark-results")
 
     blob = bucket.blob(file_name)
 

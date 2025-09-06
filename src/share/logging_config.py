@@ -18,13 +18,37 @@ def set_file_logging():
 
 
 def set_google_cloud_logging():
-    from google.cloud import logging as gcl
-
-    client = gcl.Client()
-    client.setup_logging()
+    config = {
+      "version": 1,
+      "disable_existing_loggers": False,
+      "formatters": {
+        "default": {
+          "format": "%(asctime)s %(levelname)s %(name)s %(message)s"
+        }
+      },
+      "handlers": {
+        "console": {
+          "class": "logging.StreamHandler",
+          "formatter": "default",
+          "stream": "ext://sys.stdout"
+        }
+      },
+      "root": {
+        "level": "WARNING",
+        "handlers": ["console"]
+      },
+      "loggers": {
+        "src": {
+          "level": "INFO",
+          "handlers": ["console"],
+          "propagate": False
+        }
+      }
+    }
 
     if LOGGING_LEVEL:
-        logging.getLogger().setLevel(LOGGING_LEVEL)
+        config["loggers"]["src"]["level"] = LOGGING_LEVEL
+    logging.config.dictConfig(config)
 
 
 def setup_logging():

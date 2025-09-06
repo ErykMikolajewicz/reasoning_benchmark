@@ -34,25 +34,42 @@ echo "Creating repository: llm-benchmark-repository to store benchmark container
 gcloud services enable artifactregistry.googleapis.com
 gcloud artifacts repositories create "llm-benchmark-repository" \
   --repository-format=docker \
+  --location="$LOCATION"
+gcloud artifacts repositories set-cleanup-policies "llm-benchmark-repository" \
   --location="$LOCATION" \
-  --cleanup-policy="policy=KEEP,condition=keepCount=1"
+  --project="$PROJECT_ID" \
+  --policy=policy.json \
+  --no-dry-run
 
 echo "Add to service account: $SA_NAME admin permissions on images repository: llm-benchmark-repository"
 gcloud artifacts repositories add-iam-policy-binding "llm-benchmark-repository" \
   --location="$LOCATION" \
   --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
   --role="roles/artifactregistry.writer"
-
+#
 #echo "Add service account $SA_NAME permissions to be executed by itself."
 #gcloud iam service-accounts add-iam-policy-binding "$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
 #  --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
 #  --role="roles/iam.serviceAccountUser"
 
-echo "Add to service account: $SA_NAME jobs editor permissions, to launch container as batch job."
-gcloud services enable batch.googleapis.com
+echo "Add to service account: $SA_NAME jobs permissions, and enable necessary apis."
+# Enables apis, quite a lot, but it is written in documentation to do so:
+# https://cloud.google.com/batch/docs/get-started#job-service-account
+gcloud services enable \
+  batch.googleapis.com \
+  compute.googleapis.com \
+  logging.googleapis.com
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
   --role="roles/batch.jobsEditor"
+
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/batch.agentReporter"
+
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/logging.logWriter"
 
 echo "Add desktop credentials for Python scripts"
 gcloud auth application-default login
@@ -70,8 +87,3 @@ gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --role="roles/secretmanager.secretAccessor"
 
 echo "Project configuration ended! Now you should manually add your api keys to secret manager in Google Cloud UI."
-
-
-gcloud projects add-iam-policy-binding "llm-reasoning-benchmark" \
-  --member="serviceAccount:benchmark-runner@llm-reasoning-benchmark.iam.gserviceaccount.com" \
-  --role="roles/batch.jobsEditor"

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "delete-all-older-than-1s",
+    "action": {"type": "Delete"},
+    "condition": { "olderThan": "1s" }
+  },
+  {
+    "name": "keep-latest-1",
+    "action": {"type": "Keep"},
+    "mostRecentVersions": { "keepCount": 1 }
+  }
+]

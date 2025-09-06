@@ -11,7 +11,7 @@ load_dotenv(".env")
 SA_NAME = os.environ.get("SA_NAME")
 PROJECT_ID = os.environ.get("PROJECT_ID")
 LOCATION = os.environ.get("LOCATION")
-JOB_NAME = "reasoning-benchmark-job"
+JOB_NAME = "reasoning-benchmark-job-new-permissions3"
 
 IMAGE_NAME = "reasoning_benchmark"
 IMAGE_TAG = "latest"
@@ -38,7 +38,7 @@ target_creds = impersonated_credentials.Credentials(
     lifetime=3600,
 )
 
-client = batch_v1.BatchServiceClient()  # credentials=target_creds
+client = batch_v1.BatchServiceClient(credentials=target_creds)  # credentials=target_creds
 
 parent = f"projects/{PROJECT_ID}/locations/{LOCATION}"
 job_full_name = f"{parent}/jobs/{JOB_NAME}"
@@ -70,9 +70,9 @@ instances.policy = policy
 allocation_policy = batch_v1.AllocationPolicy()
 allocation_policy.instances = [instances]
 
-# service_account = batch_v1.ServiceAccount()
-# service_account.email = f"{SA_NAME}@{PROJECT_ID}.iam.gserviceaccount.com"
-# allocation_policy.service_account = service_account
+service_account = batch_v1.ServiceAccount()
+service_account.email = f"{SA_NAME}@{PROJECT_ID}.iam.gserviceaccount.com"
+allocation_policy.service_account = service_account
 
 job = batch_v1.Job()
 job.task_groups = [group]
