@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from uuid import uuid4
 
 import google.auth
 from dotenv import dotenv_values, load_dotenv
@@ -11,15 +12,15 @@ load_dotenv(".env")
 SA_NAME = os.environ.get("SA_NAME")
 PROJECT_ID = os.environ.get("PROJECT_ID")
 LOCATION = os.environ.get("LOCATION")
-JOB_NAME = "reasoning-benchmark-job-new-permissions3"
+JOB_NAME = f"reasoning-benchmark-{str(uuid4())}"
 
 IMAGE_NAME = "reasoning_benchmark"
 IMAGE_TAG = "latest"
 REGISTRY_HOST = f"{LOCATION}-docker.pkg.dev"
 IMAGE_URI = f"{REGISTRY_HOST}/{PROJECT_ID}/llm-benchmark-repository/{IMAGE_NAME}:{IMAGE_TAG}"
 
-CPU_MILLI = 1000
-MEM_MIB = "1024"
+CPU_MILLI = 2000
+MEM_MIB = 2000
 
 ENVS_FILE_PATHS = ["application.env", "benchmark.env", "engine.env", "analyze.env", "api_keys.env"]
 SETTINGS_PATH = Path("../settings")
@@ -53,8 +54,8 @@ task.environment = batch_v1.Environment()
 task.environment.variables = container_envs
 
 resources = batch_v1.ComputeResource()
-resources.cpu_milli = 1000
-resources.memory_mib = 1024
+resources.cpu_milli = CPU_MILLI
+resources.memory_mib = MEM_MIB
 task.compute_resource = resources
 
 task.max_run_duration = str(8 * 60 * 60) + "s"
@@ -64,7 +65,7 @@ group.task_count = 1
 group.task_spec = task
 
 policy = batch_v1.AllocationPolicy.InstancePolicy()
-policy.machine_type = "e2-micro"
+policy.machine_type = "e2-small"
 instances = batch_v1.AllocationPolicy.InstancePolicyOrTemplate()
 instances.policy = policy
 allocation_policy = batch_v1.AllocationPolicy()

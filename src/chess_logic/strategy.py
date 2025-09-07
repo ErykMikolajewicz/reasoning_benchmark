@@ -19,7 +19,7 @@ def simple_move(llm_adapter: LLMAdapter, board_info: str) -> str:
     try:
         json_start_index = move_and_thinking.index("{")
         json_end_index = move_and_thinking.rindex("}")
-    except ValueError:
+    except (ValueError, AttributeError):
         return f"Invalid move format: {move_and_thinking}"
     only_move = move_and_thinking[json_start_index : json_end_index + 1]
     move_json = json.loads(only_move)
@@ -45,7 +45,7 @@ def move_and_extract(llm_adapter: LLMAdapter, board_info: str) -> str:
     try:
         json_start_index = move_str.index("{")
         json_end_index = move_str.rindex("}")
-    except ValueError:
+    except (ValueError, AttributeError):
         return f"Invalid move format: {move_str}"
     move_json = json.loads(move_str[json_start_index : json_end_index + 1])
     move = move_json["move"]

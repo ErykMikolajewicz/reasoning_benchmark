@@ -60,7 +60,7 @@ for i, benchmark_data in enumerate(results.values(), start=1):
 ax.set_yticks(positions)
 ax.set_yticklabels(get_model_shorter_name(key) for key in results.keys())
 ax.set_xlabel("Pawn advantage.")
-ax.set_title("Benchmark result")
+ax.set_title("Best models vs humans")
 
 ax.legend(
     [box["boxes"][0], ax.scatter([], [], color="red"), ax.hlines([], [], [], linewidth=8)],
@@ -79,5 +79,5 @@ for label, benchmark_data in sorted(results.items(), key=lambda x: x[1]["median"
     print(f"  Max:    {benchmark_data['max']:.2f}")
 
 
-for model_name, benchmark_data in results.items():
-    scoring.plot_parties_scores([benchmark_data["positions_scores"][1]], model_name)
+# for model_name, benchmark_data in results.items():
+#     scoring.plot_parties_scores([benchmark_data["positions_scores"][1]], model_name)
