@@ -7,20 +7,21 @@ from dotenv import dotenv_values, load_dotenv
 from google.auth import impersonated_credentials
 from google.cloud import batch_v1
 
-load_dotenv(".env")
+load_dotenv()
 
-SA_NAME = os.environ.get("SA_NAME")
-PROJECT_ID = os.environ.get("PROJECT_ID")
-LOCATION = os.environ.get("LOCATION")
+PROJECT_ID = os.environ["PROJECT_ID"]
+LOCATION = os.environ["LOCATION"]
 JOB_NAME = f"reasoning-benchmark-{str(uuid4())}"
+VIRTUAL_MACHINE = "e2-small"
 
-IMAGE_NAME = "reasoning_benchmark"
-IMAGE_TAG = "latest"
+IMAGE_NAME, IMAGE_TAG = "reasoning_benchmark", "latest"
 REGISTRY_HOST = f"{LOCATION}-docker.pkg.dev"
 IMAGE_URI = f"{REGISTRY_HOST}/{PROJECT_ID}/llm-benchmark-repository/{IMAGE_NAME}:{IMAGE_TAG}"
+SERVICE_EMAIL = f"benchmark-runner@{PROJECT_ID}.iam.gserviceaccount.com"
 
 CPU_MILLI = 2000
 MEM_MIB = 2000
+MAX_DURATION = str(8 * 60 * 60) + 's'
 
 ENVS_FILE_PATHS = ["application.env", "benchmark.env", "engine.env", "analyze.env", "api_keys.env"]
 SETTINGS_PATH = Path("../settings")
@@ -34,12 +35,12 @@ for envs_file_path in ENVS_FILE_PATHS:
 source_creds, _ = google.auth.default(scopes=["https://www.googleapis.com/auth/cloud-platform"])
 target_creds = impersonated_credentials.Credentials(
     source_credentials=source_creds,
-    target_principal=f"{SA_NAME}@{PROJECT_ID}.iam.gserviceaccount.com",
+    target_principal=SERVICE_EMAIL,
     target_scopes=["https://www.googleapis.com/auth/cloud-platform"],
     lifetime=3600,
 )
 
-client = batch_v1.BatchServiceClient(credentials=target_creds)  # credentials=target_creds
+client = batch_v1.BatchServiceClient(credentials=target_creds)
 
 parent = f"projects/{PROJECT_ID}/locations/{LOCATION}"
 job_full_name = f"{parent}/jobs/{JOB_NAME}"
@@ -58,21 +59,21 @@ resources.cpu_milli = CPU_MILLI
 resources.memory_mib = MEM_MIB
 task.compute_resource = resources
 
-task.max_run_duration = str(8 * 60 * 60) + "s"
+task.max_run_duration = MAX_DURATION
 
 group = batch_v1.TaskGroup()
 group.task_count = 1
 group.task_spec = task
 
 policy = batch_v1.AllocationPolicy.InstancePolicy()
-policy.machine_type = "e2-small"
+policy.machine_type = VIRTUAL_MACHINE
 instances = batch_v1.AllocationPolicy.InstancePolicyOrTemplate()
 instances.policy = policy
 allocation_policy = batch_v1.AllocationPolicy()
 allocation_policy.instances = [instances]
 
 service_account = batch_v1.ServiceAccount()
-service_account.email = f"{SA_NAME}@{PROJECT_ID}.iam.gserviceaccount.com"
+service_account.email = SERVICE_EMAIL
 allocation_policy.service_account = service_account
 
 job = batch_v1.Job()

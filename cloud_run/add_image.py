@@ -9,14 +9,13 @@ from dotenv import load_dotenv
 
 load_dotenv(".env")
 
-SA_NAME = os.environ.get("SA_NAME")
 PROJECT_ID = os.environ.get("PROJECT_ID")
 LOCATION = os.environ.get("LOCATION")
 
 source_creds, _ = google.auth.default(scopes=["https://www.googleapis.com/auth/cloud-platform"])
 target_creds = impersonated_credentials.Credentials(
     source_credentials=source_creds,
-    target_principal=f"{SA_NAME}@{PROJECT_ID}.iam.gserviceaccount.com",
+    target_principal=f"benchmark-deployer@{PROJECT_ID}.iam.gserviceaccount.com",
     target_scopes=["https://www.googleapis.com/auth/cloud-platform"],
     lifetime=3600,
 )
@@ -37,9 +36,9 @@ login = subprocess.Popen(
 )
 stdout, stderr = login.communicate(input=token.encode("utf-8"))
 if login.returncode != 0:
-    raise RuntimeError("podman login nie powiódł się")
+    raise RuntimeError("Podman login failed!")
 
 subprocess.run(["podman", "tag", "reasoning_benchmark:latest", remote_ref])
 subprocess.run(["podman", "push", remote_ref])
 
-print(f"Sukces! Wypchnięto obraz: {remote_ref}")
+print(f"Success! Image pushed: {remote_ref}")
