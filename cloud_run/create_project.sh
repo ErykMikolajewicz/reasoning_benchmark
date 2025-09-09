@@ -20,11 +20,6 @@ gcloud iam service-accounts create "benchmark-deployer" --project="$PROJECT_ID" 
 echo "Creating bucket: $BUCKET_NAME to store results."
 gcloud storage buckets create "gs://$BUCKET_NAME" --location="$LOCATION" --uniform-bucket-level-access
 
-echo "Make bucket $BUCKET_NAME publicly accessible to read."
-gcloud storage buckets add-iam-policy-binding "gs://$BUCKET_NAME" \
-    --member="allUsers" \
-    --role="roles/storage.objectViewer"
-
 echo "Add to service account: benchmark-runner admin permissions on objects in bucket: $BUCKET_NAME"
 gcloud storage buckets add-iam-policy-binding "gs://$BUCKET_NAME" \
     --member="serviceAccount:benchmark-runner@$PROJECT_ID.iam.gserviceaccount.com" \
