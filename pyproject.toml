@@ -1,12 +1,12 @@
 [project]
 name = "reasoning-benchamrk"
-version = "0.41.0"
+version = "0.42.0"
 description = "Reasoning language models benchmark, by playing chess."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "chess==1.11.*",
-    "litellm==1.76.*",
+    "litellm==1.77.*",
     "pydantic==2.11.*",
     "pydantic-settings==2.10.*",
     "python-dotenv==1.1.1",
