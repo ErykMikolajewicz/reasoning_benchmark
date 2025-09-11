@@ -6,7 +6,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from litellm import ModelResponse, completion, completion_cost
-from litellm.exceptions import RateLimitError
+from litellm.exceptions import RateLimitError, Timeout
 from tenacity import after_log, retry, retry_if_exception_type, stop_after_attempt, wait_random
 
 from src.models import ModelUsage
@@ -15,6 +15,7 @@ from src.share.settings import settings
 load_dotenv("settings/api_keys.env")
 
 RETRY_NUMBER = settings.application.RETRY_NUMBER
+LLM_TIMEOUT = settings.application.LLM_TIMEOUT
 MINIMUM_WAIT_SECONDS = settings.application.MINIMUM_WAIT_SECONDS
 MAXIMUM_WAIT_SECONDS = settings.application.MAXIMUM_WAIT_SECONDS
 
@@ -44,7 +45,7 @@ class LLMAdapter:
                 threads_adapters[thread_id] = self.models_usage
 
     @retry(
-        retry=retry_if_exception_type(RateLimitError),
+        retry=retry_if_exception_type((RateLimitError, Timeout)),
         wait=wait_random(MINIMUM_WAIT_SECONDS, MAXIMUM_WAIT_SECONDS),
         stop=stop_after_attempt(RETRY_NUMBER),
         after=after_log(logger, logging.WARNING),
@@ -57,8 +58,13 @@ class LLMAdapter:
         model_file_name = model.replace("/", "-")
         model_params = models_extra_config.get(model_file_name, {})
 
-        response = completion(model=model, messages=messages, **model_params)
-
+        try:
+            response = completion(timeout=LLM_TIMEOUT, model=model, messages=messages, **model_params)
+        except Timeout:
+            # Grok have problem with stubborn not responding, after several moves, and retries are pointless
+            if model.find("grok-4"):
+                return "Model not responding!"
+            raise
         answer = response.choices[0].message.content
         logger.debug(answer)
         logger.debug(f"Request usage: {response['usage']}")

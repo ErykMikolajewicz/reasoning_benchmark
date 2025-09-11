@@ -58,6 +58,7 @@ class ApplicationSettings(BaseSettings):
     APPEND_RESULTS: bool
 
     RETRY_NUMBER: int
+    LLM_TIMEOUT: Optional[int] = None
     MINIMUM_WAIT_SECONDS: int
     MAXIMUM_WAIT_SECONDS: int
 

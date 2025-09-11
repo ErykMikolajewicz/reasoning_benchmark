@@ -48,6 +48,7 @@ Very good score in one party of deepseek reasoner is probably result of very poo
 | anthropic-claude-sonnet-4-20250514 | -21.01 | -20.03 | -29.67 | -10.87 | 3.78           |
 | deepseek-deepseek-reasoner         | -16.98 | -24.16 |  -32.0 |  24.36 | 1.46           |
 | gemini-gemini-2.5-pro              | -24.19 | -25.52 |  -32.0 | -11.53 | 1.60           |
+| xai-grok-code-fast-1               | -27.63 | -30.19 |  -32.0 | -17.24 | 0.54           |
 | gemini-gemini-2.5-flash            | -30.56 | -31.35 |  -32.0 | -28.03 | 0.43           |
 
 All results, with parties record are available under:
@@ -63,10 +64,9 @@ https://drive.google.com/drive/folders/1a3sqEMmo99rRIoFuM6GCEfgdtU7WkDsl?usp=dri
 
 ---
 
-## Cloud run
+## Run in cloud
 You can execute benchmark in your local computer, but sometimes it use quite a lot of time due to reasoning time, or model rate limits.
-It is possible to run benchmark in Google Cloud, I prepared scripts to do it, check them in cloud_run dir.
-You have to use your own account to do this, but additional cost of virtual machine is rather low, usually less than 10 cents per run.
+It is possible to run benchmark in cloud, [check it](docs/cloud_run.md)
 
 ## Roadmap
 
