@@ -62,9 +62,10 @@ class LLMAdapter:
             response = completion(timeout=LLM_TIMEOUT, model=model, messages=messages, **model_params)
         except Timeout:
             # Grok have problem with stubborn not responding, after several moves, and retries are pointless
-            if model.find("grok-4"):
+            if model.find("grok-4") != -1:
                 return "Model not responding!"
             raise
+
         answer = response.choices[0].message.content
         logger.debug(answer)
         logger.debug(f"Request usage: {response['usage']}")
