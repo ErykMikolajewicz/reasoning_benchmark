@@ -17,15 +17,11 @@ Chess is a particularly good test because:
 
 ## How Does the Benchmark Work?
 
-- The LLM plays a game against the **Stockfish engine** (with search depth limited to **1 ply**, i.e., depth=1), making Stockfish play rather weakly.
-- This prevents the LLM from being immediately outclassed and allows meaningful differentiation between results.
-- The game lasts 30 moves. After the opening phase, a chess engine evaluates the position after each move. At the end, an average is calculated.
-- The first 5 moves are not counted, since the opening phase is mostly memorization rather than real reasoning.
-- If the LLM wins, it gets the maximum score for all remaining moves
-- If it loses or makes an illegal move, it gets the minimum score for the rest of the game.
-- A tie results in a score of zero for all following moves
-- Scoring uses the standard chess evaluation, ranging from +32 pawns (best) to -32 pawns (worst)
-- The better the position achieved by the LLM, the stronger its reasoning and planning capabilities.
+- The LLM plays a game against the weak **Stockfish engine**.
+- When party is ended every move is evaluated.
+- Moves in debut are discarded.
+- The LLM score is calculated as the average of all positions scores.
+- More about it in [methodology](docs/methodology.md)
 
 ## Flag models results
 
