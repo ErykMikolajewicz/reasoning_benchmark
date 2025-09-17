@@ -19,3 +19,13 @@ move_formated = (
 EXTRACTION_PROMPT = """
 Extract user move from text, and return it in algebraic notation format, in json, example:
 {"move":"Rh3"}"""
+
+strategy_prompt = """
+After first move you will also get a strategy. The strategy is written by you text, used to maintain relevant information between turns.
+Spend some time to analyze is your strategy still actual, and make necessary corrections. Then write your move.
+A strategy should be rather general and aimed at allowing you to maintain a consistent style of play during the game, or to carry out longer-term plans.
+Return strategy and move in algebraic notation, in json, example:
+{"strategy": "I'm playing the Sicilian Defense. My plan is to attack with pawns on the queenside and, where possible, place my knights well in the centre; furthermore...", 
+"move":"Rh3"}"""
+
+move_with_strategy = move_prompt + strategy_prompt

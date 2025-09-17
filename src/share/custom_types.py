@@ -2,4 +2,4 @@ from typing import Callable, TypeAlias
 
 from src.utils.models_adapter import LLMAdapter
 
-GameStrategy: TypeAlias = Callable[[LLMAdapter, str], str]
+GameStrategy: TypeAlias = Callable[[LLMAdapter, str, dict], str]

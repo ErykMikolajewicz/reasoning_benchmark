@@ -36,6 +36,7 @@ class Game:
         self._llm_strategy = llm_strategy
         self._is_game_ended = False
         self._match_result = None
+        self._game_data = {}
 
     def __enter__(self):
         self.__engine = chess.engine.SimpleEngine.popen_uci("/usr/games/stockfish")
@@ -79,7 +80,7 @@ class Game:
             case "0-1", False:
                 match_result = GameResult.WIN
             case _:
-                match_result = GameResult.TIE
+                match_result = GameResult.DRAW
 
         self._match_result = match_result
 
@@ -93,7 +94,7 @@ class Game:
             except IndexError:
                 last_opponent_move = "None"
             board_info = format_board_info(self._board, llm_color, last_opponent_move)
-            move = self._llm_strategy(self._llm_adapter, board_info)
+            move = self._llm_strategy(self._llm_adapter, board_info, self._game_data)
             logger.info(f"LLM move: {move}")
             try:
                 self._board.push_san(move)

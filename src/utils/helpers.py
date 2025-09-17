@@ -7,6 +7,7 @@ from typing import Generator
 from chess import BLACK, COLORS, WHITE, Board, Color
 
 import src.chess_logic.prompts as prompts
+from src.share.exceptions import NoJsonInText
 from src.share.conts import COLORS_STRING_DICT, MODELS_SHORT_NAME
 from src.share.enums import ColorGenerator
 
@@ -58,3 +59,13 @@ def get_color_generator(generator_name: str) -> Generator[Color, None, None]:
             raise NotImplementedError
 
     return color_generator
+
+def extract_json(text: str) -> dict:
+    try:
+        json_start_index = text.index("{")
+        json_end_index = text.rindex("}")
+    except (ValueError, AttributeError):
+        raise NoJsonInText(text)
+    json_data = text[json_start_index : json_end_index + 1]
+    json_data = json.loads(json_data)
+    return json_data

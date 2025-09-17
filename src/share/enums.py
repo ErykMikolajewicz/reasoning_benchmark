@@ -3,7 +3,7 @@ from enum import StrEnum
 
 class GameResult(StrEnum):
     WIN = "WIN"
-    TIE = "TIE"
+    DRAW = "DRAW"
     LOSS = "LOSS"
     LOSS_INVALID_MOVE = "LOSS_INVALID_MOVE"
     MAX_MOVES = "MAX_MOVES"

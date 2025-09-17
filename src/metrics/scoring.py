@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from chess import Board, Color
 
-from src.share.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, TIE_SCORE
+from src.share.conts import MAX_POSITION_SCORE, MIN_POSITION_SCORE, DRAW_SCORE
 from src.share.enums import GameResult
 from src.share.settings import settings
 
@@ -31,8 +31,8 @@ def get_game_score(position_scores: list[float], match_result: GameResult) -> fl
     match match_result:
         case GameResult.WIN:
             padding_source = repeat(MAX_POSITION_SCORE)
-        case GameResult.TIE:
-            padding_source = repeat(TIE_SCORE)
+        case GameResult.DRAW:
+            padding_source = repeat(DRAW_SCORE)
         case GameResult.LOSS:
             padding_source = repeat(MIN_POSITION_SCORE)
         case GameResult.LOSS_INVALID_MOVE:
@@ -89,7 +89,7 @@ def score_positions(moves: list[str], llm_color: Color) -> list[float]:
                 case "0-1", False:
                     scores.append(MAX_POSITION_SCORE)
                 case _:
-                    scores.append(TIE_SCORE)
+                    scores.append(DRAW_SCORE)
         else:
             paws_score = centi_paws_score / 100
             scores.append(paws_score)
