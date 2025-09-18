@@ -44,7 +44,7 @@ target_creds = impersonated_credentials.Credentials(
     lifetime=3600,
 )
 
-client = batch_v1.BatchServiceClient(credentials=target_creds)
+client = batch_v1.BatchServiceClient(credentials=target_creds, transport="rest")
 
 parent = f"projects/{PROJECT_ID}/locations/{LOCATION}"
 job_full_name = f"{parent}/jobs/{JOB_NAME}"

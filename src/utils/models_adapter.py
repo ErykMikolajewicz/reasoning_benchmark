@@ -6,7 +6,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from litellm import ModelResponse, completion, completion_cost
-from litellm.exceptions import RateLimitError, Timeout
+from litellm.exceptions import RateLimitError, Timeout, InternalServerError
 from tenacity import after_log, retry, retry_if_exception_type, stop_after_attempt, wait_random
 
 from src.models import ModelUsage
@@ -45,7 +45,7 @@ class LLMAdapter:
                 threads_adapters[thread_id] = self.models_usage
 
     @retry(
-        retry=retry_if_exception_type((RateLimitError, Timeout)),
+        retry=retry_if_exception_type((RateLimitError, Timeout, InternalServerError)),
         wait=wait_random(MINIMUM_WAIT_SECONDS, MAXIMUM_WAIT_SECONDS),
         stop=stop_after_attempt(RETRY_NUMBER),
         after=after_log(logger, logging.WARNING),
