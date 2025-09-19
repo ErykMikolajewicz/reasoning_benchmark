@@ -10,7 +10,7 @@ Large language models such as **claude-opus-4.1** or **Gemini 2.5 Pro** still fa
 
 Chess is a particularly good test because:
 
-- **Objective Evaluation**: The position on the board can be easily and objectively evaluated by a chess engine.
+- **Explainability**: The position on the board can be easily and objectively evaluated by a chess engine. Furthermore, it is not difficult to find a chess player who will analyze the games and spot mistakes and missed opportunities.
 - **Demanding Tasks**: The benchmark is demanding and poses a real challenge for LLMs.
 
 ---
@@ -47,6 +47,8 @@ Very good score in one party of deepseek reasoner is probably result of very poo
 | xai-grok-code-fast-1               | -27.63 | -30.19 |  -32.0 | -17.24 | 0.54           |
 | gemini-gemini-2.5-flash            | -30.56 | -31.35 |  -32.0 | -28.03 | 0.43           |
 
+The number of games played is 8, except for the player with an Elo rating of 1700, where only 2 games were played.
+
 All results, with parties record are available under:
 https://drive.google.com/drive/folders/1a3sqEMmo99rRIoFuM6GCEfgdtU7WkDsl?usp=drive_link
 
@@ -55,8 +57,12 @@ https://drive.google.com/drive/folders/1a3sqEMmo99rRIoFuM6GCEfgdtU7WkDsl?usp=dri
 ![](plots/best_vs_humans.png)
 
 - As you can see humans with some chess experience are currently still better than large language models.
-- Number of plays for human with elo 1700 is unfortunately low, only 2 parties.
 - I do not have any official elo. I had been playing for 5 years, once a week as a teenager. I obtained the 3rd Polish chess category, roughly equivalent to an Elo rating of 1500.
+
+---
+
+## Used prompts
+Check used prompts and additional comparison in [strategies part](docs/strategies.md)
 
 ---
 
@@ -75,4 +81,4 @@ Planned next steps for the project include:
    Implement support for batch API operations, making it possible to submit and process multiple games or tasks simultaneously.
 
 3. **Implement More Chess Strategies for LLM**
-   Expand the set of prompts used to interact with the LLM, allowing assessment of how different instructions or phrasings affect performance and reasoning in chess tasks.
+   Expand the set of prompts used to interact with the LLM, allowing assessment of how different instructions affect performance and reasoning in chess tasks.

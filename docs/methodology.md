@@ -12,6 +12,8 @@ Finally, the average of all evaluations is calculated.
 - **Loss** – minimum engine score: `-32 pawns`  
 - **Draw** – `0 pawns` (evaluation of an equal position)
 
+Ale important settings are attached to benchmark result files.
+
 ---
 
 # Engine Configuration
@@ -23,7 +25,7 @@ Configuration parameters:
 - **MULTI_PV** – forces selection among multiple options to introduce variability in games.  
 - **MOVE_ACCEPTANCE_THRESHOLD_CENTI_PAWS** – the minimum level of acceptable moves compared to the best one. Thanks to this, extremely poor moves are rejected (e.g., when in check, the engine will not choose a move leading to immediate loss).
 
-Engine settings can be found in the file:  
+Engine settings can be set in the file:  
 `settings/engine.env`
 
 ---
@@ -36,15 +38,13 @@ The benchmark has three main parameters:
    - Primarily regulates benchmark costs.  
    - Also affects the result: every move is scored, and the outcome is better if a win occurs earlier or a loss occurs later.  
 
-2. **STRATEGY** – playing strategy  
-   - Defined by a set of prompts.  
-   - Comparisons use models employing the same strategy.  
-   - Currently, all models receive the same set of information.  
-   - Possible future extensions include providing a list of legal moves.  
+2. [**STRATEGIES**](strategies.md) – playing strategy  
+   - Defined by a set of prompts. 
+   - Decide what information llm get to make its tasks
 
 3. **MAX_ILLEGAL_MOVES** – tolerance for model errors.  
 
-Benchmark settings can be found in the file:  
+Benchmark settings can be set in the file:  
 `settings/benchmark.env`
 
 ---
