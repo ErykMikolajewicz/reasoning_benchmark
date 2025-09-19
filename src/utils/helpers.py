@@ -7,9 +7,9 @@ from typing import Generator
 from chess import BLACK, COLORS, WHITE, Board, Color
 
 import src.chess_logic.prompts as prompts
-from src.share.exceptions import NoJsonInText
-from src.share.conts import COLORS_STRING_DICT, MODELS_SHORT_NAME
+from src.share.conts import COLORS_STRING_DICT
 from src.share.enums import ColorGenerator
+from src.share.exceptions import NoJsonInText
 
 
 def hash_dict(dict_) -> str:
@@ -17,14 +17,6 @@ def hash_dict(dict_) -> str:
     hash_obj = hashlib.sha256(dict_str.encode("utf-8"))
     hash_str = hash_obj.hexdigest()
     return hash_str
-
-
-def get_model_shorter_name(name: str) -> str:
-    try:
-        short_name = MODELS_SHORT_NAME[name]
-        return short_name
-    except KeyError:
-        return name
 
 
 def format_board_info(board: Board, llm_color: Color, last_opponent_move: str) -> str:
@@ -59,6 +51,7 @@ def get_color_generator(generator_name: str) -> Generator[Color, None, None]:
             raise NotImplementedError
 
     return color_generator
+
 
 def extract_json(text: str) -> dict:
     try:

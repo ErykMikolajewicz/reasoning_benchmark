@@ -1,8 +1,8 @@
 import json
 import logging.config
 
+from src.settings import settings
 from src.share.enums import Environment
-from src.share.settings import settings
 
 LOGGING_LEVEL = settings.application.LOGGING_LEVEL
 ENVIRONMENT = settings.application.ENVIRONMENT
@@ -19,31 +19,14 @@ def set_file_logging():
 
 def set_google_cloud_logging():
     config = {
-      "version": 1,
-      "disable_existing_loggers": False,
-      "formatters": {
-        "default": {
-          "format": "%(asctime)s %(levelname)s %(name)s %(message)s"
-        }
-      },
-      "handlers": {
-        "console": {
-          "class": "logging.StreamHandler",
-          "formatter": "default",
-          "stream": "ext://sys.stdout"
-        }
-      },
-      "root": {
-        "level": "WARNING",
-        "handlers": ["console"]
-      },
-      "loggers": {
-        "src": {
-          "level": "INFO",
-          "handlers": ["console"],
-          "propagate": False
-        }
-      }
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {"default": {"format": "%(asctime)s %(levelname)s %(name)s %(message)s"}},
+        "handlers": {
+            "console": {"class": "logging.StreamHandler", "formatter": "default", "stream": "ext://sys.stdout"}
+        },
+        "root": {"level": "WARNING", "handlers": ["console"]},
+        "loggers": {"src": {"level": "INFO", "handlers": ["console"], "propagate": False}},
     }
 
     if LOGGING_LEVEL:

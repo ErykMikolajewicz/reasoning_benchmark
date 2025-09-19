@@ -16,10 +16,6 @@ move_formated = (
 {"move":"Rh3"}"""
 )
 
-EXTRACTION_PROMPT = """
-Extract user move from text, and return it in algebraic notation format, in json, example:
-{"move":"Rh3"}"""
-
 strategy_prompt = """
 After first move you will also get a strategy. The strategy is written by you text, used to maintain relevant information between turns.
 Spend some time to analyze is your strategy still actual, and make necessary corrections. Then write your move.

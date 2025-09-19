@@ -3,12 +3,12 @@ import logging
 from itertools import islice
 
 from src.chess_logic.game import run_game
-from src.metrics.serialization import save_metrics
-from src.models import BenchmarkingResult, GameData
+from src.pydantic_models import BenchmarkingResult, GameData
+from src.settings import settings
 from src.share.logging_config import setup_logging
-from src.share.settings import settings
 from src.utils.helpers import get_color_generator
 from src.utils.models_adapter import LLMAdapter, models_extra_config
+from src.utils.serialization import save_result
 
 setup_logging()
 
@@ -53,4 +53,4 @@ benchmarking_result = BenchmarkingResult(
     model_name=model_name, usage=usage, games_data=games_results, benchmark_settings=settings.benchmark
 )
 
-save_metrics(benchmarking_result)
+save_result(benchmarking_result)

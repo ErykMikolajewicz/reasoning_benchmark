@@ -2,10 +2,9 @@ import os
 import subprocess
 
 import google.auth
+from dotenv import load_dotenv
 from google.auth import impersonated_credentials
 from google.auth.transport.requests import Request
-
-from dotenv import load_dotenv
 
 load_dotenv(".env")
 

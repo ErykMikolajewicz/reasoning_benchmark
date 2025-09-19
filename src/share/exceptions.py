@@ -5,4 +5,4 @@ class InvalidMove(BaseException):
 
 class NoJsonInText(BaseException):
     def __init__(self, text: str):
-        self.text =text
+        self.text = text

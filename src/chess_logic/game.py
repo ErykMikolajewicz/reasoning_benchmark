@@ -5,12 +5,12 @@ from typing import Optional
 import chess.engine
 from chess import WHITE, Board, Color
 
-from src.chess_logic.strategy import strategies
-from src.models import GameData
+from src.chess_logic.strategies import aviable_strategies
+from src.pydantic_models import GameData
+from src.settings import settings
 from src.share.custom_types import GameStrategy
 from src.share.enums import GameResult
 from src.share.exceptions import InvalidMove
-from src.share.settings import settings
 from src.utils.helpers import format_board_info
 from src.utils.models_adapter import LLMAdapter
 
@@ -126,7 +126,7 @@ class Game:
 
 def run_game(llm_color: Color, llm_strategy: Optional[str] = None) -> GameData:
     try:
-        selected_strategy = strategies[llm_strategy]
+        selected_strategy = aviable_strategies[llm_strategy]
     except KeyError:
         raise ValueError("Invalid strategy!")
     game = Game(selected_strategy)

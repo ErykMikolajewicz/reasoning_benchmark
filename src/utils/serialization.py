@@ -2,9 +2,9 @@ import json
 import logging
 from pathlib import Path
 
-from src.models import BenchmarkingResult
+from src.pydantic_models import BenchmarkingResult
+from src.settings import settings
 from src.share.enums import Environment
-from src.share.settings import settings
 from src.utils.helpers import hash_dict
 
 APPEND_RESULTS = settings.application.APPEND_RESULTS
@@ -13,7 +13,7 @@ ENVIRONMENT = settings.application.ENVIRONMENT
 logger = logging.getLogger(__name__)
 
 
-def save_metrics(benchmark_result: BenchmarkingResult):
+def save_result(benchmark_result: BenchmarkingResult):
     benchmark_settings = benchmark_result.benchmark_settings.model_dump()
     settings_hash = hash_dict(benchmark_settings)
 

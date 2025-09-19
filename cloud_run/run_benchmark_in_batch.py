@@ -21,9 +21,9 @@ SERVICE_EMAIL = f"benchmark-runner@{PROJECT_ID}.iam.gserviceaccount.com"
 
 CPU_MILLI = 2000
 MEM_MIB = 2000
-MAX_DURATION = str(8 * 60 * 60) + 's'
+MAX_DURATION = str(8 * 60 * 60) + "s"
 
-ENVS_FILE_PATHS = ["application.env", "benchmark.env", "engine.env", "analyze.env"]
+ENVS_FILE_PATHS = ["application.env", "benchmark.env", "engine.env"]
 SETTINGS_PATH = Path("../settings")
 container_envs = {}
 for envs_file_path in ENVS_FILE_PATHS:
