@@ -1,0 +1,1718 @@
+[
+  {
+    "textPayload": "2025-09-18 18:25:46,117 INFO src.chess_logic.game Move number: 1"
+  },
+  {
+    "textPayload": "2025-09-18 18:25:56,533 INFO src.chess_logic.strategy LLM strategy: Start with the King’s-pawn opening 1.e4 to take central space and open lines for my queen and bishop. Follow-up plan: develop knights to f3 and c3, bishops to c4 or b5 (depending on Black’s reply), and castle kingside early. Aim for quick, harmonious development while keeping an eye on Black’s central pawn breaks (…d5, …f5). Maintain flexibility to choose between open, tactical play (e.g. Italian or Ruy Lopez structures) or a quieter approach if Black deviates."
+  },
+  {
+    "textPayload": "2025-09-18 18:25:56,533 INFO src.chess_logic.game LLM move: e4"
+  },
+  {
+    "textPayload": "2025-09-18 18:25:56,534 INFO src.chess_logic.game Move number: 2"
+  },
+  {
+    "textPayload": "2025-09-18 18:25:56,541 INFO src.chess_logic.game Engine move: c5"
+  },
+  {
+    "textPayload": "2025-09-18 18:25:56,542 INFO src.chess_logic.game Move number: 3"
+  },
+  {
+    "textPayload": "2025-09-18 18:26:10,621 INFO src.chess_logic.strategy LLM strategy: Black has entered the Sicilian Defence with 1…c5. I will follow the classical Open Sicilian set-up: 2.Nf3, then 3.d4 cxd4 Nxd4, putting a knight on d4 and gaining central space. Next priorities: Nc3, Bc4 (or Bg5 depending on Black’s set-up), 0-0, and Re1 to support an eventual e4–e5 push. I’ll keep an eye on Black’s …d5 or …e6 breaks and be ready to meet …a6 with a timely a4 or Bb3 to preserve my light-squared bishop. Overall aim: quick, harmonious development, central control and kingside safety."
+  },
+  {
+    "textPayload": "2025-09-18 18:26:10,621 INFO src.chess_logic.game LLM move: Nf3"
+  },
+  {
+    "textPayload": "2025-09-18 18:26:10,622 INFO src.chess_logic.game Move number: 4"
+  },
+  {
+    "textPayload": "2025-09-18 18:26:10,627 INFO src.chess_logic.game Engine move: e6"
+  },
+  {
+    "textPayload": "2025-09-18 18:26:10,627 INFO src.chess_logic.game Move number: 5"
+  },
+  {
+    "textPayload": "2025-09-18 18:26:33,869 INFO src.chess_logic.strategy LLM strategy: Everything is still on track for an open Sicilian. After 1.e4 c5 2.Nf3 e6 I follow up with 3.d4, intending …cxd4 4.Nxd4, then develop Nc3, Bc4/Bg5, castle short and place a rook on e1 to support an eventual e4-e5. I’ll watch for Black’s …d5 break and meet …a6 with a4 or Bb3 to keep my light-squared bishop active."
+  },
+  {
+    "textPayload": "2025-09-18 18:26:33,869 INFO src.chess_logic.game LLM move: d4"
+  },
+  {
+    "textPayload": "2025-09-18 18:26:33,869 INFO src.chess_logic.game Move number: 6"
+  },
+  {
+    "textPayload": "2025-09-18 18:26:33,873 INFO src.chess_logic.game Engine move: cxd4"
+  },
+  {
+    "textPayload": "2025-09-18 18:26:33,873 INFO src.chess_logic.game Move number: 7"
+  },
+  {
+    "textPayload": "2025-09-18 18:27:29,276 INFO src.chess_logic.strategy LLM strategy: The Open Sicilian plan is still perfectly on track. I’ve just recaptured on d4, restoring material balance and placing a knight in the centre. From here I want to:"
+  },
+  {
+    "textPayload": "2025-09-18 18:27:29,276 INFO src.chess_logic.game LLM move: Nxd4"
+  },
+  {
+    "textPayload": "2025-09-18 18:27:29,276 INFO src.chess_logic.game Move number: 8"
+  },
+  {
+    "textPayload": "2025-09-18 18:27:29,280 INFO src.chess_logic.game Engine move: Nf6"
+  },
+  {
+    "textPayload": "2025-09-18 18:27:29,281 INFO src.chess_logic.game Move number: 9"
+  },
+  {
+    "textPayload": "2025-09-18 18:29:29,640 INFO src.chess_logic.strategy LLM strategy: Step one of the original plan is now executed: the b1-knight has come to c3, firmly supporting the knight on d4 and the e4-pawn. Next I want to finish development rapidly. If Black replies with …Bb4 or …Qa5 and pins the c3-knight, I’ll break the pin straight away with Bd3, Be2, Qd2 or, if necessary, c2-c3. Otherwise the light-squared bishop will come to c4 (or d3/e2), I’ll castle short and place a rook on e1 or d1. The main middlegame goals remain: push the thematic e4-e5 when my pieces support it, or exploit the half-open d-file if Black strikes with …d5. On the queenside I’ll meet …a6/…b5 with a4 or by retreating the bishop to keep it active. Stay active, keep the centre under control and look for chances on the kingside or in the centre."
+  },
+  {
+    "textPayload": "2025-09-18 18:29:29,640 INFO src.chess_logic.game LLM move: Nc3"
+  },
+  {
+    "textPayload": "2025-09-18 18:29:29,640 INFO src.chess_logic.game Move number: 10"
+  },
+  {
+    "textPayload": "2025-09-18 18:29:29,648 INFO src.chess_logic.game Engine move: Nc6"
+  },
+  {
+    "textPayload": "2025-09-18 18:29:29,648 INFO src.chess_logic.game Move number: 11"
+  },
+  {
+    "textPayload": "2025-09-18 18:30:59,045 INFO src.chess_logic.strategy LLM strategy: Development continues as planned. The light-squared bishop has just gone to c4, where it eyes f7 and keeps an eye on d5 while clearing the way for kingside castling. On the next move I want to castle short; then one rook will come to e1 (supporting an eventual e4–e5 break) and the other to d1 if Black plays …d5 or leaves the d-file half-open. If Black plays …Qb6 attacking the d4-knight and b2-pawn I can meet it with Nb3 or Qd2, keeping everything defended. I’ll still watch out for …Bb4 or …Qa5 pins on the c3-knight and be ready to break them with Bd3/Be2/Qd2 or c2-c3 as previously planned. The long-term goals remain: (1) complete development and castle, (2) prepare the thematic e4-e5 push under favourable circumstances, (3) exploit the d-file or create kingside chances once the centre clarifies."
+  },
+  {
+    "textPayload": "2025-09-18 18:30:59,045 INFO src.chess_logic.game LLM move: Bc4"
+  },
+  {
+    "textPayload": "2025-09-18 18:30:59,045 INFO src.chess_logic.game Move number: 12"
+  },
+  {
+    "textPayload": "2025-09-18 18:30:59,050 INFO src.chess_logic.game Engine move: Bb4"
+  },
+  {
+    "textPayload": "2025-09-18 18:30:59,050 INFO src.chess_logic.game Move number: 13"
+  },
+  {
+    "textPayload": "2025-09-18 18:34:34,098 INFO src.chess_logic.strategy LLM strategy: I have now castled kingside, so the pin on my c3-knight is gone. Next I want to centralise the rooks: the f1-rook will usually slide to e1 (supporting an eventual e4-e5 break) and the a-rook can later come to d1 if the d-file opens. With the king safe I can think about relocating the c3-knight (to e2, b5, d5 or even capturing on c6) and using the bishops to keep pressure on f7 and along the a2–g8 and c4–f7 diagonals. I must be alert to the tactical idea …Bxc3 followed by …Nxe4; if Black goes for it I will hit the e4-knight immediately (Qg4, Bd3 or Re1) and should recover the pawn while gaining the bishop pair. If Black instead plays …Nxe4 at once I simply reply Nxe4. Long-term goals remain: keep the bishop pair active, prepare e4-e5 under favourable circumstances, and exploit the half-open d-file or create kingside chances once the centre clarifies."
+  },
+  {
+    "textPayload": "2025-09-18 18:34:34,098 INFO src.chess_logic.game LLM move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 18:34:34,098 INFO src.chess_logic.game Move number: 14"
+  },
+  {
+    "textPayload": "2025-09-18 18:34:34,103 INFO src.chess_logic.game Engine move: Ne5"
+  },
+  {
+    "textPayload": "2025-09-18 18:34:34,103 INFO src.chess_logic.game Move number: 15"
+  },
+  {
+    "textPayload": "2025-09-18 18:37:38,326 INFO src.chess_logic.strategy LLM strategy: I have moved my queen to e2, simultaneously protecting the bishop on c4 and reinforcing the e4-pawn; if Black plays …Nxc4 I will recapture with Qxc4, while after …Bxc3 I am ready to reply bxc3, keeping the two bishops and gaining central space. The short-term plan remains to centralise the rooks – the f1-rook will come to e1 first – and then prepare the thematic pawn breaks f2-f4 (to drive away the e5-knight) and/or e4-e5 once the piece placement favours it, ideally after Black has castled. The d4-knight can later jump to f3, e2 or c6 depending on how the centre opens. I shall keep an eye on tactical ideas connected with the a2–g8 and c4–f7 diagonals and on the half-open d-file should the pawn on d7 advance or be exchanged."
+  },
+  {
+    "textPayload": "2025-09-18 18:37:38,326 INFO src.chess_logic.game LLM move: Qe2"
+  },
+  {
+    "textPayload": "2025-09-18 18:37:38,327 INFO src.chess_logic.game Move number: 16"
+  },
+  {
+    "textPayload": "2025-09-18 18:37:38,336 INFO src.chess_logic.game Engine move: Nxc4"
+  },
+  {
+    "textPayload": "2025-09-18 18:37:38,336 INFO src.chess_logic.game Move number: 17"
+  },
+  {
+    "textPayload": "2025-09-18 18:40:16,579 INFO src.chess_logic.strategy LLM strategy: I have just regained the material balance with Qxc4, activating the queen on a strong diagonal (c4–f7) and vacating the e-file for a future rook. Development still has to be completed:  – The f1-rook should come to e1 (or d1, depending on Black’s next move) while the a1-rook can eventually join via d1 or c1.  – The c1-bishop can emerge to g5, e3 or f4 once the c-pawn advances or the knight moves; a2–a3 is an important resource to drive away the annoying bishop on b4.  – Knight manoeuvres: Nc3–b5 (hitting d6 & c7) or Nd4–b5/f5/e2 remain thematic; the e4–pawn is still a central spearhead, supported by f2–f4 or, when conditions are right, e4–e5.  – I will keep pressure on the half-open d-file (d7 is a long-term target) and on f7, aiming to discourage Black from castling kingside or to punish it if he does. Overall plan: finish development quickly, centralise the rooks, neutralise the b4-bishop (a3), then push f4/e5 to seize the initiative against Black’s still-un-castled king."
+  },
+  {
+    "textPayload": "2025-09-18 18:40:16,579 INFO src.chess_logic.game LLM move: Qxc4"
+  },
+  {
+    "textPayload": "2025-09-18 18:40:16,579 INFO src.chess_logic.game Move number: 18"
+  },
+  {
+    "textPayload": "2025-09-18 18:40:16,584 INFO src.chess_logic.game Engine move: Bxc3"
+  },
+  {
+    "textPayload": "2025-09-18 18:40:16,584 INFO src.chess_logic.game Move number: 19"
+  },
+  {
+    "textPayload": "2025-09-18 18:42:24,583 INFO src.chess_logic.strategy LLM strategy: By eliminating the intrusive bishop with b2xc3 I have restored material equality, though at the cost of doubled c-pawns. My queen is still excellently posted on c4, pointing at f7, and the knight on d4 dominates the centre, ready to spring to b5 (c7/d6 pressure) or even e6 if tactics permit. Next steps: 1) protect the e4-pawn so that …Nxe4 no longer gains Black material; this can be done with f2–f3/f4 or by repositioning the queen/rook. 2) Complete development – bring Bc1 out (g5, e3 or f4 depending on Black’s reply), place Rf1 on d1 (or e1 if more useful) and mobilise the a1-rook via b1 or d1, using the now half-open b-file. 3) Keep pressure along the d-file and the c4–f7 diagonal; once my pieces are co-ordinated I will look to break with e4-e5 or f2-f4, attacking the king whether it remains in the centre or castles short. Throughout, I’ll watch for tactical opportunities based on the active queen and central knight."
+  },
+  {
+    "textPayload": "2025-09-18 18:42:24,583 INFO src.chess_logic.game LLM move: bxc3"
+  },
+  {
+    "textPayload": "2025-09-18 18:42:24,583 INFO src.chess_logic.game Move number: 20"
+  },
+  {
+    "textPayload": "2025-09-18 18:42:24,593 INFO src.chess_logic.game Engine move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 18:42:24,594 INFO src.chess_logic.game Move number: 21"
+  },
+  {
+    "textPayload": "2025-09-18 18:51:30,222 INFO src.chess_logic.strategy LLM strategy: The bishop comes out actively, pinning Black’s only knight to the queen, which means …Nxe4 is no longer possible and my e4–pawn is tactically safe for the moment. If Black reacts with …h6 or …g5 I can decide whether to keep the pin or exchange on f6, knowing the resulting pawn weaknesses around the black king will favour my attacking chances. Next I want to coordinate the rooks (Rf1 to d1 or e1), look for the central breaks e4-e5 or f2-f4 once the e4 pawn is firmly supported, and continue probing with my knight (b5, e6) or queen along the c4–f7 diagonal as soon as the e6 pawn moves. Throughout I’ll watch for tactical ideas against f7 and on the d-file created by the current pin."
+  },
+  {
+    "textPayload": "2025-09-18 18:51:30,222 INFO src.chess_logic.game LLM move: Bg5"
+  },
+  {
+    "textPayload": "2025-09-18 18:51:30,223 INFO src.chess_logic.game Move number: 22"
+  },
+  {
+    "textPayload": "2025-09-18 18:51:30,229 INFO src.chess_logic.game Engine move: h6"
+  },
+  {
+    "textPayload": "2025-09-18 18:51:30,229 INFO src.chess_logic.game Move number: 23"
+  },
+  {
+    "textPayload": "2025-09-18 18:53:36,874 INFO src.chess_logic.strategy LLM strategy: I preserve the pin on the f6-knight by retreating the bishop to h4. The pinned knight still prevents …Nxe4, and Black’s advanced h-pawn has created the first weakness around the castled king. If Black continues with …g5 I will drop the bishop to g3, when the g- and h-pawns become long-term targets. Meanwhile I’ll coordinate my heavy pieces (Ra1–d1 and Rf1–e1 or d1), support the e4-pawn with f2-f3/f2-f4, and prepare the central break e4-e5 once it is tactically sound. I’ll keep an eye on tactical possibilities such as Bxf6 (if the pin loses force) or Nxe6 when the d7–pawn moves. The queen remains well-placed on c4, pressuring f7 and along the c4–f7 diagonal; the knight on d4 can jump to b5, e6 or d6 as soon as those squares become available."
+  },
+  {
+    "textPayload": "2025-09-18 18:53:36,874 INFO src.chess_logic.game LLM move: Bh4"
+  },
+  {
+    "textPayload": "2025-09-18 18:53:36,875 INFO src.chess_logic.game Move number: 24"
+  },
+  {
+    "textPayload": "2025-09-18 18:53:36,881 INFO src.chess_logic.game Engine move: e5"
+  },
+  {
+    "textPayload": "2025-09-18 18:53:36,881 INFO src.chess_logic.game Move number: 25"
+  },
+  {
+    "textPayload": "2025-09-18 19:02:09,064 INFO src.chess_logic.strategy LLM strategy: Black has just advanced his pawn to e5, leaving his king-side still drafty and the knight on f6 pinned to the queen.  The piece that can be improved most easily is my d4-knight.  Jumping to b5 places it on an outpost from where it can hop into d6 or c7 and constantly hit a7, b7, f7 and the c8-bishop, while still keeping the pin on f6 intact.  If Black reacts with …a6 I intend Nd6, when the fork on f7/a8 often wins material; if he tries …d7–d5 I’ll reply e4xd5 – the d-pawn is poisoned because the f6-knight may not move, so …Qxd5? loses the queen to Qxd5 followed by the pinned knight being unable to recapture.  Should …g5 or …g6 appear I drop the bishop back to g3, keeping pressure on the long diagonal against f7 and the newly-weakened g- and h-pawns.  My general plan remains: maximise the pin on f6, harass the weakened dark squares around the king, and bring the rooks to d1/e1 to support a future central break or a passed d-pawn that can arise after e4xd5."
+  },
+  {
+    "textPayload": "2025-09-18 19:02:09,064 INFO src.chess_logic.game LLM move: Nb5"
+  },
+  {
+    "textPayload": "2025-09-18 19:02:09,065 INFO src.chess_logic.game Move number: 26"
+  },
+  {
+    "textPayload": "2025-09-18 19:02:09,069 INFO src.chess_logic.game Engine move: g5"
+  },
+  {
+    "textPayload": "2025-09-18 19:02:09,069 INFO src.chess_logic.game Move number: 27"
+  },
+  {
+    "textPayload": "2025-09-18 19:04:32,570 INFO src.chess_logic.strategy LLM strategy: Black’s advance  ...g7–g5 has broken the pin on the f6-knight and at the same time attacks my bishop on h4. I therefore retreat the bishop to g3, preserving the piece and planting it on the long diagonal g3–e5 where it immediately pressures the e5-pawn and helps to hold the e4-pawn (so …Nxe4 can be answered by Qxe4).  My positional strong-point is still the knight on b5; I aim to jump it to d6 (or c7) at the first favourable moment.  If Black drives it with …a6 I will play Nd6, forking f7 and b7/c8.  After the knight is entrenched I want to mobilise the heavy pieces – Rfd1/Re1 in some order – and prepare e4-e5 or f2-f4 to rip open the centre while Black’s king is still exposed.  Against …d7–d5 I will generally answer exd5; now that the f6-knight is free I must be sure the e4-pawn is supported, but the resulting IQP on d5 or the weakened dark squares will still favour me.  Overall plan: keep the knight outposted, pile up on the e5/f7 complex, and open the centre under favourable circumstances."
+  },
+  {
+    "textPayload": "2025-09-18 19:04:32,571 INFO src.chess_logic.game LLM move: Bg3"
+  },
+  {
+    "textPayload": "2025-09-18 19:04:32,571 INFO src.chess_logic.game Move number: 28"
+  },
+  {
+    "textPayload": "2025-09-18 19:04:32,575 INFO src.chess_logic.game Engine move: a6"
+  },
+  {
+    "textPayload": "2025-09-18 19:04:32,575 INFO src.chess_logic.game Move number: 29"
+  },
+  {
+    "textPayload": "2025-09-18 19:06:38,620 INFO src.chess_logic.strategy LLM strategy: The knight has now reached its ideal outpost on d6, exactly as planned after Black’s …a6. From d6 it simultaneously attacks f7, b7 and the bishop on c8, and can also recapture on e4 should …Nxe4 occur. I will keep the knight there as long as it remains secure; whether I eventually take on b7 or c8 will depend on Black’s reaction – for the moment the fork is more valuable than an immediate capture. With the knight entrenched I want to mobilise the heavy pieces: Rad1 (or occasionally Rfd1) to seize the d-file, followed by Re1 or f2-f4/e4-e5 to open the centre while Black’s king is exposed on the dark-square weakened kingside. If Black plays …d7-d5 I will still answer exd5, when the resulting IQP positions should favour my piece activity and dark-square pressure. I must also watch tactical chances on the long diagonal (g3–e5–c7–b8) created by Black’s earlier …g5 and the now-loose pawn on g5. Overall: keep the d6-knight, centralise the rooks/queen, prepare the e- or f-pawn break, and exploit the weaknesses around the Black king."
+  },
+  {
+    "textPayload": "2025-09-18 19:06:38,620 INFO src.chess_logic.game LLM move: Nd6"
+  },
+  {
+    "textPayload": "2025-09-18 19:06:38,620 INFO src.chess_logic.game Move number: 30"
+  },
+  {
+    "textPayload": "2025-09-18 19:06:38,625 INFO src.chess_logic.game Engine move: Nh5"
+  },
+  {
+    "textPayload": "2025-09-18 19:06:38,855 INFO src.chess_logic.game Move number: 1"
+  },
+  {
+    "textPayload": "2025-09-18 19:06:38,864 INFO src.chess_logic.game Engine move: e4"
+  },
+  {
+    "textPayload": "2025-09-18 19:06:38,865 INFO src.chess_logic.game Move number: 2"
+  },
+  {
+    "textPayload": "2025-09-18 19:06:51,744 INFO src.chess_logic.strategy LLM strategy: Begin with the Sicilian Defence: ...c5 strikes at White’s central pawn and creates an asymmetrical position. After ...c5 I plan to develop quickly – knights to f6 and c6, bishop to e7 (or g7 if a fianchetto proves useful), then castle kingside. Long-term I aim for the thematic ...d5 break or pressure on the half-open c-file. I will keep track of e4 (possible ...Nf6) and maintain flexibility for queenside counterplay."
+  },
+  {
+    "textPayload": "2025-09-18 19:06:51,744 INFO src.chess_logic.game LLM move: c5"
+  },
+  {
+    "textPayload": "2025-09-18 19:06:51,745 INFO src.chess_logic.game Move number: 3"
+  },
+  {
+    "textPayload": "2025-09-18 19:06:51,749 INFO src.chess_logic.game Engine move: d4"
+  },
+  {
+    "textPayload": "2025-09-18 19:06:51,749 INFO src.chess_logic.game Move number: 4"
+  },
+  {
+    "textPayload": "2025-09-18 19:07:48,536 INFO src.chess_logic.strategy LLM strategy: I have accepted the Smith-Morra gambit with ...cxd4, giving me the half-open c-file and eliminating White’s d-pawn. If White responds with Qxd4 I will gain a tempo with ...Nc6; otherwise I will continue normal Sicilian development – knights to c6 and f6, bishop to e7 (or g7 if I fianchetto), then castle short. After castling I will prepare the thematic ...d5 break or put pressure on the half-open c-file. Keep an eye on the e4 pawn and avoid creating unnecessary weaknesses on the kingside."
+  },
+  {
+    "textPayload": "2025-09-18 19:07:48,537 INFO src.chess_logic.game LLM move: cxd4"
+  },
+  {
+    "textPayload": "2025-09-18 19:07:48,537 INFO src.chess_logic.game Move number: 5"
+  },
+  {
+    "textPayload": "2025-09-18 19:07:48,549 INFO src.chess_logic.game Engine move: Nf3"
+  },
+  {
+    "textPayload": "2025-09-18 19:07:48,551 INFO src.chess_logic.game Move number: 6"
+  },
+  {
+    "textPayload": "2025-09-18 19:10:35,004 INFO src.chess_logic.strategy LLM strategy: I have steered the accepted Smith-Morra into the Siberian set-up with  …Qa5+.  This move keeps the extra pawn, checks the king and very often forces 2.c3 (when I reply …dxc3 and remain a pawn up) or 2.Qd2 (when I exchange queens and head for a simplified, pawn-up middlegame).  After the check is parried I will continue normal Sicilian development: …Nc6 to shore up the d-pawn (or to recapture on d4 if necessary), …Nf6, and short castling.  With the king safe I can play …d6 followed by …d5 or …e6/…e5 to centralise and free my bishops.  Always watch tactical shots on f7 and along the e-file, but remember that with queens off the board my extra pawn becomes even more valuable; so I will welcome queen trades when convenient."
+  },
+  {
+    "textPayload": "2025-09-18 19:10:35,004 INFO src.chess_logic.game LLM move: Qa5+"
+  },
+  {
+    "textPayload": "2025-09-18 19:10:35,004 INFO src.chess_logic.game Move number: 7"
+  },
+  {
+    "textPayload": "2025-09-18 19:10:35,012 INFO src.chess_logic.game Engine move: c3"
+  },
+  {
+    "textPayload": "2025-09-18 19:10:35,012 INFO src.chess_logic.game Move number: 8"
+  },
+  {
+    "textPayload": "2025-09-18 19:16:24,510 INFO src.chess_logic.strategy LLM strategy: My queen is still on a5 and the typical Siberian‐Trap motif is alive: the undefended pawn on c3 lets me capture with …dxc3.  If White recaptures with either the knight or the b-pawn I have the reply Qxc3+; after 3.Bd2 I can take on b2/a1 and win heavy material, while 3.Nd2 or 3.Nxc3 also leave me at least a full piece up.  Should White instead play 2.Qc2 I will keep the extra pawn and, if necessary, simplify with Qxc3+, entering the queen-less middlegame a pawn ahead—which fits my overall plan of exchanging queens when it is convenient.  After the tactical phase I return to the basic programme I outlined earlier: develop smoothly with …Nc6, …Nf6 and castle short, then consolidate with …d6 and look for the central breaks …d5 or …e5.  Always keep an eye on tricks against f7 and along the e-file, but with queens traded my extra material will be decisive."
+  },
+  {
+    "textPayload": "2025-09-18 19:16:24,510 INFO src.chess_logic.game LLM move: dxc3"
+  },
+  {
+    "textPayload": "2025-09-18 19:16:24,511 INFO src.chess_logic.game Move number: 9"
+  },
+  {
+    "textPayload": "2025-09-18 19:16:24,517 INFO src.chess_logic.game Engine move: Nxc3"
+  },
+  {
+    "textPayload": "2025-09-18 19:16:24,517 INFO src.chess_logic.game Move number: 10"
+  },
+  {
+    "textPayload": "2025-09-18 19:21:59,997 INFO src.chess_logic.strategy LLM strategy: I am still a sound pawn up.  The Siberian-Trap shot …Qxc3+ is no longer correct because the pawn on b2 could answer bxc3 and take my queen, so I must keep the queen out of harm’s way.  The knight on c3 is however pinned by my queen, and that gives me a little time.  I will now follow a solid developing plan: bring the b8–knight to c6, then the g8–knight to f6, play …d6 and …Be7, and castle short.  Once my king is safe I will look for the central breaks …d5 or …e5; if an opportunity arises to exchange queens without cost I will do so, because the ensuing middlegame with an extra pawn (and no weaknesses) should be favourable.  Throughout, I will watch out for tactics against f7 and along the e-file, keeping my queen flexible but no longer hunting for the faulty …Qxc3+ idea."
+  },
+  {
+    "textPayload": "2025-09-18 19:21:59,998 INFO src.chess_logic.game LLM move: Nc6"
+  },
+  {
+    "textPayload": "2025-09-18 19:21:59,998 INFO src.chess_logic.game Move number: 11"
+  },
+  {
+    "textPayload": "2025-09-18 19:22:00,004 INFO src.chess_logic.game Engine move: Bc4"
+  },
+  {
+    "textPayload": "2025-09-18 19:22:00,004 INFO src.chess_logic.game Move number: 12"
+  },
+  {
+    "textPayload": "2025-09-18 19:24:27,256 INFO src.chess_logic.strategy LLM strategy: We executed the first step of the previous plan: the g-knight has reached f6.  I still have an extra pawn and the white knight on c3 remains pinned by my queen on a5, so it cannot jump to d5 or b5 for tactical tricks.  Immediate priorities are:"
+  },
+  {
+    "textPayload": "2025-09-18 19:24:27,256 INFO src.chess_logic.game LLM move: Nf6"
+  },
+  {
+    "textPayload": "2025-09-18 19:24:27,256 INFO src.chess_logic.game Move number: 13"
+  },
+  {
+    "textPayload": "2025-09-18 19:24:27,263 INFO src.chess_logic.game Engine move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 19:24:27,264 INFO src.chess_logic.game Move number: 14"
+  },
+  {
+    "textPayload": "2025-09-18 19:26:50,625 INFO src.chess_logic.strategy LLM strategy: We have just played  …d7–d6, completing the first of the ‘finish-development’ steps.  The position is still healthy: we remain a pawn up, our queen on a5 keeps an eye on c3 and e1, and nothing immediate is hanging."
+  },
+  {
+    "textPayload": "2025-09-18 19:26:50,626 INFO src.chess_logic.game LLM move: d6"
+  },
+  {
+    "textPayload": "2025-09-18 19:26:50,626 INFO src.chess_logic.game Move number: 15"
+  },
+  {
+    "textPayload": "2025-09-18 19:26:50,635 INFO src.chess_logic.game Engine move: Ng5"
+  },
+  {
+    "textPayload": "2025-09-18 19:26:50,635 INFO src.chess_logic.game Move number: 16"
+  },
+  {
+    "textPayload": "2025-09-18 19:28:10,324 INFO src.chess_logic.strategy LLM strategy: White followed the line we expected, bringing the knight to g5.  I answer exactly as prepared:  …e6 both shores-up the weak f7 square and shuts the c4–bishop.  After this, the immediate agenda is:"
+  },
+  {
+    "textPayload": "2025-09-18 19:28:10,324 INFO src.chess_logic.game LLM move: e6"
+  },
+  {
+    "textPayload": "2025-09-18 19:28:10,324 INFO src.chess_logic.game Move number: 17"
+  },
+  {
+    "textPayload": "2025-09-18 19:28:10,330 INFO src.chess_logic.game Engine move: f4"
+  },
+  {
+    "textPayload": "2025-09-18 19:28:10,330 INFO src.chess_logic.game Move number: 18"
+  },
+  {
+    "textPayload": "2025-09-18 19:30:50,472 INFO src.chess_logic.strategy LLM strategy: The loose bishop on c4 was the main attacker of our e6–pawn.  By playing …Qxc4 I eliminate that piece and, because nothing can recapture, I win a full bishop and go from +1 pawn to + a clear piece.  After this material gain White’s only active piece is the knight on g5; my next priority is therefore to neutralise it with …h6 (and, if it remains in range, …hxg5).  Development then proceeds exactly as before: …Be7 followed by short castling – the king has not moved yet, so I still keep my “k” right.  With the king safe I will gladly trade queens whenever the chance arises (e.g. after Qc4–d4/c5 or if White plays Qd3), simplify pieces, and steer the game toward an end-game where the extra bishop and pawn decide.  Only after consolidation will I think about central breaks with …d5 or …e5; until then I keep the centre closed and the material advantage intact."
+  },
+  {
+    "textPayload": "2025-09-18 19:30:50,473 INFO src.chess_logic.game LLM move: Qxc4"
+  },
+  {
+    "textPayload": "2025-09-18 19:30:50,473 WARNING src.chess_logic.game Illegal move, number: 1"
+  },
+  {
+    "textPayload": "2025-09-18 19:30:50,473 WARNING src.chess_logic.game Illegal moves, number exceeded!"
+  },
+  {
+    "textPayload": "2025-09-18 19:30:50,652 INFO src.chess_logic.game Move number: 1"
+  },
+  {
+    "textPayload": "2025-09-18 19:30:58,937 INFO src.chess_logic.strategy LLM strategy: Open with 1.e4 to seize central space and free the queen- and dark-squared bishop. Over the next few moves I want rapid, classical development: Nf3, Bc4 or Bb5 depending on Black’s reply, and quick kingside castling. If Black plays ...e5 I will consider the Ruy Lopez/Italian structures; if ...c5 I’ll enter an Open Sicilian with Nf3 and d4, aiming for active piece play; versus ...c6 or ...e6 I will advance d4 and keep a strong pawn duo. General principles: maintain central tension, coordinate rooks on open or half-open files (especially the e-file), avoid unnecessary pawn weaknesses, and look for tactical chances created by an active piece setup."
+  },
+  {
+    "textPayload": "2025-09-18 19:30:58,937 INFO src.chess_logic.game LLM move: e4"
+  },
+  {
+    "textPayload": "2025-09-18 19:30:58,937 INFO src.chess_logic.game Move number: 2"
+  },
+  {
+    "textPayload": "2025-09-18 19:30:58,945 INFO src.chess_logic.game Engine move: c6"
+  },
+  {
+    "textPayload": "2025-09-18 19:30:58,946 INFO src.chess_logic.game Move number: 3"
+  },
+  {
+    "textPayload": "2025-09-18 19:31:12,354 INFO src.chess_logic.strategy LLM strategy: Black answered 1.e4 with …c6, entering the Caro-Kann. My plan remains to build a strong pawn duo in the centre and develop quickly. Main outline: 2.d4 (played) to seize space; after the usual 2…d5 I will choose between 3.Nc3 (classical) or 3.e5 (Advance) depending on Black’s replies, but in either case I want rapid development: knights to f3/c3 (or d2), light-squared bishop to d3 or f5, dark-squared bishop to d3 or g4 if exchanged, and kingside castling. I’ll aim to keep central tension until it favours me or simplifies advantageously, place rooks on the e- and c-files, and prevent Black’s thematic breaks …c5 or …e5. Always watch tactics on the e- and d-files and keep my king safe."
+  },
+  {
+    "textPayload": "2025-09-18 19:31:12,354 INFO src.chess_logic.game LLM move: d4"
+  },
+  {
+    "textPayload": "2025-09-18 19:31:12,355 INFO src.chess_logic.game Move number: 4"
+  },
+  {
+    "textPayload": "2025-09-18 19:31:12,360 INFO src.chess_logic.game Engine move: d5"
+  },
+  {
+    "textPayload": "2025-09-18 19:31:12,360 INFO src.chess_logic.game Move number: 5"
+  },
+  {
+    "textPayload": "2025-09-18 19:31:42,947 INFO src.chess_logic.strategy LLM strategy: Black has entered the Caro-Kann proper with …c6 and …d5. I now adopt the Classical Variation with 3.Nc3, keeping both centre pawns and adding immediate pressure on d5. General plan: if 3…dxe4 4.Nxe4 I maintain the e4–d4 pawn duo, develop quickly (Ng1–f3, Bc1–d3 or e2, Be2/f1–d3/f5 if possible) and castle short. I will contest any …c5 or …e5 break, and after …Bf5 I’m ready for Ng3, h4–h5 ideas. Rooks are likely to land on e1 and c1 later, the queen may come to e2 or f3, and I’ll watch tactics on the e- and d-files as pieces come off."
+  },
+  {
+    "textPayload": "2025-09-18 19:31:42,947 INFO src.chess_logic.game LLM move: Nc3"
+  },
+  {
+    "textPayload": "2025-09-18 19:31:42,947 INFO src.chess_logic.game Move number: 6"
+  },
+  {
+    "textPayload": "2025-09-18 19:31:42,951 INFO src.chess_logic.game Engine move: dxe4"
+  },
+  {
+    "textPayload": "2025-09-18 19:31:42,951 INFO src.chess_logic.game Move number: 7"
+  },
+  {
+    "textPayload": "2025-09-18 19:32:15,915 INFO src.chess_logic.strategy LLM strategy: I have just restored material balance with 4.Nxe4, keeping a healthy pawn on d4 and an active knight in the centre. From here I follow the well-known Classical Caro-Kann plans: if …Bf5 I will slide the knight to g3, gaining a tempo; if …Nd7 or …Nf6 I can reinforce the knight with Bd3 or exchange when convenient. Next steps: develop quickly (Ng1–f3, Bc1–d3 or e2, Bf1–d3/f5 if allowed), castle short and place rooks on e1 and c1. I’ll watch for Black’s thematic breaks …c5 and …e5—ready to meet …c5 with dxc5 or d5 depending on piece placement, and …e5 with dxe5. On the kingside I keep the option of the h2-h4-h5 advance once my king is safe, especially after …Bf5. Overall aim: maintain central space, complete development ahead of Black, and look for chances against the slightly weakened dark squares around Black’s king."
+  },
+  {
+    "textPayload": "2025-09-18 19:32:15,915 INFO src.chess_logic.game LLM move: Nxe4"
+  },
+  {
+    "textPayload": "2025-09-18 19:32:15,915 INFO src.chess_logic.game Move number: 8"
+  },
+  {
+    "textPayload": "2025-09-18 19:32:15,919 INFO src.chess_logic.game Engine move: Bf5"
+  },
+  {
+    "textPayload": "2025-09-18 19:32:15,919 INFO src.chess_logic.game Move number: 9"
+  },
+  {
+    "textPayload": "2025-09-18 19:32:40,864 INFO src.chess_logic.strategy LLM strategy: My intended Classical Caro-Kann set-up is still on track. By 5.Ng3 I hit the bishop, forcing it to retreat (most likely …Bg6). After that I will:  • finish development with Ng1–f3, Bc1–d3 (or e2) and 0-0;  • if the bishop drops to g6 I’ll consider the typical space-gaining h2–h4–h5, especially once my king is safe;  • keep the d4-pawn as a central spearhead, meeting …c5 with either dxc5 or d5 depending on piece placement, and answering …e5 with dxe5;  • after castling, place rooks on e1 and c1, using the semi-open c-file against Black’s c-pawn;  • watch for chances to exploit the dark-square weaknesses around Black’s king, possibly manoeuvring a knight to e5 or h5 and a bishop along the c1–h6 diagonal. Overall aim: maintain central space, complete development ahead of Black and launch a kingside initiative if the opportunity arises."
+  },
+  {
+    "textPayload": "2025-09-18 19:32:40,864 INFO src.chess_logic.game LLM move: Ng3"
+  },
+  {
+    "textPayload": "2025-09-18 19:32:40,864 INFO src.chess_logic.game Move number: 10"
+  },
+  {
+    "textPayload": "2025-09-18 19:32:40,869 INFO src.chess_logic.game Engine move: Qa5+"
+  },
+  {
+    "textPayload": "2025-09-18 19:32:40,869 INFO src.chess_logic.game Move number: 11"
+  },
+  {
+    "textPayload": "2025-09-18 19:34:40,357 INFO src.chess_logic.strategy LLM strategy: I neutralise the check with 1.Bd2 – the usual antidote to …Qa5+ in the Classical Caro-Kann. If Black captures (…Qxd2+) I answer 2.Qxd2, exchanging queens and coming out a clear piece ahead; otherwise the queen must lose time moving again, giving me the initiative. From here the programme is unchanged: finish development with Ng1-f3 and short castling; keep the pawn on d4 as my central anchor, answering …c5 with dxc5 or d5 and …e5 with dxe5; place rooks on e1 and c1 (or d1 if the queens disappear) and look for the typical kingside expansion h2-h4-h5 once my king is safe. Long-term priorities remain: attack the dark-square weaknesses around Black’s king, use the semi-open c-file against the c6-pawn, and aim to plant a knight on e5 or h5."
+  },
+  {
+    "textPayload": "2025-09-18 19:34:40,358 INFO src.chess_logic.game LLM move: Bd2"
+  },
+  {
+    "textPayload": "2025-09-18 19:34:40,358 INFO src.chess_logic.game Move number: 12"
+  },
+  {
+    "textPayload": "2025-09-18 19:34:40,362 INFO src.chess_logic.game Engine move: Qd5"
+  },
+  {
+    "textPayload": "2025-09-18 19:34:40,363 INFO src.chess_logic.game Move number: 13"
+  },
+  {
+    "textPayload": "2025-09-18 19:39:50,718 INFO src.chess_logic.strategy LLM strategy: Stage 1 (just completed): the check on e1 has been blocked by Bd2 and Black’s queen is still exposed in the centre.  "
+  },
+  {
+    "textPayload": "2025-09-18 19:39:50,718 INFO src.chess_logic.game LLM move: c4"
+  },
+  {
+    "textPayload": "2025-09-18 19:39:50,719 INFO src.chess_logic.game Move number: 14"
+  },
+  {
+    "textPayload": "2025-09-18 19:39:50,725 INFO src.chess_logic.game Engine move: Qd7"
+  },
+  {
+    "textPayload": "2025-09-18 19:39:50,725 INFO src.chess_logic.game Move number: 15"
+  },
+  {
+    "textPayload": "2025-09-18 19:42:31,853 INFO src.chess_logic.strategy LLM strategy: Stage 2 is largely accomplished: c2-c4 chased the black queen back to d7 and the critical pawn on d4 is still alive.  The most important remaining active black piece is the dark-squared bishop on f5; removing it gives me the bishop pair and takes much of the pressure off the centre.  Therefore I go straight for the Nxf5 tactic.  After 1…Qxf5 (virtually forced) I will continue with Qb3 or Be3, bring the knight from g1 to f3, and castle (probably long now that the d-file is clearing).  With king safety ensured the rooks will come to the c- and d/e-files, the c6-pawn will be fixed as a target, and I will look to exploit the dark squares around the black king (f7, h7) with a bishop on d3 and, if appropriate, the pawn storm h2-h4-h5.  If queens come off I will head for an open bishop-pair ending; if not, I aim for d4-d5 or c4-c5 to open the position when my bishops are ready."
+  },
+  {
+    "textPayload": "2025-09-18 19:42:31,853 INFO src.chess_logic.game LLM move: Nxf5"
+  },
+  {
+    "textPayload": "2025-09-18 19:42:31,853 INFO src.chess_logic.game Move number: 16"
+  },
+  {
+    "textPayload": "2025-09-18 19:42:31,858 INFO src.chess_logic.game Engine move: Qe6+"
+  },
+  {
+    "textPayload": "2025-09-18 19:42:31,858 INFO src.chess_logic.game Move number: 17"
+  },
+  {
+    "textPayload": "2025-09-18 19:46:59,506 INFO src.chess_logic.strategy LLM strategy: The dark-squared bishop that used to harass the centre from f5 has already disappeared, so the first phase of my old plan is accomplished.  At the moment my king is in the line of fire of the black queen on e6; the quickest and most forcing way to neutralise that check without giving up the initiative is 1 Ne3.  The move not only blocks the e-file but also lays a trap: if Black grabs the knight with 1…Qxe3+ I reply 2 Bxe3 and win the queen.  After the knight is safely installed on e3 my priorities are:"
+  },
+  {
+    "textPayload": "2025-09-18 19:46:59,506 INFO src.chess_logic.game LLM move: Ne3"
+  },
+  {
+    "textPayload": "2025-09-18 19:46:59,507 INFO src.chess_logic.game Move number: 18"
+  },
+  {
+    "textPayload": "2025-09-18 19:46:59,511 INFO src.chess_logic.game Engine move: Qxe3+"
+  },
+  {
+    "textPayload": "2025-09-18 19:46:59,512 INFO src.chess_logic.game Move number: 19"
+  },
+  {
+    "textPayload": "2025-09-18 19:48:50,148 INFO src.chess_logic.strategy LLM strategy: Black’s queen has just been removed from the board by 1 fxe3, leaving me a full queen up. With such a large material edge I no longer need complicated tactics; I simply have to consolidate and trade pieces when convenient. Concrete plan:"
+  },
+  {
+    "textPayload": "2025-09-18 19:48:50,148 INFO src.chess_logic.game LLM move: fxe3"
+  },
+  {
+    "textPayload": "2025-09-18 19:48:50,149 INFO src.chess_logic.game Move number: 20"
+  },
+  {
+    "textPayload": "2025-09-18 19:48:50,153 INFO src.chess_logic.game Engine move: e6"
+  },
+  {
+    "textPayload": "2025-09-18 19:48:50,153 INFO src.chess_logic.game Move number: 21"
+  },
+  {
+    "textPayload": "2025-09-18 19:49:19,671 INFO src.chess_logic.strategy LLM strategy: Material advantage (extra queen) remains.  The only task is to finish development, castle and then simplify.  I have now developed the g-knight to f3, controlling e5 and h4 and preparing 0-0.  Immediate priorities: (1) castle next move unless forced otherwise; (2) put the light-squared bishop on e2 or d3 and the queen on e2 to protect the e3 pawn; (3) occupy the d- and c-files with the rooks once king safety is secured; (4) exchange pieces whenever it is convenient, while keeping an eye on Black’s only potential counter-play …c5 or …e5.  Bishop d2 is ready to meet any …Bb4+ ideas, so the king is not in real danger."
+  },
+  {
+    "textPayload": "2025-09-18 19:49:19,671 INFO src.chess_logic.game LLM move: Nf3"
+  },
+  {
+    "textPayload": "2025-09-18 19:49:19,671 INFO src.chess_logic.game Move number: 22"
+  },
+  {
+    "textPayload": "2025-09-18 19:49:19,677 INFO src.chess_logic.game Engine move: Nd7"
+  },
+  {
+    "textPayload": "2025-09-18 19:49:19,677 INFO src.chess_logic.game Move number: 23"
+  },
+  {
+    "textPayload": "2025-09-18 19:50:25,341 INFO src.chess_logic.strategy LLM strategy: The light-squared bishop has now been developed to d3, so the f1–g1 squares are clear and I can castle kingside on the very next move unless something exceptional prevents it.  Immediate plan: 1) 0-0 to safeguard the king; 2) place the rooks on d1 and c1, taking over the half-open d-file and supporting the c-file pawn majority; 3) if Black strikes with …c5 or …e5 I will meet it by exchanging or pushing to keep the centre closed and simplify, because I am a full queen up; 4) whenever convenient I will trade pieces, but I’ll also keep an eye on tactical chances against h7 and along the a2–g8 diagonal created by the bishop on d3.  Once the position is stabilised, advancing my queenside pawns (a2–b2–c4) will further restrict Black and prepare a passed pawn.  Overall, simple development, king safety and steady exchanges remain the conversion recipe."
+  },
+  {
+    "textPayload": "2025-09-18 19:50:25,341 INFO src.chess_logic.game LLM move: Bd3"
+  },
+  {
+    "textPayload": "2025-09-18 19:50:25,341 INFO src.chess_logic.game Move number: 24"
+  },
+  {
+    "textPayload": "2025-09-18 19:50:25,345 INFO src.chess_logic.game Engine move: Be7"
+  },
+  {
+    "textPayload": "2025-09-18 19:50:25,346 INFO src.chess_logic.game Move number: 25"
+  },
+  {
+    "textPayload": "2025-09-18 19:52:03,732 INFO src.chess_logic.strategy LLM strategy: The king is now safely castled on g1, so the first phase of my conversion plan is complete.  Next I want my heavy pieces to occupy the open and half-open files.  I will relocate the queen (to e2 or c2) so that the rooks can come to d1 and c1; the d-file in particular is a natural avenue for exchanges because Black’s queen is missing.  Once the rooks are centralised I can advance the queenside majority with c4-c5 (or d4-d5 if Black plays …c5) to create a passed pawn and open more lines.  Being a full queen ahead, I will welcome most exchanges and avoid unnecessary complications, while still keeping an eye on tactical chances on the h-file (ideas such as Bxh7 or Qh5) if Black’s pieces drift.  Overall: keep the king safe, put the rooks on strong files, trade pieces, and push the queenside pawns."
+  },
+  {
+    "textPayload": "2025-09-18 19:52:03,732 INFO src.chess_logic.game LLM move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 19:52:03,733 INFO src.chess_logic.game Move number: 26"
+  },
+  {
+    "textPayload": "2025-09-18 19:52:03,737 INFO src.chess_logic.game Engine move: Ndf6"
+  },
+  {
+    "textPayload": "2025-09-18 19:52:03,737 INFO src.chess_logic.game Move number: 27"
+  },
+  {
+    "textPayload": "2025-09-18 19:54:00,756 INFO src.chess_logic.strategy LLM strategy: I am still a full queen up and my king is safe on g1. The next stage is to reduce material and activate my heavy pieces. By advancing the e-pawn to e4 I open the centre and invite the natural reply …Nxe4, when Bxe4 will exchange my pawn for Black’s most active knight and simplify the position even more. After the pawn push I plan to lift the queen to e2 (or c2) so that the rooks can occupy the half-open d- and e-files. With the major pieces centralised I will then push the queenside majority (c4-c5, d4-d5) to create a passed pawn and force further exchanges. Summary: keep the king safe, trade pieces whenever feasible, centralise queen and rooks, and advance the queenside pawns for the win."
+  },
+  {
+    "textPayload": "2025-09-18 19:54:00,757 INFO src.chess_logic.game LLM move: e4"
+  },
+  {
+    "textPayload": "2025-09-18 19:54:00,757 INFO src.chess_logic.game Move number: 28"
+  },
+  {
+    "textPayload": "2025-09-18 19:54:00,761 INFO src.chess_logic.game Engine move: h6"
+  },
+  {
+    "textPayload": "2025-09-18 19:54:00,761 INFO src.chess_logic.game Move number: 29"
+  },
+  {
+    "textPayload": "2025-09-18 19:57:53,723 INFO src.chess_logic.strategy LLM strategy: I am still a full queen up and my king is perfectly safe on g1.  I have just pushed the pawn to e5, forcing Black’s most active piece (the f6-knight) to move.  If the knight goes to d5 or c5 I will exchange it with my c- or d-pawn, further reducing material; if it heads for g4 or h5 I can chase it with h3 or g4.  After the knight is dealt with, the plan remains simple:"
+  },
+  {
+    "textPayload": "2025-09-18 19:57:53,724 INFO src.chess_logic.game LLM move: e5"
+  },
+  {
+    "textPayload": "2025-09-18 19:57:53,724 INFO src.chess_logic.game Move number: 30"
+  },
+  {
+    "textPayload": "2025-09-18 19:57:53,729 INFO src.chess_logic.game Engine move: Nh5"
+  },
+  {
+    "textPayload": "2025-09-18 19:57:53,863 INFO src.chess_logic.game Move number: 1"
+  },
+  {
+    "textPayload": "2025-09-18 19:57:53,870 INFO src.chess_logic.game Engine move: Nf3"
+  },
+  {
+    "textPayload": "2025-09-18 19:57:53,870 INFO src.chess_logic.game Move number: 2"
+  },
+  {
+    "textPayload": "2025-09-18 19:58:25,720 INFO src.chess_logic.strategy LLM strategy: I will play a classical, solid set-up against White’s Reti move 1 Nf3. The backbone is …d5 followed by …Nf6, …e6 and quick short castling. From there the light-squared bishop will usually go to e7 (or g4 if I can pin the knight), the queen’s knight to c6 (or d7 if required), and the c-pawn stays flexible – …c5 to challenge the centre or …c6 to bolster d5 depending on White’s plan. Overall goals: keep a healthy pawn structure, complete development smoothly, contest the centre and be ready to counter in the middlegame on the queenside with …c5 or in the centre with …e5."
+  },
+  {
+    "textPayload": "2025-09-18 19:58:25,721 INFO src.chess_logic.game LLM move: d5"
+  },
+  {
+    "textPayload": "2025-09-18 19:58:25,721 INFO src.chess_logic.game Move number: 3"
+  },
+  {
+    "textPayload": "2025-09-18 19:58:25,726 INFO src.chess_logic.game Engine move: d4"
+  },
+  {
+    "textPayload": "2025-09-18 19:58:25,727 INFO src.chess_logic.game Move number: 4"
+  },
+  {
+    "textPayload": "2025-09-18 19:58:52,393 INFO src.chess_logic.strategy LLM strategy: Our planned solid set-up is coming along: we have the central pawn on d5 opposite White’s pawn on d4. I now develop the king’s knight to f6, putting direct pressure on d4 while preparing …e6 and rapid castling. After …Nf6 I expect to continue  …e6, …Be7 and 0-0. The c-pawn stays flexible: if White challenges with c4 I can choose between …c6 (Bolstering d5) or …dxc4 / …c5 depending on circumstances. The queen’s knight will usually go to c6 (or d7 if more solid play is needed). Overall goals unchanged: finish development smoothly, keep the centre solid, and be ready for counterplay with …c5 or …e5 later."
+  },
+  {
+    "textPayload": "2025-09-18 19:58:52,393 INFO src.chess_logic.game LLM move: Nf6"
+  },
+  {
+    "textPayload": "2025-09-18 19:58:52,393 INFO src.chess_logic.game Move number: 5"
+  },
+  {
+    "textPayload": "2025-09-18 19:58:52,398 INFO src.chess_logic.game Engine move: e3"
+  },
+  {
+    "textPayload": "2025-09-18 19:58:52,398 INFO src.chess_logic.game Move number: 6"
+  },
+  {
+    "textPayload": "2025-09-18 19:59:53,126 INFO src.chess_logic.strategy LLM strategy: Our original plan – a classical Queen’s-gambit-declined structure – is still perfectly on track. The central pawn on d5 is secure and I have developed the king’s knight to f6. I have now advanced the e-pawn to e6, buttressing d5 and clearing the way for the f8-bishop. The immediate goals stay the same: 1) develop the dark-squared bishop to e7 (or occasionally g7/b4 depending on White’s set-up); 2) castle kingside; 3) bring the queen’s knight to c6 (or d7 if I want an extra layer of solidity). After I am fully mobilised I will look to challenge the centre with …c5 (or sometimes …e5) at an opportune moment, or play …c6 if White pushes c4 and I wish to keep a rock-solid pawn chain. Overall, keep the pawn structure sound, complete development smoothly, and only then look for counter-play in the centre or on the queenside."
+  },
+  {
+    "textPayload": "2025-09-18 19:59:53,126 INFO src.chess_logic.game LLM move: e6"
+  },
+  {
+    "textPayload": "2025-09-18 19:59:53,126 INFO src.chess_logic.game Move number: 7"
+  },
+  {
+    "textPayload": "2025-09-18 19:59:53,131 INFO src.chess_logic.game Engine move: c4"
+  },
+  {
+    "textPayload": "2025-09-18 19:59:53,131 INFO src.chess_logic.game Move number: 8"
+  },
+  {
+    "textPayload": "2025-09-18 20:01:22,449 INFO src.chess_logic.strategy LLM strategy: The classical Queen’s-Gambit-Declined plan is still perfectly appropriate. I have just brought the f8-bishop to e7, so I can castle kingside on the very next move and get the king to safety. The immediate road-map is:"
+  },
+  {
+    "textPayload": "2025-09-18 20:01:22,449 INFO src.chess_logic.game LLM move: Be7"
+  },
+  {
+    "textPayload": "2025-09-18 20:01:22,450 INFO src.chess_logic.game Move number: 9"
+  },
+  {
+    "textPayload": "2025-09-18 20:01:22,457 INFO src.chess_logic.game Engine move: Bd3"
+  },
+  {
+    "textPayload": "2025-09-18 20:01:22,457 INFO src.chess_logic.game Move number: 10"
+  },
+  {
+    "textPayload": "2025-09-18 20:05:02,885 INFO src.chess_logic.strategy LLM strategy: First milestone reached – my king is now safely on g8 and the rooks are connected.  The classical QGD road-map therefore continues as follows:"
+  },
+  {
+    "textPayload": "2025-09-18 20:05:02,885 INFO src.chess_logic.game LLM move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 20:05:02,885 INFO src.chess_logic.game Move number: 11"
+  },
+  {
+    "textPayload": "2025-09-18 20:05:02,892 INFO src.chess_logic.game Engine move: Nc3"
+  },
+  {
+    "textPayload": "2025-09-18 20:05:02,893 INFO src.chess_logic.game Move number: 12"
+  },
+  {
+    "textPayload": "2025-09-18 20:06:32,005 INFO src.chess_logic.strategy LLM strategy: Classical Queen’s-Gambit-Declined set-up.  The king is castled, the rooks are linked and the queen’s knight has just reached c6, adding a third attacker to the d4–square and eyeing b4 & e5.  Next steps:"
+  },
+  {
+    "textPayload": "2025-09-18 20:06:32,005 INFO src.chess_logic.game LLM move: Nc6"
+  },
+  {
+    "textPayload": "2025-09-18 20:06:32,005 INFO src.chess_logic.game Move number: 13"
+  },
+  {
+    "textPayload": "2025-09-18 20:06:32,010 INFO src.chess_logic.game Engine move: Qe2"
+  },
+  {
+    "textPayload": "2025-09-18 20:06:32,010 INFO src.chess_logic.game Move number: 14"
+  },
+  {
+    "textPayload": "2025-09-18 20:10:28,759 INFO src.chess_logic.strategy LLM strategy: The Classical QGD set-up is still intact: my king is safe on g8, the rooks are connected and the minor pieces control the centre. The immediate targets remain the d4–pawn and the c-file. By jumping with the queen’s knight to b4 I hit the bishop on d3 and put a second eye on d3/d4 while keeping the option of …dxc4 in hand. "
+  },
+  {
+    "textPayload": "2025-09-18 20:10:28,759 INFO src.chess_logic.game LLM move: Nb4"
+  },
+  {
+    "textPayload": "2025-09-18 20:10:28,760 INFO src.chess_logic.game Move number: 15"
+  },
+  {
+    "textPayload": "2025-09-18 20:10:28,764 INFO src.chess_logic.game Engine move: Bb1"
+  },
+  {
+    "textPayload": "2025-09-18 20:10:28,765 INFO src.chess_logic.game Move number: 16"
+  },
+  {
+    "textPayload": "2025-09-18 20:14:29,178 INFO src.chess_logic.strategy LLM strategy: I have carried out the first part of the plan: my d-pawn captures on c4, exchanging the central pawn and removing White’s space–gaining c-pawn. The critical follow-up is to open the c-file.  • If the expected 2.Qxc4 appears I will push …c5 at once; the pawn advance gains space, hits the queen and immediately clears the c-file for the f8-rook (Rc8) and the queen/rook battery later on.  • If White answers with 2.a3 instead of recapturing, I can play …Nd3+ followed by …cxd3, obtaining a protected passed pawn on d3.  • Should White choose any quiet move (castling, etc.) I keep the same ideas: …c5, Rc8, possibly …b5 to harass the queen, then line up the heavy pieces on the c-file and bring the dark bishop to b7 or a6.  The knight on b4 is tactically safe because it is covered by the e7-bishop; even Qxb4? would lose the queen to …Bxb4.  I continue to watch out for White’s e3-e4 break and for tactical blows against h7 once the white king reaches g1."
+  },
+  {
+    "textPayload": "2025-09-18 20:14:29,178 INFO src.chess_logic.game LLM move: dxc4"
+  },
+  {
+    "textPayload": "2025-09-18 20:14:29,178 INFO src.chess_logic.game Move number: 17"
+  },
+  {
+    "textPayload": "2025-09-18 20:14:29,183 INFO src.chess_logic.game Engine move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 20:14:29,183 INFO src.chess_logic.game Move number: 18"
+  },
+  {
+    "textPayload": "2025-09-18 20:19:55,323 INFO src.chess_logic.strategy LLM strategy: The basic strategic picture has not changed: I am a pawn up and the key to exploiting it is the open-up (and eventual control) of the c-file.  My advanced pawn on c4 cramps White and blocks his queen-side minor pieces, but it will be hard to keep it forever; instead I want to use it as a lever.  The thematic break is the advance of my other c-pawn: 1…c5.  "
+  },
+  {
+    "textPayload": "2025-09-18 20:19:55,323 INFO src.chess_logic.game LLM move: c5"
+  },
+  {
+    "textPayload": "2025-09-18 20:19:55,323 INFO src.chess_logic.game Move number: 19"
+  },
+  {
+    "textPayload": "2025-09-18 20:19:55,328 INFO src.chess_logic.game Engine move: dxc5"
+  },
+  {
+    "textPayload": "2025-09-18 20:19:55,329 INFO src.chess_logic.game Move number: 20"
+  },
+  {
+    "textPayload": "2025-09-18 20:25:25,951 INFO src.chess_logic.strategy LLM strategy: My old plan was built on being a pawn up and breaking with …c5, but the last sequence (dxc5) has changed the balance: material is now level and there is already an open c-file.  What has appeared instead is a very powerful tactical resource – the jump …Nd3.  "
+  },
+  {
+    "textPayload": "2025-09-18 20:25:25,951 INFO src.chess_logic.game LLM move: Nd3"
+  },
+  {
+    "textPayload": "2025-09-18 20:25:25,951 INFO src.chess_logic.game Move number: 21"
+  },
+  {
+    "textPayload": "2025-09-18 20:25:25,956 INFO src.chess_logic.game Engine move: b4"
+  },
+  {
+    "textPayload": "2025-09-18 20:25:25,956 INFO src.chess_logic.game Move number: 22"
+  },
+  {
+    "textPayload": "2025-09-18 20:29:59,171 INFO src.chess_logic.strategy LLM strategy: My knight on d3 is still the linch-pin: it attacks f2, c1, c5 and keeps White’s army cramped.  The queenside pawns give me an easy way to open files for the rooks, while the familiar tactic Bxd3? cxd3 Qxd3?? Qxd3 is still lurking.  By advancing the a-pawn I (1) increase the pressure on b4, (2) prepare …axb4 (or …Rxa5 if White plays bxa5) to open the a-file for the rook, and (3) maintain the tactical threat on the d-file – if White now plays 2 Bxd3? he loses the queen exactly as before.  If he answers with 2 Rd1, 2 bxa5 or simply sits, I will capture on b4, line a rook up on the a- or c-file and keep an eye on the weak pawns c5 and f2.  The longer-term ideas from the previous plan – doubling on the open files and, if the centre allows, breaking with …e5 – remain unchanged."
+  },
+  {
+    "textPayload": "2025-09-18 20:29:59,171 INFO src.chess_logic.game LLM move: a5"
+  },
+  {
+    "textPayload": "2025-09-18 20:29:59,172 INFO src.chess_logic.game Move number: 23"
+  },
+  {
+    "textPayload": "2025-09-18 20:29:59,177 INFO src.chess_logic.game Engine move: b5"
+  },
+  {
+    "textPayload": "2025-09-18 20:29:59,177 INFO src.chess_logic.game Move number: 24"
+  },
+  {
+    "textPayload": "2025-09-18 20:32:51,273 INFO src.chess_logic.strategy LLM strategy: Our dominating knight on d3 is still the key piece: it hits f2 and c1, restricts the white pieces and supports the d-file pin/tactic (Bxd3? cxd3 Qxd3?? Qxd3 winning the queen).  The queenside structure remains our main lever.  By advancing the a-pawn we fix the white b-pawn, threaten to open the a-file (…axb3 or …Rxa5 if bxa6 ever happens) and at the same time keep the old queen-winning motif alive; if White now plays the natural Bxd3 we reply …cxd3 and after Qxd3 we have …Qxd3 with an extra queen.  After a4 I’ll look to:  (1) maintain the knight on d3 as long as possible; (2) line a rook up on the a- or c-file once they open; (3) continue to eye the weak pawns on c5 and f2; (4) when convenient, break with …e5 or redeploy the f6-knight (…Nd5/…e4 ideas)."
+  },
+  {
+    "textPayload": "2025-09-18 20:32:51,273 INFO src.chess_logic.game LLM move: a4"
+  },
+  {
+    "textPayload": "2025-09-18 20:32:51,273 INFO src.chess_logic.game Move number: 25"
+  },
+  {
+    "textPayload": "2025-09-18 20:32:51,279 INFO src.chess_logic.game Engine move: Ba3"
+  },
+  {
+    "textPayload": "2025-09-18 20:32:51,279 INFO src.chess_logic.game Move number: 26"
+  },
+  {
+    "textPayload": "2025-09-18 20:39:02,808 INFO src.chess_logic.strategy LLM strategy: The immediate priority is to cash in on our superior piece activity on the queenside. 1…Bxc5 removes the c-pawn that buttresses White’s structure and simultaneously forces an exchange which is favourable for us:"
+  },
+  {
+    "textPayload": "2025-09-18 20:39:02,808 INFO src.chess_logic.game LLM move: Bxc5"
+  },
+  {
+    "textPayload": "2025-09-18 20:39:02,809 INFO src.chess_logic.game Move number: 27"
+  },
+  {
+    "textPayload": "2025-09-18 20:39:02,817 INFO src.chess_logic.game Engine move: Bxc5"
+  },
+  {
+    "textPayload": "2025-09-18 20:39:02,817 INFO src.chess_logic.game Move number: 28"
+  },
+  {
+    "textPayload": "2025-09-18 20:41:32,391 INFO src.chess_logic.strategy LLM strategy: The combination that started with …Bxc5 is about to be completed. After Nxc5 I will have eliminated White’s active light-squared bishop and restored the material balance I was aiming for: three minor pieces for me versus two for White, plus the healthier pawn structure. My strategic programme therefore remains virtually unchanged: 1) keep the knight firmly on c5 (or on an even more active square such as d3) where it controls b3, d3, e4 and the f2-pawn; 2) support the advance of the a- and c-pawns – the ideal is …a4-a3 creating an outside passed pawn and an open a-file for a rook, and, if feasible, …c4-c3 to clamp down on White’s queenside; 3) activate the dark-squared bishop via …Bd7–c6 (or by …e5/…f6, depending on how the centre develops) so that all my pieces take part in the play; 4) place the queen and rooks on the a-, c- and d-files, keeping the d-file tactics in mind; 5) once my pieces are harmonised and White’s counter-play is neutralised, simplify with …e5, heading for an end-game where the extra material and the outside passer decide."
+  },
+  {
+    "textPayload": "2025-09-18 20:41:32,391 INFO src.chess_logic.game LLM move: Nxc5"
+  },
+  {
+    "textPayload": "2025-09-18 20:41:32,391 INFO src.chess_logic.game Move number: 29"
+  },
+  {
+    "textPayload": "2025-09-18 20:41:32,395 INFO src.chess_logic.game Engine move: Ne5"
+  },
+  {
+    "textPayload": "2025-09-18 20:41:32,396 INFO src.chess_logic.game Move number: 30"
+  },
+  {
+    "textPayload": "2025-09-18 20:45:32,368 INFO src.chess_logic.strategy LLM strategy: The tactical continuation that begins with …Nd5 immediately confronts White’s best–placed pieces. If, as is most likely, 2.Nxd5 exd5 follows, the c-file pawn becomes a lethal weapon: after 3.Nxc4? dxc4 Black wins White’s remaining knight and emerges a full minor piece up; if White avoids the capture, I have eliminated his c3–knight, fixed a strong pawn on d5 and still keep the extra pawn. Whichever line he chooses, my material or structural advantage grows.  "
+  },
+  {
+    "textPayload": "2025-09-18 20:45:32,368 INFO src.chess_logic.game LLM move: Nd5"
+  },
+  {
+    "textPayload": "2025-09-18 20:45:32,535 INFO src.chess_logic.game Move number: 1"
+  },
+  {
+    "textPayload": "2025-09-18 20:45:36,961 INFO src.chess_logic.strategy LLM strategy: Open with 1.e4 aiming for classical open-game development: control the centre with pawns (e4, d4), develop minor pieces rapidly (Nf3, Nc3/Bc4 or Bb5), castle kingside early, and keep an eye on black’s central pawn breaks …d5 and …f5. Long-term plan is to seize central space and prepare for potential kingside attack while maintaining flexible piece placement."
+  },
+  {
+    "textPayload": "2025-09-18 20:45:36,961 INFO src.chess_logic.game LLM move: e4"
+  },
+  {
+    "textPayload": "2025-09-18 20:45:36,961 INFO src.chess_logic.game Move number: 2"
+  },
+  {
+    "textPayload": "2025-09-18 20:45:36,973 INFO src.chess_logic.game Engine move: c5"
+  },
+  {
+    "textPayload": "2025-09-18 20:45:36,974 INFO src.chess_logic.game Move number: 3"
+  },
+  {
+    "textPayload": "2025-09-18 20:45:50,151 INFO src.chess_logic.strategy LLM strategy: Black has replied with 1…c5, entering the Sicilian Defence. I’ll continue with the main‐line plan: 2.Nf3, preparing 3.d4 to open the centre. General aims: develop knights to f3 and c3, get the light-squared bishop out (Bb5 or Bc4 depending on Black’s setup), castle kingside early, and keep an eye on Black’s …d5 or …e6–…d5 breaks. Maintain central pressure and look for chances of a kingside initiative once development is complete."
+  },
+  {
+    "textPayload": "2025-09-18 20:45:50,151 INFO src.chess_logic.game LLM move: Nf3"
+  },
+  {
+    "textPayload": "2025-09-18 20:45:50,152 INFO src.chess_logic.game Move number: 4"
+  },
+  {
+    "textPayload": "2025-09-18 20:45:50,156 INFO src.chess_logic.game Engine move: Nc6"
+  },
+  {
+    "textPayload": "2025-09-18 20:45:50,156 INFO src.chess_logic.game Move number: 5"
+  },
+  {
+    "textPayload": "2025-09-18 20:46:11,739 INFO src.chess_logic.strategy LLM strategy: We have just executed the standard Open-Sicilian thrust 3.d4.   If Black replies 3…cxd4 I will recapture 4.Nxd4, giving both knights good central posts.  General plan for the next few moves: develop the queenside knight (Nc3), place the light-squared bishop on either Bb5 (to provoke …a6/…b5 or hamper …e6–…d5) or Bc4 (targeting f7) according to Black’s setup, and castle kingside early.  Keep an eye on Black’s …d5 break (often prepared by …e6) and be ready to meet …g6 lines with a Maroczy-style bind if necessary.  After castling I intend to centralise the rooks on c1 and d1 and look for the thematic f4 or e5 push to generate a kingside initiative."
+  },
+  {
+    "textPayload": "2025-09-18 20:46:11,739 INFO src.chess_logic.game LLM move: d4"
+  },
+  {
+    "textPayload": "2025-09-18 20:46:11,739 INFO src.chess_logic.game Move number: 6"
+  },
+  {
+    "textPayload": "2025-09-18 20:46:11,745 INFO src.chess_logic.game Engine move: cxd4"
+  },
+  {
+    "textPayload": "2025-09-18 20:46:11,745 INFO src.chess_logic.game Move number: 7"
+  },
+  {
+    "textPayload": "2025-09-18 20:47:11,843 INFO src.chess_logic.strategy LLM strategy: I have just followed the planned Open-Sicilian recapture with 4.Nxd4, putting a knight on the strong central d4 square and eliminating Black’s advanced pawn.  From here the critical strategic points are:"
+  },
+  {
+    "textPayload": "2025-09-18 20:47:11,844 INFO src.chess_logic.game LLM move: Nxd4"
+  },
+  {
+    "textPayload": "2025-09-18 20:47:11,844 INFO src.chess_logic.game Move number: 8"
+  },
+  {
+    "textPayload": "2025-09-18 20:47:11,848 INFO src.chess_logic.game Engine move: Qa5+"
+  },
+  {
+    "textPayload": "2025-09-18 20:47:11,848 INFO src.chess_logic.game Move number: 9"
+  },
+  {
+    "textPayload": "2025-09-18 20:48:06,548 INFO src.chess_logic.strategy LLM strategy: The planned development continues to unfold: the b1-knight has now reached c3, simultaneously parrying the queen check and adding another defender to the strong d4 outpost. From here the priorities stay the same—castle kingside at once, decide between Bc4 or Bb5 (according to whether Black plays …e6/…d6 or …a6), and place the rooks on the c- and d-files. Stay alert for …e5 or …d5 breaks against the d4-knight; if Black goes for a …g6 set-up I can adopt a Maroczy structure with c2-c4. Once my king is safe I will look to expand with f2-f4 or e4-e5 to generate kingside pressure while keeping firm central control."
+  },
+  {
+    "textPayload": "2025-09-18 20:48:06,549 INFO src.chess_logic.game LLM move: Nc3"
+  },
+  {
+    "textPayload": "2025-09-18 20:48:06,549 INFO src.chess_logic.game Move number: 10"
+  },
+  {
+    "textPayload": "2025-09-18 20:48:06,555 INFO src.chess_logic.game Engine move: Nxd4"
+  },
+  {
+    "textPayload": "2025-09-18 20:48:06,558 INFO src.chess_logic.game Move number: 11"
+  },
+  {
+    "textPayload": "2025-09-18 20:49:22,634 INFO src.chess_logic.strategy LLM strategy: Material is now equal again after my queen captures the intruding knight on d4. My priorities stay the same: finish development smoothly and castle kingside as soon as possible. After Qxd4 Black will almost certainly chase my queen with …e5 or perhaps …Qc5; I am ready to retreat to either d2 or e3, keeping the queen on a safe square that still supports the centre and does not interfere with my bishops. Development plan: Bf1–e2 (or d3), 0-0, put a rook on d1 to reinforce the open file, and develop the c1-bishop to e3 or f4 depending on Black’s set-up. With the centre secured I will consider the thematic f2-f4 break to gain space on the kingside."
+  },
+  {
+    "textPayload": "2025-09-18 20:49:22,634 INFO src.chess_logic.game LLM move: Qxd4"
+  },
+  {
+    "textPayload": "2025-09-18 20:49:22,634 INFO src.chess_logic.game Move number: 12"
+  },
+  {
+    "textPayload": "2025-09-18 20:49:22,645 INFO src.chess_logic.game Engine move: e6"
+  },
+  {
+    "textPayload": "2025-09-18 20:49:22,645 INFO src.chess_logic.game Move number: 13"
+  },
+  {
+    "textPayload": "2025-09-18 20:54:50,825 INFO src.chess_logic.strategy LLM strategy: I carry on with the original development scheme. Moving the f-bishop to e2 clears the f-file so I can castle next move; once the king is on g1 the a5–e1 diagonal is no longer a problem and the c3-knight will be unpinned. After castling I intend to place a rook on d1, then develop the c1-bishop (Bd2, Be3 or Bf4 depending on Black’s set-up). With my pieces coordinated I will look at the thematic pawn thrusts b2-b4 (to harass the black queen and gain queenside space) and later f2-f4 to expand on the kingside. I must keep an eye on the possible …e6-e5 advance; if it comes I will slide the queen to d3, e3 or d2 so that she stays active while avoiding further tempo loss."
+  },
+  {
+    "textPayload": "2025-09-18 20:54:50,825 INFO src.chess_logic.game LLM move: Be2"
+  },
+  {
+    "textPayload": "2025-09-18 20:54:50,825 INFO src.chess_logic.game Move number: 14"
+  },
+  {
+    "textPayload": "2025-09-18 20:54:50,830 INFO src.chess_logic.game Engine move: Nf6"
+  },
+  {
+    "textPayload": "2025-09-18 20:54:50,830 INFO src.chess_logic.game Move number: 15"
+  },
+  {
+    "textPayload": "2025-09-18 20:55:59,319 INFO src.chess_logic.strategy LLM strategy: With my king safely castled the a5–e1 diagonal is no longer a concern and the c3-knight is unpinned. The near-term plan is 1) centralise the rook with Rd1, 2) finish development of the c1-bishop (Bd2/Be3/Bf4 according to Black’s set-up), 3) prepare b2–b4 to chase the black queen and seize queenside space; later I can consider f2–f4 for kingside expansion. I still have to be ready to slide the queen to d3, e3 or d2 if it is hit by ...e6-e5, ...Bc5 or ...Bd6. Once development is completed the knights can look at the outposts b5 and d5."
+  },
+  {
+    "textPayload": "2025-09-18 20:55:59,319 INFO src.chess_logic.game LLM move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 20:55:59,320 INFO src.chess_logic.game Move number: 16"
+  },
+  {
+    "textPayload": "2025-09-18 20:55:59,324 INFO src.chess_logic.game Engine move: Bc5"
+  },
+  {
+    "textPayload": "2025-09-18 20:55:59,324 INFO src.chess_logic.game Move number: 17"
+  },
+  {
+    "textPayload": "2025-09-18 20:59:59,538 INFO src.chess_logic.strategy LLM strategy: The queen drops back to d3 – a square I had already earmarked in the previous plan – where it still shields the e4–pawn and keeps an eye on the queenside.  The agenda is unchanged but now even clearer: 1) Rfd1 to seize the d-file; 2) finish development with Be3/Bd2 (whichever is more convenient after Black’s next move) so the rooks talk to each other; 3) prepare b2–b4 to harass the a5-queen and gain space.  I have to watch the tactical try …Bxf2+ – but after my queen’s retreat that capture would be met by Rxf2, leaving me a piece up – so the combination actually works in my favour."
+  },
+  {
+    "textPayload": "2025-09-18 20:59:59,538 INFO src.chess_logic.game LLM move: Qd3"
+  },
+  {
+    "textPayload": "2025-09-18 20:59:59,539 INFO src.chess_logic.game Move number: 18"
+  },
+  {
+    "textPayload": "2025-09-18 20:59:59,547 INFO src.chess_logic.game Engine move: Be7"
+  },
+  {
+    "textPayload": "2025-09-18 20:59:59,547 INFO src.chess_logic.game Move number: 19"
+  },
+  {
+    "textPayload": "2025-09-18 21:03:46,251 INFO src.chess_logic.strategy LLM strategy: The queen is already well posted on d3; the new tactical resource is to hop the knight to b5. From b5 it hits d6, c7 and a7 and, more importantly, vacates the c3–square so that Bd2 can follow with tempo on the a5–queen. The concrete plan is therefore: 1) Nb5 (played now) threatening Bd2 and Nxd6⁺ if Black replies …d6; 2) after the queen is chased, bring the rook to d1 to take the open file; 3) complete development with Be3/Bd2 and then advance b2–b4 to gain space on the queenside; 4) continue to watch for the …Bxf2⁺ shot – with my queen on d3 that still fails for Black because Rxf2 will leave me a piece up. Thus I exploit the immediate tactic first and afterwards return to the original positional blueprint."
+  },
+  {
+    "textPayload": "2025-09-18 21:03:46,251 INFO src.chess_logic.game LLM move: Nb5"
+  },
+  {
+    "textPayload": "2025-09-18 21:03:46,251 INFO src.chess_logic.game Move number: 20"
+  },
+  {
+    "textPayload": "2025-09-18 21:03:46,256 INFO src.chess_logic.game Engine move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 21:03:46,256 INFO src.chess_logic.game Move number: 21"
+  },
+  {
+    "textPayload": "2025-09-18 21:08:36,674 INFO src.chess_logic.strategy LLM strategy: Black’s queen on a5 was directly attacking my knight, so the first order of business is to save the piece without abandoning the original plan. The knight goes to the central outpost d4, where it is safe, keeps c3 free for Bd2 (which will still hit the queen with tempo), eyes the e6-pawn and prevents …Nxe4 (because then Qxe4 wins a piece). After the queen is chased I still intend to play Bd2, bring a rook to the d-file (Rd1), complete development with Be3/Bd2 and, once the centre is stabilised, expand on the queenside with the a- and b-pawns. I will stay alert for …d7-d5 (when Nxe6 becomes strong) and for the …Bxf2⁺ resource, which still fails for Black because Rxf2 leaves me a piece up."
+  },
+  {
+    "textPayload": "2025-09-18 21:08:36,674 INFO src.chess_logic.game LLM move: Nd4"
+  },
+  {
+    "textPayload": "2025-09-18 21:08:36,674 INFO src.chess_logic.game Move number: 22"
+  },
+  {
+    "textPayload": "2025-09-18 21:08:36,681 INFO src.chess_logic.game Engine move: d6"
+  },
+  {
+    "textPayload": "2025-09-18 21:08:36,681 INFO src.chess_logic.game Move number: 23"
+  },
+  {
+    "textPayload": "2025-09-18 21:10:34,535 INFO src.chess_logic.strategy LLM strategy: The original plan is still completely valid. Playing Bd2 chases the black queen, removes her direct pressure on my knight and on the a2–pawn, and finishes queenside development in one move. After the queen retreats I want to occupy the open d-file with a rook (first Rfd1, later perhaps Rad1), pile up on the backward pawn on d6 and keep the knight on d4 anchored. If Black plays …d5 I have the tactical resource Nxe6. On the queenside I will expand with a3/b4 or a4 once the queen is gone, always keeping an eye on the …Bxf2+ trick (which still fails, because Rxf2 leaves me a piece up)."
+  },
+  {
+    "textPayload": "2025-09-18 21:10:34,535 INFO src.chess_logic.game LLM move: Bd2"
+  },
+  {
+    "textPayload": "2025-09-18 21:10:34,536 INFO src.chess_logic.game Move number: 24"
+  },
+  {
+    "textPayload": "2025-09-18 21:10:34,542 INFO src.chess_logic.game Engine move: Qc7"
+  },
+  {
+    "textPayload": "2025-09-18 21:10:34,543 INFO src.chess_logic.game Move number: 25"
+  },
+  {
+    "textPayload": "2025-09-18 21:14:25,521 INFO src.chess_logic.strategy LLM strategy: The backward pawn on d6 is still the main strategic target. By jumping with my knight to b5 I force the black queen to move again, while simultaneously increasing the pressure on d6 and keeping the possibility of hopping into d6 or back to d4 later. After the queen’s retreat I intend to occupy the d-file with my rooks (first Rfd1, then perhaps Rad1) and continue to pile up on d6. If Black tries …a6 I can retreat the knight to d4 or, if the tactic works, capture on d6. Should Black break with …d5 or …e5 I am ready for tactical ideas such as Nxe6 or cxd5, keeping my central pawns mobile. The bishops remain flexible: the light-squared bishop can come to f4 or g5 to add pressure, while the dark-squared bishop guards the queenside. Queenside expansion with a3/b4 or a4 is still on the agenda once the knight’s position is clarified. I continue to watch the …Bxf2+ resource, but it remains harmless because Rxf2 would leave me a piece up."
+  },
+  {
+    "textPayload": "2025-09-18 21:14:25,521 INFO src.chess_logic.game LLM move: Nb5"
+  },
+  {
+    "textPayload": "2025-09-18 21:14:25,522 INFO src.chess_logic.game Move number: 26"
+  },
+  {
+    "textPayload": "2025-09-18 21:14:25,528 INFO src.chess_logic.game Engine move: Qc6"
+  },
+  {
+    "textPayload": "2025-09-18 21:14:25,528 INFO src.chess_logic.game Move number: 27"
+  },
+  {
+    "textPayload": "2025-09-18 21:19:47,869 INFO src.chess_logic.strategy LLM strategy: The backward pawn on d6 is still my main strategic target. By shifting my light-squared bishop from e2 to f3 I defend the e4 pawn and place a hidden trap: if Black snatches on e4 with the queen, Bxe4 wins it outright. From f3 the bishop also looks down the long diagonal toward c6 and even a8, adding to the pressure on Black’s queenside pieces. The general plan remains unchanged: occupy the d-file with the rooks (Rfd1, then perhaps Rad1) once the queen can step aside, and keep the knight ready to drop back to d4 whenever it is chased by …a6, again harassing the black queen. If Black manages the central break …d5 I will reply exd5 and aim at the newly opened lines; if …e5 comes I will look for tactical possibilities based on Nxe6 or cxd5. After my heavy pieces are working on the d-file I can still expand with a4 or b4. I’ll continue to watch the …Bxf2+ resource, but with the bishop now covering f1 and the rook on f1 behind it, the tactic is harmless."
+  },
+  {
+    "textPayload": "2025-09-18 21:19:47,869 INFO src.chess_logic.game LLM move: Bf3"
+  },
+  {
+    "textPayload": "2025-09-18 21:19:47,870 INFO src.chess_logic.game Move number: 28"
+  },
+  {
+    "textPayload": "2025-09-18 21:19:47,875 INFO src.chess_logic.game Engine move: Rd8"
+  },
+  {
+    "textPayload": "2025-09-18 21:19:47,875 INFO src.chess_logic.game Move number: 29"
+  },
+  {
+    "textPayload": "2025-09-18 21:26:46,016 INFO src.chess_logic.strategy LLM strategy: I have pushed the e-pawn to e5. This frees the long diagonal f3–c6 and immediately threatens Bxc6, winning the black queen. If Black answers 1…dxe5, 1…Qxb5 or any knight move that does not land on e4, Bxc6 follows at once; if 1…Ne4 I can reply 2.Qxe4, and after the inevitable series of exchanges I obtain at least an extra exchange and/or a full piece. After the expected tactical sequence the queens will probably be traded and I will enter a queen-less middlegame where I have two rooks against one and a healthy pawn majority. Then the plan is: bring one rook to the open d-file and later the seventh rank, post the bishop on c3 or a5 to bear down on c6/e6, and manoeuvre the knight (if it survives) toward d6 or c7. All the while I will keep my king tucked safely behind the f- and g-pawns. If Black avoids the main line and simply moves the queen, the positional threat on c6 persists and I retain the initiative."
+  },
+  {
+    "textPayload": "2025-09-18 21:26:46,016 INFO src.chess_logic.game LLM move: e5"
+  },
+  {
+    "textPayload": "2025-09-18 21:26:46,017 INFO src.chess_logic.game Move number: 30"
+  },
+  {
+    "textPayload": "2025-09-18 21:26:46,022 INFO src.chess_logic.game Engine move: Nd5"
+  },
+  {
+    "textPayload": "2025-09-18 21:26:46,208 INFO src.chess_logic.game Move number: 1"
+  },
+  {
+    "textPayload": "2025-09-18 21:26:46,217 INFO src.chess_logic.game Engine move: Nf3"
+  },
+  {
+    "textPayload": "2025-09-18 21:26:46,218 INFO src.chess_logic.game Move number: 2"
+  },
+  {
+    "textPayload": "2025-09-18 21:26:58,264 INFO src.chess_logic.strategy LLM strategy: White opened with 1.Nf3, a flexible Reti setup. I answer 1…d5, claiming central space immediately and keeping the whole …e6/…c6 or even …g6 repertoire available. General plan: 1) occupy or contest the centre with pawns on d5 (already) and possibly c5 or e6; 2) develop minor pieces rapidly—knight to f6, dark-squared bishop either to f5/e6 or g7 if I fianchetto; 3) castle kingside early to safeguard the king; 4) maintain symmetrical, solid structure but stay ready for an active queenside expansion with …c5 or central break …e5 depending on White’s set-up."
+  },
+  {
+    "textPayload": "2025-09-18 21:26:58,264 INFO src.chess_logic.game LLM move: d5"
+  },
+  {
+    "textPayload": "2025-09-18 21:26:58,265 INFO src.chess_logic.game Move number: 3"
+  },
+  {
+    "textPayload": "2025-09-18 21:26:58,269 INFO src.chess_logic.game Engine move: c4"
+  },
+  {
+    "textPayload": "2025-09-18 21:26:58,269 INFO src.chess_logic.game Move number: 4"
+  },
+  {
+    "textPayload": "2025-09-18 21:28:19,139 INFO src.chess_logic.strategy LLM strategy: White has just hit my d-pawn with 2.c4. I will keep the pawn in the centre and continue normal development. 1…Nf6 prepares to recapture on d5 with the knight if White exchanges, so the pawn structure stays healthy and I do not have to concede the centre. The short-term plan: (a) if 3.cxd5 Nxd5, retreat the knight to f6 if kicked by e4; (b) reinforce the centre with …e6 (or …c6 if more convenient); (c) develop the dark-squared bishop outside the pawn chain to f5 or g4, the light-squared bishop to e7 or d6, and castle kingside quickly; (d) afterwards look for the thematic breaks …c5 or …e5 to challenge White’s centre. Should the position become the typical Carlsbad structure (pawns c4/d4 vs c6/d5), I will consider a minority attack with …b5. Above all I will keep my king safe and maintain flexible, active piece play."
+  },
+  {
+    "textPayload": "2025-09-18 21:28:19,139 INFO src.chess_logic.game LLM move: Nf6"
+  },
+  {
+    "textPayload": "2025-09-18 21:28:19,139 INFO src.chess_logic.game Move number: 5"
+  },
+  {
+    "textPayload": "2025-09-18 21:28:19,144 INFO src.chess_logic.game Engine move: Qa4+"
+  },
+  {
+    "textPayload": "2025-09-18 21:28:19,145 INFO src.chess_logic.game Move number: 6"
+  },
+  {
+    "textPayload": "2025-09-18 21:30:44,372 INFO src.chess_logic.strategy LLM strategy: The position still corresponds to the Caro-Kann type structure I had in mind.  White’s queen check on a4 is only temporary; by playing …c6 I both block the diagonal and strengthen the d5-pawn, exactly as foreseen in the original plan.  After 1…c6 the main continuations I expect are 2.cxd5 Nxd5 (or Qxd5) keeping a healthy centre, or a quiet retreat of the white queen.  My general aims therefore remain:  • keep the pawns on d5 and c6 as the backbone of my position;  • complete development with …Nbd7, …Bf5/…Bg4, …e6, …Be7 and short castling;  • if the structure becomes the typical Carlsbad (White pawns on c4/d4 vs my c6/d5) consider the minority attack with …b5;  • watch for the thematic breaks …c5 or …e5 once development is finished.  The only update is that the knight will now develop to d7 (not c6, which is occupied by the pawn).  Priority remains king safety and active, flexible piece play."
+  },
+  {
+    "textPayload": "2025-09-18 21:30:44,372 INFO src.chess_logic.game LLM move: c6"
+  },
+  {
+    "textPayload": "2025-09-18 21:30:44,373 INFO src.chess_logic.game Move number: 7"
+  },
+  {
+    "textPayload": "2025-09-18 21:30:44,378 INFO src.chess_logic.game Engine move: e3"
+  },
+  {
+    "textPayload": "2025-09-18 21:30:44,378 INFO src.chess_logic.game Move number: 8"
+  },
+  {
+    "textPayload": "2025-09-18 21:33:33,076 INFO src.chess_logic.strategy LLM strategy: The Caro–Kann set-up is still intact: pawns on c6 and d5 hold the centre and the a4–e8 diagonal is blocked. Development is now the priority. I have just transferred the b8-knight to d7, where it reinforces the centre and, if the c6-pawn is exchanged, continues to shield my king from the white queen. The coming stages stay the same:  • if White plays cxd5 I will usually recapture with the c6-pawn, preserving the pawn chain (Nxd5 is an alternative if tactics favour it);  • bring the light-squared bishop outside the chain with …Bg4 or …Bf5, then play …e6;  • place the dark-squared bishop on e7 and castle short;  • once development is finished consider the typical breaks …c5 or …e5, or the minority attack …b5 if the structure turns into a Carlsbad.  King safety and flexible piece play remain the guiding themes."
+  },
+  {
+    "textPayload": "2025-09-18 21:33:33,076 INFO src.chess_logic.game LLM move: Nbd7"
+  },
+  {
+    "textPayload": "2025-09-18 21:33:33,076 INFO src.chess_logic.game Move number: 9"
+  },
+  {
+    "textPayload": "2025-09-18 21:33:33,081 INFO src.chess_logic.game Engine move: cxd5"
+  },
+  {
+    "textPayload": "2025-09-18 21:33:33,081 INFO src.chess_logic.game Move number: 10"
+  },
+  {
+    "textPayload": "2025-09-18 21:35:27,742 INFO src.chess_logic.strategy LLM strategy: I have just recaptured with the pawn from c6 to d5, entering the typical Caro–Kann Exchange structure with symmetrical centre pawns. The c-file is now open while the pawn on d5 gives me space. Next steps stay clear:"
+  },
+  {
+    "textPayload": "2025-09-18 21:35:27,742 INFO src.chess_logic.game LLM move: cxd5"
+  },
+  {
+    "textPayload": "2025-09-18 21:35:27,742 INFO src.chess_logic.game Move number: 11"
+  },
+  {
+    "textPayload": "2025-09-18 21:35:27,748 INFO src.chess_logic.game Engine move: b3"
+  },
+  {
+    "textPayload": "2025-09-18 21:35:27,748 INFO src.chess_logic.game Move number: 12"
+  },
+  {
+    "textPayload": "2025-09-18 21:40:42,976 INFO src.chess_logic.strategy LLM strategy: The only tactical point at the moment is White’s queen on a4 pinning my knight on d7 along the a4-e8 diagonal. There is no need to hurry; the knight is adequately covered, so I will continue with normal Caro–Kann development. Playing …e6 reinforces the d5-pawn and, most importantly, opens the long diagonal for my f8-bishop so that I can follow up with …Be7 and short castling. Once I am safely castled I can think about loosening the pin with …Qb6 or a timely …b5, and, depending on how White arranges his pieces, look for the standard breaks …c5 or …e5 (or a minority attack with …b5-b4 if a Carlsbad structure arises). King safety, a solid centre and piece activity remain the guiding themes."
+  },
+  {
+    "textPayload": "2025-09-18 21:40:42,976 INFO src.chess_logic.game LLM move: e6"
+  },
+  {
+    "textPayload": "2025-09-18 21:40:42,977 INFO src.chess_logic.game Move number: 13"
+  },
+  {
+    "textPayload": "2025-09-18 21:40:42,983 INFO src.chess_logic.game Engine move: Bb2"
+  },
+  {
+    "textPayload": "2025-09-18 21:40:42,984 INFO src.chess_logic.game Move number: 14"
+  },
+  {
+    "textPayload": "2025-09-18 21:45:07,219 INFO src.chess_logic.strategy LLM strategy: The next logical step in the Caro–Kann structure is to finish development and get the king to safety.  …Be7 does exactly that: it activates the f8-bishop, removes the last obstacle to castling, and keeps the centre solid.  If White answers 2.Ba3 I will calmly trade with …Bxa3; after 3.Qxa3 I can block the long diagonal with …Qe7.  Even if the queens come off and I have to recapture Kxe7, the queenless middlegame with a sound pawn centre is perfectly acceptable.  Once the king is secure and the d7-knight is free from the pin, I will look for the thematic breaks …c5 or …e5, or expand on the queenside with …b5 when appropriate."
+  },
+  {
+    "textPayload": "2025-09-18 21:45:07,219 INFO src.chess_logic.game LLM move: Be7"
+  },
+  {
+    "textPayload": "2025-09-18 21:45:07,219 INFO src.chess_logic.game Move number: 15"
+  },
+  {
+    "textPayload": "2025-09-18 21:45:07,223 INFO src.chess_logic.game Engine move: Nc3"
+  },
+  {
+    "textPayload": "2025-09-18 21:45:07,223 INFO src.chess_logic.game Move number: 16"
+  },
+  {
+    "textPayload": "2025-09-18 21:46:22,107 INFO src.chess_logic.strategy LLM strategy: Be7 is on the board and the king is about to be tucked away; with short castling I complete the first phase of development and keep the solid Caro-Kann pawn chain d5–e6. The immediate priorities now are: 1) mobilise the c8-bishop – either by …b6–Bb7 or (after …Nb6) via …Bd7; 2) relocate the d7-knight to b6 (hitting the white queen) or later to e4, gaining activity and making …e5 easier; 3) prepare the central break …e5 when it can be supported by the f6-knight and queen. If White plays Bb5+ or Ba3 I am content to exchange bishops, as simplification favours my sound structure."
+  },
+  {
+    "textPayload": "2025-09-18 21:46:22,107 INFO src.chess_logic.game LLM move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 21:46:22,107 INFO src.chess_logic.game Move number: 17"
+  },
+  {
+    "textPayload": "2025-09-18 21:46:22,111 INFO src.chess_logic.game Engine move: Ba3"
+  },
+  {
+    "textPayload": "2025-09-18 21:46:22,112 INFO src.chess_logic.game Move number: 18"
+  },
+  {
+    "textPayload": "2025-09-18 21:49:05,867 INFO src.chess_logic.strategy LLM strategy: My knight has just jumped from d7 to b6, gaining a tempo on the white queen and simultaneously cutting the a3–f8 diagonal that exposed my e7-bishop. If White now captures on e7 I will calmly reply …Qxe7; if the queen simply retreats I intend …Bxa3, removing that annoying bishop altogether. Once the a3 bishop is gone the c8-bishop can finally emerge – either by …b6 followed by …Bb7, or more simply …Bd7 – and my rooks will be connected. With the minor pieces harmonised I will prepare the thematic Caro–Kann break …e5, backed up by the f6-knight and queen. From its new post the b6-knight can later hop to c4 or e4, targeting d2 and f2 and supporting central play, while my king remains perfectly safe on g8."
+  },
+  {
+    "textPayload": "2025-09-18 21:49:05,867 INFO src.chess_logic.game LLM move: Nb6"
+  },
+  {
+    "textPayload": "2025-09-18 21:49:05,868 INFO src.chess_logic.game Move number: 19"
+  },
+  {
+    "textPayload": "2025-09-18 21:49:05,873 INFO src.chess_logic.game Engine move: Qa5"
+  },
+  {
+    "textPayload": "2025-09-18 21:49:05,873 INFO src.chess_logic.game Move number: 20"
+  },
+  {
+    "textPayload": "2025-09-18 21:58:57,278 INFO src.chess_logic.strategy LLM strategy: The plan I outlined last turn is still valid: first get rid of the strong White bishop on a3, then finish development and create counter-play in the centre. With  …Bxa3 I trade bishops and remove the pressure along the a3–f8 diagonal. After the expected 2 Qxa3 I will not hurry; moves such as …Re8 or …Bd7 will connect my rooks and bring the c8-bishop into the game, after which I can prepare the thematic break …e5. The b6-knight can later pivot to c4 or e4, while my king remains safe on g8. I am still a pawn down, but the piece activity and the healthier structure should give me good play."
+  },
+  {
+    "textPayload": "2025-09-18 21:58:57,278 INFO src.chess_logic.game LLM move: Bxa3"
+  },
+  {
+    "textPayload": "2025-09-18 21:58:57,279 INFO src.chess_logic.game Move number: 21"
+  },
+  {
+    "textPayload": "2025-09-18 21:58:57,284 INFO src.chess_logic.game Engine move: Qxa3"
+  },
+  {
+    "textPayload": "2025-09-18 21:58:57,285 INFO src.chess_logic.game Move number: 22"
+  },
+  {
+    "textPayload": "2025-09-18 22:00:49,531 INFO src.chess_logic.strategy LLM strategy: The immediate tactical issue—the white queen’s pressure along the a3-f8 diagonal—has been solved by moving the rook from f8 to e8.  From here the plan is unchanged but a little clearer:"
+  },
+  {
+    "textPayload": "2025-09-18 22:00:49,532 INFO src.chess_logic.game LLM move: Re8"
+  },
+  {
+    "textPayload": "2025-09-18 22:00:49,532 INFO src.chess_logic.game Move number: 23"
+  },
+  {
+    "textPayload": "2025-09-18 22:00:49,537 INFO src.chess_logic.game Engine move: Bb5"
+  },
+  {
+    "textPayload": "2025-09-18 22:00:49,537 INFO src.chess_logic.game Move number: 24"
+  },
+  {
+    "textPayload": "2025-09-18 22:03:58,461 INFO src.chess_logic.strategy LLM strategy: The immediate priority is still to free the rook on e8 from the pin of the white bishop on b5.  …Bd7 achieves this, develops the last minor piece and invites a favourable exchange that will bring my queen to d7 and connect the rooks.  After the bishops come off my pieces will be harmonised: queen very active on d7, rooks ready for Rc8 or Rec8, and both knights (b6, f6) eyeing the central dark squares c4/e4 and g4.  With the pin gone I can push …e6-e5 (sometimes prepared by …Rc8 first) to seize central space and open files for the rooks.  I must also keep the a-file under control and continue to watch the a3–f8 diagonal until the white queen retreats.  In short: exchange the bishops, connect the rooks, plant the knights on active outposts and break with …e5."
+  },
+  {
+    "textPayload": "2025-09-18 22:03:58,461 INFO src.chess_logic.game LLM move: Bd7"
+  },
+  {
+    "textPayload": "2025-09-18 22:03:58,461 INFO src.chess_logic.game Move number: 25"
+  },
+  {
+    "textPayload": "2025-09-18 22:03:58,466 INFO src.chess_logic.game Engine move: Rc1"
+  },
+  {
+    "textPayload": "2025-09-18 22:03:58,467 INFO src.chess_logic.game Move number: 26"
+  },
+  {
+    "textPayload": "2025-09-18 22:08:58,936 INFO src.chess_logic.strategy LLM strategy: The pin on the e8-rook has been neutralised by the earlier …Bd7, so I can now realise the main strategic aim: the central break …e6–e5.  This establishes the powerful pawn duo d5–e5, opens the e-file for my rook and limits the scope of White’s minor pieces."
+  },
+  {
+    "textPayload": "2025-09-18 22:08:58,936 INFO src.chess_logic.game LLM move: e5"
+  },
+  {
+    "textPayload": "2025-09-18 22:08:58,936 INFO src.chess_logic.game Move number: 27"
+  },
+  {
+    "textPayload": "2025-09-18 22:08:58,942 INFO src.chess_logic.game Engine move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 22:08:58,942 INFO src.chess_logic.game Move number: 28"
+  },
+  {
+    "textPayload": "2025-09-18 22:12:53,542 INFO src.chess_logic.strategy LLM strategy: The central break …e6–e5 is already on the board, so now the heavy pieces must be mobilised. By swinging the a-rook to c8 I almost connect the rooks and seize the only half-open file.  After my move the tactical tries 2 Nxe5 or 2 Nxd5 are both favourable: 2 Nxe5 Rxe5 3 Bxd7 Qxd7 or 2 Nxd5 Nfxd5 (or Nbxd5) leave me a clear extra minor piece.  If White instead plays 2 Bxd7 I answer 2…Qxd7 and the rooks are fully connected.  With the rooks working on the c- and e-files I will prepare …d4; when the e-file clears I can lift the e-rook to e6 or double.  I must still watch the a3–f8 diagonal and, when convenient, remove the b5-bishop with …a6 or …Bxb5.  In short: activate both rooks (c8/e-file), accept the favourable tactical exchanges on e5 or d5, prepare …d4, and convert the prospective extra piece or pawn."
+  },
+  {
+    "textPayload": "2025-09-18 22:12:53,542 INFO src.chess_logic.game LLM move: Rc8"
+  },
+  {
+    "textPayload": "2025-09-18 22:12:53,543 INFO src.chess_logic.game Move number: 29"
+  },
+  {
+    "textPayload": "2025-09-18 22:12:53,548 INFO src.chess_logic.game Engine move: Be2"
+  },
+  {
+    "textPayload": "2025-09-18 22:12:53,548 INFO src.chess_logic.game Move number: 30"
+  },
+  {
+    "textPayload": "2025-09-18 22:17:55,773 INFO src.chess_logic.strategy LLM strategy: My rooks are now on c8 and e8 and already connected; the only open (half-open) files are c and e, so the heavy pieces are well placed.  The white queen on a3 controls the a3–f8 diagonal, so I must not put anything loose on e7 or f8 before I am ready to exchange queens.  The knight jump …Ne4 immediately centralises a piece, hits c3, f2 and d2 and prepares the thematic …d4 break.  If White plays 2 Nxe4 dxe4 the e-file is cleared and any capture on e5 is met by …Rxe5, leaving me a full extra minor piece after …dxe4.  If White prefers 2 d4 I have …Nxc3, again winning a knight.  After the knight reaches e4 my next targets are: a) play …d4 under the best tactical circumstances, b) consider doubling or lifting the e-rook once the e-file opens, c) if the a3-queen becomes annoying, remove it with …a6 or accept the queen trade on e7.  In all lines I stay alert to the a3-f8 diagonal and to back-rank mates once queens are traded."
+  },
+  {
+    "textPayload": "2025-09-18 22:17:55,774 INFO src.chess_logic.game LLM move: Ne4"
+  },
+  {
+    "textPayload": "2025-09-18 22:17:55,905 INFO src.chess_logic.game Move number: 1"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:00,977 INFO src.chess_logic.strategy LLM strategy: Open with 1.e4 to claim central space and free the light-squared bishop and queen. Aim for rapid development: knights to f3 and c3, bishops to c4 or b5 (depending on Black’s reply), and castle kingside early. Maintain central pawn tension and look for opportunities to seize the initiative while keeping the king safe."
+  },
+  {
+    "textPayload": "2025-09-18 22:18:00,977 INFO src.chess_logic.game LLM move: e4"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:00,977 INFO src.chess_logic.game Move number: 2"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:00,988 INFO src.chess_logic.game Engine move: c5"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:00,988 INFO src.chess_logic.game Move number: 3"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:17,477 INFO src.chess_logic.strategy LLM strategy: Black has entered the Sicilian Defence with 1…c5. I have the e-pawn on e4 and now develop the king’s knight to f3, attacking the e5 square and preparing the central break d4. General plan: play d4 next (Open Sicilian) and recapture with the knight, follow with Nc3, Bc4 or Bb5 depending on Black’s setup, and castle kingside quickly. Keep rooks on central/open files and look for kingside attacking chances while restraining Black’s queenside counterplay."
+  },
+  {
+    "textPayload": "2025-09-18 22:18:17,477 INFO src.chess_logic.game LLM move: Nf3"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:17,477 INFO src.chess_logic.game Move number: 4"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:17,481 INFO src.chess_logic.game Engine move: Nc6"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:17,481 INFO src.chess_logic.game Move number: 5"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:27,481 INFO src.chess_logic.strategy LLM strategy: Opened with 1.e4 c5 2.Nf3; now I have played the standard 3.d4, aiming for the Open Sicilian. If Black exchanges on d4 I intend 4.Nxd4, then continue normal development with Nc3, Bc4/Bb5 depending on Black’s reply and castle kingside promptly. Overall plan: keep central presence, pressure the d- and f-files, and be ready for a kingside attack while monitoring Black’s queenside counterplay."
+  },
+  {
+    "textPayload": "2025-09-18 22:18:27,481 INFO src.chess_logic.game LLM move: d4"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:27,481 INFO src.chess_logic.game Move number: 6"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:27,485 INFO src.chess_logic.game Engine move: cxd4"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:27,485 INFO src.chess_logic.game Move number: 7"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:57,406 INFO src.chess_logic.strategy LLM strategy: The Open Sicilian plan is still on track: I have just recaptured on d4 with the knight, restoring material equality and planting a piece in the centre. Next I intend the usual development – Nc3 to reinforce the d4-knight, Bc4 or Bb5 depending on how Black arranges his pieces, then castle kingside. I will watch for Black’s ...d6–d5 or ...e7–e5 breaks and be ready to meet queenside expansion with a2–a4 if necessary. Long-term goals: keep a strong central presence with the two knights, aim pressure on the d- and f-files (f2–f4 is a typical lever), and look for tactical chances against the e6 and c6 squares."
+  },
+  {
+    "textPayload": "2025-09-18 22:18:57,406 INFO src.chess_logic.game LLM move: Nxd4"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:57,407 INFO src.chess_logic.game Move number: 8"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:57,411 INFO src.chess_logic.game Engine move: Qb6"
+  },
+  {
+    "textPayload": "2025-09-18 22:18:57,411 INFO src.chess_logic.game Move number: 9"
+  },
+  {
+    "textPayload": "2025-09-18 22:21:57,533 INFO src.chess_logic.strategy LLM strategy: Black’s queen on b6 and knight on c6 are both hitting my knight on d4. By playing c2–c3 I give the knight a solid pawn defender: if …Qxd4 the pawn will recapture and win the queen, while after …Nxd4 I can reply cxd4 and keep a powerful centre. Once the d4 issue is resolved I will finish development – bishop f1 to e2 (or c4 if the b-file is still poisoned), knight b1 to d2 or c3, and castle short. With pawns on c3, d4 (or a pawn ready to reach d4) and e4 I should enjoy central space; later I can look at f2–f4 or e4–e5 to generate kingside play. I must remember that the b2-pawn is only safe while the bishop stays on c1, so before moving that bishop I’ll arrange a defence of b2. I’ll also keep an eye on Black’s thematic …d5 or …e5 breaks and be ready to meet queenside expansion with a2–a4 if needed."
+  },
+  {
+    "textPayload": "2025-09-18 22:21:57,534 INFO src.chess_logic.game LLM move: c3"
+  },
+  {
+    "textPayload": "2025-09-18 22:21:57,534 INFO src.chess_logic.game Move number: 10"
+  },
+  {
+    "textPayload": "2025-09-18 22:21:57,541 INFO src.chess_logic.game Engine move: Nxd4"
+  },
+  {
+    "textPayload": "2025-09-18 22:21:57,542 INFO src.chess_logic.game Move number: 11"
+  },
+  {
+    "textPayload": "2025-09-18 22:25:34,029 INFO src.chess_logic.strategy LLM strategy: My earlier plan to bolster a white knight on d4 is obsolete – Black has just occupied that square with his own knight. By playing cxd4 I recapture the knight, restoring material equality and establishing a strong pawn centre. Tactically the new pawn on d4 is safe: if …Qxd4 my queen from d1 replies Qxd4, winning Black’s queen; if …Qxb2 my bishop from c1 will answer Bxb2. After the capture I intend to finish development quickly: Bf1–e2 and short castling, then Nb1–d2 (or to c3 once the b6–d4 diagonal is no longer critical) and Re1. With pawns on d4 and e4 I can look to press with e4–e5 or d4–d5 in the middlegame. I’ll keep the bishop on c1 for the moment so the b-file remains defended, and stay alert to Black’s thematic …d5 or …e5 breaks and to queenside expansion."
+  },
+  {
+    "textPayload": "2025-09-18 22:25:34,029 INFO src.chess_logic.game LLM move: cxd4"
+  },
+  {
+    "textPayload": "2025-09-18 22:25:34,029 INFO src.chess_logic.game Move number: 12"
+  },
+  {
+    "textPayload": "2025-09-18 22:25:34,034 INFO src.chess_logic.game Engine move: Qa5+"
+  },
+  {
+    "textPayload": "2025-09-18 22:25:34,034 INFO src.chess_logic.game Move number: 13"
+  },
+  {
+    "textPayload": "2025-09-18 22:28:00,156 INFO src.chess_logic.strategy LLM strategy: Black’s queen has given check from a5. I will parry the check and develop at the same time: the knight from b1 goes to c3, plugging the diagonal a5-e1. If Black snatches the pinned knight with …Qxc3+ I answer bxc3, winning the queen, so the capture is impossible without huge loss. After Nc3 I want to continue exactly as before: Bf1-e2 and 0-0 to unpin the knight, then centralise the rooks (Re1, Rd1) and use my strong pawn duo d4/e4 to push e4-e5 or d4-d5. The light-squared bishop can stay on c1 for the moment (it still guards b2) and later come to e3, g5 or even h6 depending on Black’s set-up. I must keep an eye on the a- and b-files, where the black queen may roam, but once my king is castled my position will be solid with more space in the centre."
+  },
+  {
+    "textPayload": "2025-09-18 22:28:00,156 INFO src.chess_logic.game LLM move: Nc3"
+  },
+  {
+    "textPayload": "2025-09-18 22:28:00,157 INFO src.chess_logic.game Move number: 14"
+  },
+  {
+    "textPayload": "2025-09-18 22:28:00,161 INFO src.chess_logic.game Engine move: a6"
+  },
+  {
+    "textPayload": "2025-09-18 22:28:00,162 INFO src.chess_logic.game Move number: 15"
+  },
+  {
+    "textPayload": "2025-09-18 22:28:32,402 INFO src.chess_logic.strategy LLM strategy: I have carried out the second step of my original plan by developing the king-side bishop to e2.   Next move I intend to castle short; this will remove the pin from my c3-knight and finally secure the king.  Once castled I will centralise the rooks (Re1 and Rd1), then use my pawn duo d4/e4 to seize more space with e4-e5 or d4-d5, depending on Black’s replies.  The queen can come to d2 or b3, and the light-squared bishop (c1) will develop later to e3, g5 or h6 to increase pressure on Black’s king position.  I must still watch the a- and b-files in case the black queen swings across; a2-a4 (or even b2-b4) is an eventual option to restrict her.  Overall plan: finish development, castle, claim the centre, and gradually convert my space advantage into attacking chances."
+  },
+  {
+    "textPayload": "2025-09-18 22:28:32,403 INFO src.chess_logic.game LLM move: Be2"
+  },
+  {
+    "textPayload": "2025-09-18 22:28:32,403 INFO src.chess_logic.game Move number: 16"
+  },
+  {
+    "textPayload": "2025-09-18 22:28:32,407 INFO src.chess_logic.game Engine move: d5"
+  },
+  {
+    "textPayload": "2025-09-18 22:28:32,407 INFO src.chess_logic.game Move number: 17"
+  },
+  {
+    "textPayload": "2025-09-18 22:29:49,865 INFO src.chess_logic.strategy LLM strategy: The king is now safely castled, so the opening phase is essentially finished.  Immediate priorities are:"
+  },
+  {
+    "textPayload": "2025-09-18 22:29:49,865 INFO src.chess_logic.game LLM move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 22:29:49,865 INFO src.chess_logic.game Move number: 18"
+  },
+  {
+    "textPayload": "2025-09-18 22:29:49,870 INFO src.chess_logic.game Engine move: e6"
+  },
+  {
+    "textPayload": "2025-09-18 22:29:49,870 INFO src.chess_logic.game Move number: 19"
+  },
+  {
+    "textPayload": "2025-09-18 22:34:11,579 INFO src.chess_logic.strategy LLM strategy: Black has just locked the centre with …e6.  My queen-side knight is still the only piece that blocks the a5–e1 diagonal, so I first remove the tactical pressure there by bringing the c1-bishop to d2.  This simultaneously (1) reinforces the knight on c3 against the possible …Bb4 pin, (2) blocks any future queen shot along a5–e1 should the knight move, and (3) completes the development of my last minor piece.  With the bishop developed I can safely centralise the rooks (Rf1–e1, Ra1–d1) and keep the central tension.  If Black plays …dxe4 I will answer Nxe4, when the knight lands on an ideal square and the f3–b7 diagonal opens; if the tension remains I still have the choice between exchanging in the centre (exd5 followed by Re1/Bf3) or advancing d4–d5.  I will also watch the a-file; after my rook leaves a1, a2–a3 (and later b2–b4) will kick the black queen and gain space on the queenside."
+  },
+  {
+    "textPayload": "2025-09-18 22:34:11,579 INFO src.chess_logic.game LLM move: Bd2"
+  },
+  {
+    "textPayload": "2025-09-18 22:34:11,579 INFO src.chess_logic.game Move number: 20"
+  },
+  {
+    "textPayload": "2025-09-18 22:34:11,585 INFO src.chess_logic.game Engine move: dxe4"
+  },
+  {
+    "textPayload": "2025-09-18 22:34:11,585 INFO src.chess_logic.game Move number: 21"
+  },
+  {
+    "textPayload": "2025-09-18 22:36:22,217 INFO src.chess_logic.strategy LLM strategy: The planned reply to …dxe4 is in place: Nxe4 not only regains the pawn but also uncovers the dark-squared bishop on d2, which now directly attacks the black queen on a5.  Black therefore has to spend a tempo on the queen; if it stays on the a-file Bxa5 will follow, winning it.  After the queen retreats I will consolidate the knight on e4 (it is presently undefended) with Bf3, Be3 or even c3–c4 should the position allow, and then finish my development: Re1 to seize the e-file and Rad1 to bring the other rook into the centre.  With rooks doubled on the d- and e-files I can either push d4–d5 to cramp Black or exchange once in the centre and penetrate with my pieces.  I will also keep an eye on the kingside: the long-diagonal bishop on e2, the knight on e4 and the rook on f1 give me attacking chances against the f- and g-pawns once the centre opens."
+  },
+  {
+    "textPayload": "2025-09-18 22:36:22,217 INFO src.chess_logic.game LLM move: Nxe4"
+  },
+  {
+    "textPayload": "2025-09-18 22:36:22,217 INFO src.chess_logic.game Move number: 22"
+  },
+  {
+    "textPayload": "2025-09-18 22:36:22,223 INFO src.chess_logic.game Engine move: Qd8"
+  },
+  {
+    "textPayload": "2025-09-18 22:36:22,223 INFO src.chess_logic.game Move number: 23"
+  },
+  {
+    "textPayload": "2025-09-18 22:38:13,362 INFO src.chess_logic.strategy LLM strategy: Black’s queen has retreated to d8, so the immediate tactic against it is gone, but I still have a clear lead in development and more space.  My pawn on d4 and the knight on e4 form a strong central spearhead; if I keep that duo intact I control the key d5 and f6 squares and restrict Black’s minor pieces."
+  },
+  {
+    "textPayload": "2025-09-18 22:38:13,362 INFO src.chess_logic.game LLM move: Be3"
+  },
+  {
+    "textPayload": "2025-09-18 22:38:13,362 INFO src.chess_logic.game Move number: 24"
+  },
+  {
+    "textPayload": "2025-09-18 22:38:13,370 INFO src.chess_logic.game Engine move: Ne7"
+  },
+  {
+    "textPayload": "2025-09-18 22:38:13,371 INFO src.chess_logic.game Move number: 25"
+  },
+  {
+    "textPayload": "2025-09-18 22:40:07,611 INFO src.chess_logic.strategy LLM strategy: By playing 1.Re1 I finish my kingside development, connect the rooks and place the f-rook on a square that can quickly become active once the e-file opens.  The pawn on d4 and the knight on e4 remain the fulcrum of my position; as long as I keep that duo I control d5 and f6 and cramp Black’s minor pieces."
+  },
+  {
+    "textPayload": "2025-09-18 22:40:07,611 INFO src.chess_logic.game LLM move: Re1"
+  },
+  {
+    "textPayload": "2025-09-18 22:40:07,612 INFO src.chess_logic.game Move number: 26"
+  },
+  {
+    "textPayload": "2025-09-18 22:40:07,617 INFO src.chess_logic.game Engine move: Nf5"
+  },
+  {
+    "textPayload": "2025-09-18 22:40:07,617 INFO src.chess_logic.game Move number: 27"
+  },
+  {
+    "textPayload": "2025-09-18 22:45:51,432 INFO src.chess_logic.strategy LLM strategy: Black’s knight on f5 was simultaneously menacing my light–squared bishop (…Nxe3) and clearing the way for the queen to grab the pawn on d4.   By putting my queen on a4 with check I force Black to block with either …Bd7 or …Qd7; in both cases the queen can no longer slide straight down the d-file, so the pawn spear on d4 is safe for the moment.  From a4 (and very soon b3) my queen also begins to pressure the queenside weaknesses a6 and b7 and, along the a2–g8 diagonal, the pawn chain e6–f7.  The long-term plan is therefore only adjusted slightly:"
+  },
+  {
+    "textPayload": "2025-09-18 22:45:51,433 INFO src.chess_logic.game LLM move: Qa4+"
+  },
+  {
+    "textPayload": "2025-09-18 22:45:51,433 INFO src.chess_logic.game Move number: 28"
+  },
+  {
+    "textPayload": "2025-09-18 22:45:51,438 INFO src.chess_logic.game Engine move: b5"
+  },
+  {
+    "textPayload": "2025-09-18 22:45:51,438 INFO src.chess_logic.game Move number: 29"
+  },
+  {
+    "textPayload": "2025-09-18 22:48:30,848 INFO src.chess_logic.strategy LLM strategy: The queen has done its tactical job on a4 by parrying …Qxd4 and provoking …b7-b5.  The thrust leaves the ideal retreat square – b3 – free, so I can now relocate the queen there exactly as planned.  From b3 she eyes a6/b7 on the queenside and the e6-f7 chain on the long a2–g8 diagonal, while clearing the a-file for my rook.  The long-term scheme therefore remains essentially the same, only now one step closer to completion:"
+  },
+  {
+    "textPayload": "2025-09-18 22:48:30,848 INFO src.chess_logic.game LLM move: Qb3"
+  },
+  {
+    "textPayload": "2025-09-18 22:48:30,848 INFO src.chess_logic.game Move number: 30"
+  },
+  {
+    "textPayload": "2025-09-18 22:48:30,853 INFO src.chess_logic.game Engine move: Nxe3"
+  },
+  {
+    "textPayload": "2025-09-18 22:48:31,022 INFO src.chess_logic.game Move number: 1"
+  },
+  {
+    "textPayload": "2025-09-18 22:48:31,030 INFO src.chess_logic.game Engine move: Nf3"
+  },
+  {
+    "textPayload": "2025-09-18 22:48:31,031 INFO src.chess_logic.game Move number: 2"
+  },
+  {
+    "textPayload": "2025-09-18 22:49:02,385 INFO src.chess_logic.strategy LLM strategy: I will adopt a solid queen-pawn set-up. First place a pawn on d5, then continue with ...Nf6 and ...c6 (or ...e6) to support the centre. I want to develop the light-squared bishop outside the pawn chain to f5 or g4 before I play ...e6, and castle kingside early. If White plays d4 I will be ready for a Slav/Queen’s-Gambit-Declined structure; if White prefers g3 and Bg2 I will keep the centre strong and consider ...c5 or ...e5 at the right moment."
+  },
+  {
+    "textPayload": "2025-09-18 22:49:02,385 INFO src.chess_logic.game LLM move: d5"
+  },
+  {
+    "textPayload": "2025-09-18 22:49:02,386 INFO src.chess_logic.game Move number: 3"
+  },
+  {
+    "textPayload": "2025-09-18 22:49:02,390 INFO src.chess_logic.game Engine move: d4"
+  },
+  {
+    "textPayload": "2025-09-18 22:49:02,390 INFO src.chess_logic.game Move number: 4"
+  },
+  {
+    "textPayload": "2025-09-18 22:49:43,003 INFO src.chess_logic.strategy LLM strategy: Our Queen’s-Gambit/Slav set-up is on track: the pawn is already on d5 and I have just developed the g8-knight to f6. Next I will place the light-squared bishop on g4 (or f5) before closing the diagonal with ...e6, reinforce the centre with ...c6 if necessary, and then castle kingside. Once development is complete I will seek the typical ...c5 or ...e5 breaks."
+  },
+  {
+    "textPayload": "2025-09-18 22:49:43,003 INFO src.chess_logic.game LLM move: Nf6"
+  },
+  {
+    "textPayload": "2025-09-18 22:49:43,004 INFO src.chess_logic.game Move number: 5"
+  },
+  {
+    "textPayload": "2025-09-18 22:49:43,008 INFO src.chess_logic.game Engine move: g3"
+  },
+  {
+    "textPayload": "2025-09-18 22:49:43,008 INFO src.chess_logic.game Move number: 6"
+  },
+  {
+    "textPayload": "2025-09-18 22:50:05,248 INFO src.chess_logic.strategy LLM strategy: The bishop has just gone to g4, pinning the knight on f3 and following the planned Slav development. Next I intend to play ...e6 (closing the diagonal and completing kingside development), add ...c6 if the d-pawn needs support, and then castle short. Once development is finished I will look for the standard ...c5 or, if circumstances allow, ...e5 break to free my position and contest the centre."
+  },
+  {
+    "textPayload": "2025-09-18 22:50:05,248 INFO src.chess_logic.game LLM move: Bg4"
+  },
+  {
+    "textPayload": "2025-09-18 22:50:05,248 INFO src.chess_logic.game Move number: 7"
+  },
+  {
+    "textPayload": "2025-09-18 22:50:05,254 INFO src.chess_logic.game Engine move: h3"
+  },
+  {
+    "textPayload": "2025-09-18 22:50:05,254 INFO src.chess_logic.game Move number: 8"
+  },
+  {
+    "textPayload": "2025-09-18 22:52:53,532 INFO src.chess_logic.strategy LLM strategy: The bishop steps back to h5 so it stays outside the pawn chain and keeps an eye on the f3-e2 diagonal. If White answers with g4 I will calmly retreat to g6, tempting further pawn pushes that weaken the white king-side. The near-term plan remains: develop safely with …e6, …Nbd7 (or …c6 if the d-pawn needs help) and castle short. Once development is complete I will look for the standard Slav breaks …c5 or …e5. Should White over-extend the g- and h-pawns I will consider …h6/…h5 to open the h-file and bring the rook on h8 into the attack."
+  },
+  {
+    "textPayload": "2025-09-18 22:52:53,532 INFO src.chess_logic.game LLM move: Bh5"
+  },
+  {
+    "textPayload": "2025-09-18 22:52:53,532 INFO src.chess_logic.game Move number: 9"
+  },
+  {
+    "textPayload": "2025-09-18 22:52:53,536 INFO src.chess_logic.game Engine move: c4"
+  },
+  {
+    "textPayload": "2025-09-18 22:52:53,536 INFO src.chess_logic.game Move number: 10"
+  },
+  {
+    "textPayload": "2025-09-18 22:55:03,196 INFO src.chess_logic.strategy LLM strategy: The core plan from the last turn is still valid.  I have now carried it a step further by playing …e6, completing the solid Slav-type pawn triangle and freeing the f8-bishop for future development.  Near-term priorities:"
+  },
+  {
+    "textPayload": "2025-09-18 22:55:03,196 INFO src.chess_logic.game LLM move: e6"
+  },
+  {
+    "textPayload": "2025-09-18 22:55:03,197 INFO src.chess_logic.game Move number: 11"
+  },
+  {
+    "textPayload": "2025-09-18 22:55:03,202 INFO src.chess_logic.game Engine move: Bg2"
+  },
+  {
+    "textPayload": "2025-09-18 22:55:03,202 INFO src.chess_logic.game Move number: 12"
+  },
+  {
+    "textPayload": "2025-09-18 22:58:17,732 INFO src.chess_logic.strategy LLM strategy: The position is still a sound Slav structure for me.  By driving my light-squared bishop to b4 with check I (a) force White to spend a tempo parrying the threat, (b) vacate f8 so that I can castle next move, and (c) keep pressure on the e1–a5 diagonal.  After the check is met I will almost always castle short; if the block is 2.Nc3 the knight is pinned and I can follow with …Nbd7 and the thematic break …c5.  If 2.Bd2 or 2.Qd2 I can decide between exchanging on d2 or simply retreating the bishop, depending on whether I prefer the simplification.  The dark-squared bishop stays outside the pawn chain; if White pushes g4 I will slip back to g6, keeping the long diagonal alive.  Against any cxd5 I still recapture with …exd5 (or …Nxd5 if clearly best) to re-establish the central pawn.  Once I am castled and the pieces are coordinated I will aim for the customary Slav breaks …c5 or …e5; if White over-extends the kingside pawns …h6/…h5 remains an additional source of counter-play."
+  },
+  {
+    "textPayload": "2025-09-18 22:58:17,732 INFO src.chess_logic.game LLM move: Bb4+"
+  },
+  {
+    "textPayload": "2025-09-18 22:58:17,733 INFO src.chess_logic.game Move number: 13"
+  },
+  {
+    "textPayload": "2025-09-18 22:58:17,737 INFO src.chess_logic.game Engine move: Kf1"
+  },
+  {
+    "textPayload": "2025-09-18 22:58:17,738 INFO src.chess_logic.game Move number: 14"
+  },
+  {
+    "textPayload": "2025-09-18 22:59:25,282 INFO src.chess_logic.strategy LLM strategy: The immediate objective I set last turn—castling short once the f-file was cleared—has now been achieved with 0-0.  My king is safe, the rook joins the f-file and the position is a healthy Slav structure with the light-squared bishop posted on b4 and the dark-squared bishop on h5.  From here my main middlegame plan is:"
+  },
+  {
+    "textPayload": "2025-09-18 22:59:25,282 INFO src.chess_logic.game LLM move: O-O"
+  },
+  {
+    "textPayload": "2025-09-18 22:59:25,282 INFO src.chess_logic.game Move number: 15"
+  },
+  {
+    "textPayload": "2025-09-18 22:59:25,287 INFO src.chess_logic.game Engine move: Ne5"
+  },
+  {
+    "textPayload": "2025-09-18 22:59:25,288 INFO src.chess_logic.game Move number: 16"
+  },
+  {
+    "textPayload": "2025-09-18 23:01:38,080 INFO src.chess_logic.strategy LLM strategy: Our setup remains the ‘Slav-plus-bishop-pair’ I described last turn.  Now I have completed the next item on that plan: bring the queenside knight to d7.  From d7 the knight (a) reinforces the important e5–c5 squares and immediately challenges White’s advanced knight, (b) clears the c-file for a possible …c6/…c5 break, and (c) gives the f8-rook an unobstructed view down the f-file.  If White exchanges on d7 I recapture with the f6-knight, eliminating the intrusive Ne5 at no cost.  My general middlegame plan is unchanged:  • If the centre opens with cxd5 I answer …exd5, maintaining the pawn chain.  • I prepare the pawn breaks …c5 or …e5 (most likely …c6 followed by …c5 now that the c-file is clear).  • Bishop h5 keeps pressure on e2; if hit by g4 I slide back to g6.  • Bishop b4 stays active; if forced by a3 or c5 I will decide between retreating (…Ba5/…Be7) or exchanging for the b1-knight.  • Once the pawn break is launched, I will place rooks on the c- and/or e-files and look to invade there.  My king is already safe on g8, so the emphasis is on harmonising pieces and striking in the centre/queenside."
+  },
+  {
+    "textPayload": "2025-09-18 23:01:38,081 INFO src.chess_logic.game LLM move: Nbd7"
+  },
+  {
+    "textPayload": "2025-09-18 23:01:38,081 INFO src.chess_logic.game Move number: 17"
+  },
+  {
+    "textPayload": "2025-09-18 23:01:38,086 INFO src.chess_logic.game Engine move: a3"
+  },
+  {
+    "textPayload": "2025-09-18 23:01:38,087 INFO src.chess_logic.game Move number: 18"
+  },
+  {
+    "textPayload": "2025-09-18 23:06:40,641 INFO src.chess_logic.strategy LLM strategy: The white a3-pawn has driven my b4-bishop. I keep the bishop pair and, at the same time, improve its scope by stepping to d6. From there it restrains the c4/c5 advance, eyes the h2–f4 complex and still supports the thematic ...c6–c5 break.  My broader ‘Slav plus bishop-pair’ plan is unchanged, with a few clarifications for the new position:  • Pawn structure: if White exchanges on d5 I reply ...exd5, preserving the chain. I keep preparing ...c6 followed by ...c5 (or, if circumstances warrant, ...e5) to open the centre/queenside.  • Minor pieces: the knight on d7 backs the e5 and c5 squares; if White plays Nxd7 I recapture with the queen, centralising her at d7.  • Dark-squared bishop: still pins the e2-pawn. If g3-g4 appears I slide to g6; after Nxg6 I recapture hxg6 and keep the h-file closed.  • Rooks/queen: once a central break is achieved I will double on the newly opened c- or e-file.  • King safety is satisfactory on g8; the emphasis remains on harmonising pieces and creating pressure in the centre and on the queenside."
+  },
+  {
+    "textPayload": "2025-09-18 23:06:40,641 INFO src.chess_logic.game LLM move: Bd6"
+  },
+  {
+    "textPayload": "2025-09-18 23:06:40,641 INFO src.chess_logic.game Move number: 19"
+  },
+  {
+    "textPayload": "2025-09-18 23:06:40,646 INFO src.chess_logic.game Engine move: g4"
+  },
+  {
+    "textPayload": "2025-09-18 23:06:40,646 INFO src.chess_logic.game Move number: 20"
+  },
+  {
+    "textPayload": "2025-09-18 23:12:12,431 INFO src.chess_logic.strategy LLM strategy: White has advanced the g-pawn, so as anticipated I withdraw the dark-squared bishop to g6. If White replies 2.Nxg6 I will recapture 2…hxg6, trading bishop for knight on my terms and keeping the h-file closed by the white pawn on h3.  "
+  },
+  {
+    "textPayload": "2025-09-18 23:12:12,431 INFO src.chess_logic.game LLM move: Bg6"
+  },
+  {
+    "textPayload": "2025-09-18 23:12:12,432 INFO src.chess_logic.game Move number: 21"
+  },
+  {
+    "textPayload": "2025-09-18 23:12:12,436 INFO src.chess_logic.game Engine move: Nxg6"
+  },
+  {
+    "textPayload": "2025-09-18 23:12:12,436 INFO src.chess_logic.game Move number: 22"
+  },
+  {
+    "textPayload": "2025-09-18 23:13:32,632 INFO src.chess_logic.strategy LLM strategy: The planned recapture has been carried out: ...hxg6 trades my dark-squared bishop for White’s knight and erects a solid pawn wall (g7–g6–e6) in front of the king while leaving the h-file blocked by White’s own pawn on h3.  Material is level, but I now have two knights against White’s bishop pair, so I will steer the game toward a semi-closed structure that limits their bishops and highlights the agility of my knights."
+  },
+  {
+    "textPayload": "2025-09-18 23:13:32,632 INFO src.chess_logic.game LLM move: hxg6"
+  },
+  {
+    "textPayload": "2025-09-18 23:13:32,633 INFO src.chess_logic.game Move number: 23"
+  },
+  {
+    "textPayload": "2025-09-18 23:13:32,638 INFO src.chess_logic.game Engine move: g5"
+  },
+  {
+    "textPayload": "2025-09-18 23:13:32,638 INFO src.chess_logic.game Move number: 24"
+  },
+  {
+    "textPayload": "2025-09-18 23:18:49,614 INFO src.chess_logic.strategy LLM strategy: The centre is now reinforced with ...c6, giving me the solid pawn chain c6–d5–e6 that I wanted and continuing to keep White’s bishops bottled up.  If White trades on d5 I will normally answer c6xd5 so that the e-pawn stays on e6 and the chain remains intact; only if there is a concrete tactical reason will I use exd5.  After the centre is stabilised the priority is piece improvement:  "
+  },
+  {
+    "textPayload": "2025-09-18 23:18:49,614 INFO src.chess_logic.game LLM move: c6"
+  },
+  {
+    "textPayload": "2025-09-18 23:18:49,614 INFO src.chess_logic.game Move number: 25"
+  },
+  {
+    "textPayload": "2025-09-18 23:18:49,618 INFO src.chess_logic.game Engine move: gxf6"
+  },
+  {
+    "textPayload": "2025-09-18 23:18:49,619 INFO src.chess_logic.game Move number: 26"
+  },
+  {
+    "textPayload": "2025-09-18 23:21:29,752 INFO src.chess_logic.strategy LLM strategy: Material has changed – I have lost the knight that used to sit on f6, so I am now a piece down.  Nevertheless the structure I wanted (c6–d5–e6) is still on the board and White’s advanced pawn on f6 can be eliminated at once: my remaining knight from d7 jumps back to the important f6 square.  From there it again eyes e4 and h5 and helps to guard g4-h3 around my king.  I will keep the solid kingside pawn screen g6–g7 (after the capture g7 remains), put the rooks on e8 and c8, and look for counter-play with …e5 or …c5 when the pieces are ready.  Being a piece down means I must avoid mass exchanges; instead I will aim for active piece play – the queen can later come to b6, a5 or even h8 to create threats against White’s king side, while the dark-squared bishop normally stays on d6 (dropping to c7 if hit by c4-c5).  The immediate priority, however, is to remove the intrusive pawn and restore coordination, which I do now."
+  },
+  {
+    "textPayload": "2025-09-18 23:21:29,752 INFO src.chess_logic.game LLM move: Nxf6"
+  },
+  {
+    "textPayload": "2025-09-18 23:21:29,753 INFO src.chess_logic.game Move number: 27"
+  },
+  {
+    "textPayload": "2025-09-18 23:21:29,757 INFO src.chess_logic.game Engine move: Kg1"
+  },
+  {
+    "textPayload": "2025-09-18 23:21:29,757 INFO src.chess_logic.game Move number: 28"
+  },
+  {
+    "textPayload": "2025-09-18 23:25:43,931 INFO src.chess_logic.strategy LLM strategy: I am still a minor-piece down, but my king is safe behind the g-pawns and the intrusive white pawn on f6 has disappeared, so my pieces can finally cooperate. Compensation has to come from activity: I want open or half-open files for the rooks, active diagonals for the queen and bishop and, above all, central tension that keeps White busy.   "
+  },
+  {
+    "textPayload": "2025-09-18 23:25:43,931 INFO src.chess_logic.game LLM move: e5"
+  },
+  {
+    "textPayload": "2025-09-18 23:25:43,931 INFO src.chess_logic.game Move number: 29"
+  },
+  {
+    "textPayload": "2025-09-18 23:25:43,937 INFO src.chess_logic.game Engine move: Nd2"
+  },
+  {
+    "textPayload": "2025-09-18 23:25:43,937 INFO src.chess_logic.game Move number: 30"
+  },
+  {
+    "textPayload": "2025-09-18 23:27:42,267 INFO src.chess_logic.strategy LLM strategy: The central pawn break has finally come. By playing …exd4 I remove one of White’s central pawns and open the e-file. If White replies 2.cxd5 I will answer 2…cxd5, restoring a sturdy pawn duo d5–d4; if White instead pushes 2.c5 I can choose between 2…Bxc5 (winning a pawn and keeping the bishop active) or 2…Bc7, leaving the pawn on c5 as a long-term target. With the e-file cleared the rook on f8 will swing to e8 at once, the other rook is earmarked for c8, and the queen will head to b6 or a5 to double against d4 and b2. The dark-squared bishop is still my most important piece; I will keep it on the board unless I gain something concrete. Further pawn breaks with …c5 or …e4 remain on the agenda—exchanges of pawns that open files are welcome, while exchanges of minor pieces are to be avoided unless they yield tangible profit."
+  },
+  {
+    "textPayload": "2025-09-18 23:27:42,267 INFO src.chess_logic.game LLM move: exd4"
+  }
+]

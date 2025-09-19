@@ -63,7 +63,7 @@ def maintain_strategy(llm_adapter: LLMAdapter, board_info: str, game_state: dict
     return move
 
 
-aviable_strategies: Dict[Optional[str], GameStrategy] = {
+available_strategies: Dict[Optional[str], GameStrategy] = {
     None: simple_move,
     "simple_move": simple_move,
     "human_play": human_play,
