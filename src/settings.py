@@ -23,7 +23,7 @@ class EngineSettings(BaseSettings):
 class BenchmarkSettings(BaseSettings):
     BENCHMARKING_MODEL: str
 
-    MAX_MOVES: int
+    MAX_PLY: int
     MAX_ILLEGAL_MOVES: int
 
     STRATEGY: Optional[str] = None

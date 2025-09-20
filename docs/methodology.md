@@ -34,7 +34,7 @@ Engine settings can be set in the file:
 
 The benchmark has three main parameters:
 
-1. **MAX_MOVES** – maximum game length  
+1. **MAX_PLY** – maximum game length  
    - Primarily regulates benchmark costs.  
    - Also affects the result: every move is scored, and the outcome is better if a win occurs earlier or a loss occurs later.  
 

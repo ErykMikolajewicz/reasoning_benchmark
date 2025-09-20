@@ -64,4 +64,4 @@
 
 ### 8. Monitor Progress
 - Progress can be tracked in the **Batch** tab of Google Cloud Platform:  
-  👉 [https://console.cloud.google.com/batch/jobs](https://console.cloud.google.com/batch/jobs)
+  [https://console.cloud.google.com/batch/jobs](https://console.cloud.google.com/batch/jobs)

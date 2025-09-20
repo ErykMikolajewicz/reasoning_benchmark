@@ -15,7 +15,7 @@ from src.utils.helpers import format_board_info
 from src.utils.models_adapter import LLMAdapter
 
 MAX_ILLEGAL_MOVES = settings.benchmark.MAX_ILLEGAL_MOVES
-MAX_MOVES = settings.benchmark.MAX_MOVES
+MAX_PLY = settings.benchmark.MAX_PLY
 
 ANALYSE_DEPTH = settings.engine.ANALYSE_DEPTH
 MOVE_ACCEPTANCE_THRESHOLD_CENTI_PAWS = settings.engine.MOVE_ACCEPTANCE_THRESHOLD_CENTI_PAWS
@@ -28,7 +28,7 @@ class Game:
     def __init__(self, llm_strategy: GameStrategy):
         self._board = Board()
         self.moves_history = []
-        self._current_move = 1
+        self._current_ply = 1
         self._illegal_moves = 0
         self._whose_turn = WHITE
         self._engine = None
@@ -47,7 +47,7 @@ class Game:
         self.__engine = None
 
     def play(self, llm_color: Color) -> GameResult:
-        while self._current_move <= MAX_MOVES and not self._board.is_game_over():
+        while self._current_ply <= MAX_PLY and not self._board.is_game_over():
             try:
                 self._make_move(llm_color)
             except InvalidMove as e:
@@ -63,7 +63,7 @@ class Game:
                     self._match_result = GameResult.LOSS_INVALID_MOVE
                     raise RuntimeError("To many invalid moves")
 
-            self._current_move += 1
+            self._current_ply += 1
             self._whose_turn = not self._whose_turn
 
         self._is_game_ended = True
@@ -87,7 +87,7 @@ class Game:
         return match_result
 
     def _make_move(self, llm_color: Color):
-        logger.info(f"Move number: {self._current_move}")
+        logger.info(f"Ply number: {self._current_ply}")
         if self._whose_turn == llm_color:
             try:
                 last_opponent_move = self.moves_history[-1]
@@ -95,7 +95,7 @@ class Game:
                 last_opponent_move = "None"
             board_info = format_board_info(self._board, llm_color, last_opponent_move)
             move = self._llm_strategy(self._llm_adapter, board_info, self._game_data)
-            logger.info(f"LLM move: {move}")
+            logger.info(f"LLM ply: {move}")
             try:
                 self._board.push_san(move)
             except ValueError:
@@ -106,7 +106,7 @@ class Game:
             move = random.choice(acceptable_moves)
             move = move["pv"][0]
             move = self._board.san(move)
-            logger.info(f"Engine move: {move}")
+            logger.info(f"Engine ply: {move}")
             self._board.push_san(move)
         self.moves_history.append(move)
 
