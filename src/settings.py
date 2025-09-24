@@ -1,6 +1,9 @@
+import os
 from pathlib import Path
 from typing import Any, Optional
 
+from google.auth import default
+from google.auth.transport.requests import Request
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from src.share.enums import ColorGenerator, Environment
@@ -53,6 +56,8 @@ class ApplicationSettings(BaseSettings):
     MINIMUM_WAIT_SECONDS: int
     MAXIMUM_WAIT_SECONDS: int
 
+    VERTEX_OPENAI_KEY: bool = False
+
     model_config = SettingsConfigDict(
         env_file=APPLICATION_SETTINGS_FILE_PATH, env_file_encoding="utf-8", case_sensitive=True, frozen=True
     )
@@ -67,3 +72,8 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+if settings.application.VERTEX_OPENAI_KEY:
+    credentials, _ = default()
+    credentials.refresh(Request())
+    os.environ["OPENAI_API_KEY"] = credentials.token

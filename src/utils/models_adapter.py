@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 import threading
 from decimal import ROUND_UP, Decimal
 from pathlib import Path
@@ -93,8 +94,10 @@ class LLMAdapter:
             model_usage.reasoning_tokens += completion_data.reasoning_tokens
         else:
             model_usage.reasoning_tokens += usage.completion_tokens
-
-        cost_float = completion_cost(response, model)
+        try:
+            cost_float = completion_cost(response, model)
+        except Exception:
+            cost_float = 0
         cost_decimal = Decimal(cost_float)
 
         model_usage.total_cost_dollar += cost_decimal.quantize(Decimal("0.01"), rounding=ROUND_UP)

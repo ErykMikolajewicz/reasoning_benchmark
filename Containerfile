@@ -1,6 +1,8 @@
 FROM python:3.13-slim-bookworm AS builder
 
 COPY pyproject.toml uv.lock ./
+RUN apt-get update &&  apt-get install -y build-essential python3-dev
+
 RUN pip install --no-cache uv==0.8.*
 RUN uv sync --group google-cloud --no-dev --compile-bytecode
 
@@ -8,7 +10,7 @@ RUN uv sync --group google-cloud --no-dev --compile-bytecode
 FROM python:3.13-slim-bookworm
 
 LABEL org.opencontainers.image.authors="Eryk Mikołajewicz <eryk.mikolajewicz@gmail.com>" \
-      org.opencontainers.image.version="1" \
+      org.opencontainers.image.version="2" \
       org.opencontainers.image.description="LLM reasoning benchmark, by playing chess." \
       org.opencontainers.image.source="https://github.com/ErykMikolajewicz/reasoning_benchmark" \
       maintainer="Eryk Mikołajewicz"
