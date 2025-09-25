@@ -205,14 +205,20 @@ wheels = [
 
 [[package]]
 name = "fastuuid"
-version = "0.12.0"
+version = "0.13.3"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/19/17/13146a1e916bd2971d0a58db5e0a4ad23efdd49f78f33ac871c161f8007b/fastuuid-0.12.0.tar.gz", hash = "sha256:d0bd4e5b35aad2826403f4411937c89e7c88857b1513fe10f696544c03e9bd8e", size = 19180, upload-time = "2025-01-27T18:04:14.387Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a9/e8/d2bb4f19e5ee15f6f8e3192a54a897678314151aa17d0fb766d2c2cbc03d/fastuuid-0.12.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:7fe2407316a04ee8f06d3dbc7eae396d0a86591d92bafe2ca32fce23b1145786", size = 247512, upload-time = "2025-01-27T18:04:08.115Z" },
-    { url = "https://files.pythonhosted.org/packages/bc/53/25e811d92fd60f5c65e098c3b68bd8f1a35e4abb6b77a153025115b680de/fastuuid-0.12.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b9b31dd488d0778c36f8279b306dc92a42f16904cba54acca71e107d65b60b0c", size = 258257, upload-time = "2025-01-27T18:03:56.408Z" },
-    { url = "https://files.pythonhosted.org/packages/10/23/73618e7793ea0b619caae2accd9e93e60da38dd78dd425002d319152ef2f/fastuuid-0.12.0-cp313-cp313-manylinux_2_34_x86_64.whl", hash = "sha256:b19361ee649365eefc717ec08005972d3d1eb9ee39908022d98e3bfa9da59e37", size = 278559, upload-time = "2025-01-27T18:03:58.661Z" },
-    { url = "https://files.pythonhosted.org/packages/e4/41/6317ecfc4757d5f2a604e5d3993f353ba7aee85fa75ad8b86fce6fc2fa40/fastuuid-0.12.0-cp313-cp313-win_amd64.whl", hash = "sha256:8fc66b11423e6f3e1937385f655bedd67aebe56a3dcec0cb835351cfe7d358c9", size = 157276, upload-time = "2025-01-27T18:06:39.245Z" },
+    { url = "https://files.pythonhosted.org/packages/73/41/9482a375d3af33e2cdb99d3fa1bbbdb95f2e698ceb29e38880f81d919ebe/fastuuid-0.13.3-cp313-cp313-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:e5be92899120006ed44b263c02588d38632b49aa1fb2a8fcd18bb5b93a1fa7f2", size = 494635, upload-time = "2025-09-25T17:18:44.961Z" },
+    { url = "https://files.pythonhosted.org/packages/46/bf/50530bb9bcc505ea74c06ac376af44c2b4e085a897b2d4fb168729267418/fastuuid-0.13.3-cp313-cp313-macosx_10_12_x86_64.whl", hash = "sha256:217c8438e4b2d727c810ff4c49123e45f2109925b04463745e382c7d808472fa", size = 253079, upload-time = "2025-09-25T17:18:19.086Z" },
+    { url = "https://files.pythonhosted.org/packages/0c/11/cb674d840ab86f3486cca060b93401b51a7b45eca81c269288d2efb98928/fastuuid-0.13.3-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:1bffec9780ecab477f6d003dfae917720bb1485f44d15a469974e78be67d13d3", size = 244547, upload-time = "2025-09-25T17:15:05.277Z" },
+    { url = "https://files.pythonhosted.org/packages/21/fd/9302cde221ec2e33f2284263e3f75758334f5cf6c93be2dcaee8ca5d717e/fastuuid-0.13.3-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:aa4744abf7203567ccc8e79c5c8585922c79a1b7d5a3bbbd7f3cb688e87192c9", size = 271469, upload-time = "2025-09-25T17:18:10.156Z" },
+    { url = "https://files.pythonhosted.org/packages/dd/f8/de9a6bc73fbd43cdc7419e1b791f2c6a1300d3638db07ba2380bf6addaf4/fastuuid-0.13.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:cd73098a9057f109f59cf28752b18519dd2a8c708741e26154d4c208cef9ed01", size = 272278, upload-time = "2025-09-25T17:12:26.19Z" },
+    { url = "https://files.pythonhosted.org/packages/05/99/93af7a69451918ecb434a90e8e373dccc1d6bdae030bd67c24bde87df463/fastuuid-0.13.3-cp313-cp313-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:9927b96ff5982ef18a4dccbcd1fee677faaa486b86a9f48c235f2e969b0b3956", size = 290406, upload-time = "2025-09-25T17:18:12.611Z" },
+    { url = "https://files.pythonhosted.org/packages/9f/4e/39b459085cd90cbb3c2a483fdbdeed0e4edd67c1ff036705a8486abfd29e/fastuuid-0.13.3-cp313-cp313-musllinux_1_1_aarch64.whl", hash = "sha256:2a64486c5e52f132fb225c248c4c9bd174946514a38ab1b293595ee9bd16bb6d", size = 452823, upload-time = "2025-09-25T17:10:37.088Z" },
+    { url = "https://files.pythonhosted.org/packages/fa/b6/289aefee8cbfc8f0afaf2e9462be703a062f2686901cf25cc65ad71eba3b/fastuuid-0.13.3-cp313-cp313-musllinux_1_1_i686.whl", hash = "sha256:f4e9c4552e3ffaec33f8af09067dcafd435b1188a68d86cc26aef50a4b200de6", size = 468092, upload-time = "2025-09-25T17:19:11.065Z" },
+    { url = "https://files.pythonhosted.org/packages/fe/1f/5994c4d3a298b2116417f49abb1893950600087dbbc3839016347679c9ba/fastuuid-0.13.3-cp313-cp313-musllinux_1_1_x86_64.whl", hash = "sha256:4817671973467d8c32bdc1d9dae9ad2727664ac1363dbe94e42e0a890fbc521d", size = 444968, upload-time = "2025-09-25T17:19:24.896Z" },
+    { url = "https://files.pythonhosted.org/packages/89/82/31cefe573bc19f2d1b07b86af9b9db8d0a74487685dfbaf16edf4ec91055/fastuuid-0.13.3-cp313-cp313-win32.whl", hash = "sha256:ad55c13069711c3fb30c7080d117516ee7a419f64f073212c2e9a9536051b743", size = 145463, upload-time = "2025-09-25T17:17:15.705Z" },
+    { url = "https://files.pythonhosted.org/packages/f9/49/3d41776751d207526c8917d8e6ec35290f78be396f8c05102c32c0d63558/fastuuid-0.13.3-cp313-cp313-win_amd64.whl", hash = "sha256:ffe6a759e15e0968d2022d6a07957bc1f9830127b2d1bef2ee56d4e21c5a90b6", size = 150918, upload-time = "2025-09-25T17:15:56.942Z" },
 ]
 
 [[package]]
@@ -327,7 +333,7 @@ wheels = [
 
 [[package]]
 name = "google-cloud-aiplatform"
-version = "1.115.0"
+version = "1.116.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "docstring-parser" },
@@ -344,9 +350,9 @@ dependencies = [
     { name = "shapely" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5a/c1/3a4f4d8057d36d5dcf72451b4905140142018e0e14976baa4ea13cb14554/google_cloud_aiplatform-1.115.0.tar.gz", hash = "sha256:ab731c51e8111b93bccb1e56d961787a9896032f04f4b6c33c9f06696d5fc4c0", size = 9653848, upload-time = "2025-09-18T23:19:19.178Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/73/9d/52623c40fb1f42897b3b1c71892bab69fef2eb6d46b435ca69ec82abeecc/google_cloud_aiplatform-1.116.0.tar.gz", hash = "sha256:3e9363b985f900e13ab0abc6241d28597c521985dc2ab56e1232608bf5a03e7e", size = 9660858, upload-time = "2025-09-24T18:56:01.06Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/3f/0e/f171be61019f67d30847aab04ae23f016e85af1dc2243509922a78d81908/google_cloud_aiplatform-1.115.0-py2.py3-none-any.whl", hash = "sha256:0a4e47f1d4a7ce74a6afc75d79ddd0469200a39be988238ea4b6ee3c40d23221", size = 8036135, upload-time = "2025-09-18T23:19:16.349Z" },
+    { url = "https://files.pythonhosted.org/packages/25/a9/8ccda7bca963801554c52c61012bec37d62f3384f3268a0221b58032a13f/google_cloud_aiplatform-1.116.0-py2.py3-none-any.whl", hash = "sha256:bd04e6b1c3e06969e3ae2fa63e1d718081c4feeed7e4bfcf6376fa4ab6461487", size = 8038242, upload-time = "2025-09-24T18:55:57.777Z" },
 ]
 
 [[package]]
@@ -1141,7 +1147,7 @@ wheels = [
 
 [[package]]
 name = "reasoning-benchamrk"
-version = "0.45.3"
+version = "0.46.0"
 source = { virtual = "." }
 dependencies = [
     { name = "chess" },
@@ -1182,7 +1188,7 @@ dev = [
     { name = "isort", specifier = "==6.0.*" },
 ]
 google-cloud = [
-    { name = "google-cloud-aiplatform", specifier = "==1.115.*" },
+    { name = "google-cloud-aiplatform", specifier = "==1.116.*" },
     { name = "google-cloud-storage", specifier = "==2.19.*" },
 ]
 

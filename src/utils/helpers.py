@@ -55,10 +55,13 @@ def get_color_generator(generator_name: str) -> Generator[Color, None, None]:
 
 def extract_json(text: str) -> dict:
     try:
-        json_start_index = text.index("{")
+        json_start_index = text.rindex("{")
         json_end_index = text.rindex("}")
     except (ValueError, AttributeError):
         raise NoJsonInText(text)
     json_data = text[json_start_index : json_end_index + 1]
-    json_data = json.loads(json_data)
+    try:
+        json_data = json.loads(json_data)
+    except json.JSONDecodeError:
+        raise NoJsonInText(text)
     return json_data

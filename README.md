@@ -45,7 +45,9 @@ Very good score in one party of deepseek reasoner is probably result of very poo
 | deepseek-deepseek-reasoner         | -16.98 | -24.16 |  -32.0 |  24.36 | 1.46           |
 | gemini-gemini-2.5-pro              | -24.19 | -25.52 |  -32.0 | -11.53 | 1.60           |
 | xai-grok-code-fast-1               | -27.63 | -30.19 |  -32.0 | -17.24 | 0.54           |
+| meta-llama-4-maverick-17b-128e     | -30.23 | -30.69 | -32.00 | -25.46 | -              |
 | gemini-gemini-2.5-flash            | -30.56 | -31.35 |  -32.0 | -28.03 | 0.43           |
+| llama-3.3-70b                      | -29.96 | -32.00 | -32.00 | -22.74 | -              |
 
 The number of games played is 8, except for the player with an Elo rating of 1700, where only 2 games were played.
 
