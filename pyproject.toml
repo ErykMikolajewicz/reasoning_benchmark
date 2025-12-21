@@ -1,28 +1,28 @@
 [project]
 name = "reasoning-benchamrk"
-version = "0.47.0"
+version = "0.47.1"
 description = "Reasoning language models benchmark, by playing chess."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "chess==1.11.*",
-    "litellm==1.77.*",
-    "pydantic==2.11.*",
-    "pydantic-settings==2.11.*",
-    "python-dotenv==1.1.1",
+    "litellm==1.80.*",
+    "pydantic==2.12.*",
+    "pydantic-settings==2.12.*",
+    "python-dotenv==1.2.1",
     "tenacity==9.1.*",
 ]
 
 [dependency-groups]
 dev = [
-    "black==25.9.*",
+    "black==25.12.*",
     "google-auth-oauthlib==1.2.*",
-    "google-cloud-batch==0.17.*",
-    "isort==6.0.*"
+    "google-cloud-batch==0.19.*",
+    "isort==7.0.*"
 ]
 google-cloud = [
-    "google-cloud-storage==2.19.*",
-    "google-cloud-aiplatform==1.116.*"
+    "google-cloud-storage==3.7.*",
+    "google-cloud-aiplatform==1.129.*"
 ]
 
 

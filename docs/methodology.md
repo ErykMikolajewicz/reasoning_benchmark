@@ -1,6 +1,6 @@
 # Benchmark Methodology
 
-The benchmark is based on a language model playing chess against the **Stockfish** engine.  
+The benchmark is based on a language model playing chess against the **Stockfish 16** engine.  
 After each game, the position is evaluated move by move — typically by another instance of the engine with higher analysis depth settings.  
 
 To avoid scoring mechanical replay of opening theory (instead of genuine play), part of the initial moves is discarded.  

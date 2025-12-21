@@ -1,17 +1,21 @@
 [
   "anthropic/claude-sonnet-4-20250514",
   "anthropic/claude-opus-4-1-20250805",
+  "anthropic/claude-opus-4-5-20251101",
 
   "gemini/gemini-2.5-flash",
   "gemini/gemini-2.5-pro",
+  "gemini/gemini-3-pro-preview",
 
   "openai/o4-mini",
   "openai/o3",
   "openai/gpt-5",
+  "openai/gpt-5.2-pro",
 
   "deepseek/deepseek-reasoner",
 
   "xai/grok-code-fast-1",
+  "xai/grok-4-1-fast-reasoning",
 
   "openai/meta/llama-3.3-70b-instruct-maas",
   "openai/meta/llama-4-maverick-17b-128e-instruct-maas"
