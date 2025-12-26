@@ -1,6 +1,6 @@
 [project]
 name = "reasoning-benchamrk"
-version = "0.47.1"
+version = "0.47.2"
 description = "Reasoning language models benchmark, by playing chess."
 readme = "README.md"
 requires-python = ">=3.13"
@@ -22,7 +22,7 @@ dev = [
 ]
 google-cloud = [
     "google-cloud-storage==3.7.*",
-    "google-cloud-aiplatform==1.129.*"
+    "google-cloud-aiplatform==1.132.*"
 ]
 
 

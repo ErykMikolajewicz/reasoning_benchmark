@@ -74,18 +74,20 @@ My primary goal is to control the center of the board, particularly the e4 and d
 
 ## Comparisons
 
-Results of comparing the simple move and hold strategies for two promising language models.
+Results of comparing the simple move and maintain strategy for three promising language models.
 
-| Model                      |   Mean | Median |    Min |   Max | Total cost ($) |
-|:---------------------------|-------:|-------:|-------:|------:|:---------------|
-| o3_maintain_strategy       |  -1.12 |   0.46 | -16.62 |  5.43 | 9.40           |
-| o3_simple_move             |  -1.43 |  -0.44 |  -5.73 |  1.61 | 10.52          |
-| opus-4.1_simple_move       | -14.88 | -14.67 | -29.47 | -4.87 | 8.86           |
-| opus-4.1_maintain_strategy | -15.32 | -17.21 | -22.26 | -1.66 | 7.98           |
+| Model                          |   Mean | Median |    Min |   Max | Total cost ($) |
+|:-------------------------------|-------:|-------:|-------:|------:|:---------------|
+| gemini-3-pro_maintain_strategy |   1.12 |   0.83 |  -0.38 |  3.86 | 8.51           |
+| gemini-3-pro_simple_move       |  -1.04 |  -0.33 |  -5.94 |  1.98 | 9.87           |
+| o3_maintain_strategy           |  -1.12 |   0.46 | -16.62 |  5.43 | 9.40           |
+| o3_simple_move                 |  -1.43 |  -0.44 |  -5.73 |  1.61 | 10.52          |
+| opus-4.1_simple_move           | -14.88 | -14.67 | -29.47 | -4.87 | 8.86           |
+| opus-4.1_maintain_strategy     | -15.32 | -17.21 | -22.26 | -1.66 | 7.98           |
 
 
-As we can see, in the case of the opus-4.1 model, the attempt to maintain a long-term strategy caused a significant deterioration in the model's results.
-The situation is different for the o3 model, which demonstrated an improvement in effectiveness, measured by the median of 1 pawn.
+As we can see, in the case of the opus-4.1 model, the attempt to maintain a long-term strategy not improved model performance, and perhaps even made it worst.
+The situation is different for the o3, and gemini-3 model, which demonstrated an improvement in effectiveness, measured by the median of 1 pawn.
 It is also worth noting the more than 10% reduction in benchmark cost.
 
 The game record along with the strategy for the o3 model can be found in `logs/maintain_strategy_o3_logs.json`
