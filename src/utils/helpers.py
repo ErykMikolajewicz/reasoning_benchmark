@@ -57,11 +57,11 @@ def extract_json(text: str) -> dict:
     try:
         json_start_index = text.rindex("{")
         json_end_index = text.rindex("}")
-    except (ValueError, AttributeError):
-        raise NoJsonInText(text)
+    except (ValueError, AttributeError) as e:
+        raise NoJsonInText(text) from e
     json_data = text[json_start_index : json_end_index + 1]
     try:
         json_data = json.loads(json_data)
-    except json.JSONDecodeError:
-        raise NoJsonInText(text)
+    except json.JSONDecodeError as e:
+        raise NoJsonInText(text) from e
     return json_data

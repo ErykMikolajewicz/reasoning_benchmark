@@ -58,10 +58,10 @@ class Game:
                 else:
                     invalid_move = e.invalid_move
                     self.moves_history.append(invalid_move)
-                    logger.warning(f"Illegal moves, number exceeded!")
+                    logger.warning("Illegal moves, number exceeded!")
                     self._is_game_ended = True
                     self._match_result = GameResult.LOSS_INVALID_MOVE
-                    raise RuntimeError("To many invalid moves")
+                    raise RuntimeError("To many invalid moves") from None
 
             self._current_ply += 1
             self._whose_turn = not self._whose_turn
@@ -98,8 +98,8 @@ class Game:
             logger.info(f"LLM ply: {move}")
             try:
                 self._board.push_san(move)
-            except ValueError:
-                raise InvalidMove(invalid_move=move)
+            except ValueError as e:
+                raise InvalidMove(invalid_move=move) from e
         else:
             moves = self.__engine.analyse(self._board, chess.engine.Limit(depth=ANALYSE_DEPTH), multipv=MULTI_PV)
             acceptable_moves = self._choose_acceptable_moves(moves)
@@ -114,7 +114,7 @@ class Game:
         moves_engine_view = [move["score"].pov(self._whose_turn) for move in engine_moves]
         max_score = max([score for move in moves_engine_view if (score := move.score()) is not None])
         acceptable_moves = []
-        for move, move_engine_view in zip(engine_moves, moves_engine_view):
+        for move, move_engine_view in zip(engine_moves, moves_engine_view, strict=True):
             score = move_engine_view.score()
             if score is None:
                 acceptable_moves.append(move)
@@ -127,8 +127,8 @@ class Game:
 def run_game(llm_color: Color, llm_strategy: Optional[str] = None) -> GameData:
     try:
         selected_strategy = available_strategies[llm_strategy]
-    except KeyError:
-        raise ValueError("Invalid strategy!")
+    except KeyError as e:
+        raise ValueError("Invalid strategy!") from e
     game = Game(selected_strategy)
     with game:
         try:

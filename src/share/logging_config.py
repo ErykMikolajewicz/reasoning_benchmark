@@ -23,7 +23,11 @@ def set_google_cloud_logging():
         "disable_existing_loggers": False,
         "formatters": {"default": {"format": "%(asctime)s %(levelname)s %(name)s %(message)s"}},
         "handlers": {
-            "console": {"class": "logging.StreamHandler", "formatter": "default", "stream": "ext://sys.stdout"}
+            "console": {
+                "class": "logging.StreamHandler",
+                "formatter": "default",
+                "stream": "ext://sys.stdout",
+            }
         },
         "root": {"level": "WARNING", "handlers": ["console"]},
         "loggers": {"src": {"level": "INFO", "handlers": ["console"], "propagate": False}},

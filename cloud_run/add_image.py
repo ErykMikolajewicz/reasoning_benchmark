@@ -30,7 +30,14 @@ remote_ref = f"{registry_host}/{PROJECT_ID}/llm-benchmark-repository/{image_name
 
 
 login = subprocess.Popen(
-    ["podman", "login", "-u", "oauth2accesstoken", "--password-stdin", f"https://{registry_host}"],
+    [
+        "podman",
+        "login",
+        "-u",
+        "oauth2accesstoken",
+        "--password-stdin",
+        f"https://{registry_host}",
+    ],
     stdin=subprocess.PIPE,
 )
 stdout, stderr = login.communicate(input=token.encode("utf-8"))

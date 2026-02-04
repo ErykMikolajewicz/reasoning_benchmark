@@ -19,7 +19,10 @@ class EngineSettings(BaseSettings):
     MULTI_PV: int
 
     model_config = SettingsConfigDict(
-        env_file=ENGINE_SETTINGS_FILE_PATH, env_file_encoding="utf-8", case_sensitive=True, frozen=False
+        env_file=ENGINE_SETTINGS_FILE_PATH,
+        env_file_encoding="utf-8",
+        case_sensitive=True,
+        frozen=False,
     )
 
 
@@ -36,7 +39,10 @@ class BenchmarkSettings(BaseSettings):
     model_extra_config: dict[str, Any] = {}
 
     model_config = SettingsConfigDict(
-        env_file=BENCHMARK_SETTINGS_FILE_PATH, env_file_encoding="utf-8", case_sensitive=True, frozen=False
+        env_file=BENCHMARK_SETTINGS_FILE_PATH,
+        env_file_encoding="utf-8",
+        case_sensitive=True,
+        frozen=False,
     )
 
 
@@ -59,7 +65,10 @@ class ApplicationSettings(BaseSettings):
     VERTEX_OPENAI_KEY: bool = False
 
     model_config = SettingsConfigDict(
-        env_file=APPLICATION_SETTINGS_FILE_PATH, env_file_encoding="utf-8", case_sensitive=True, frozen=True
+        env_file=APPLICATION_SETTINGS_FILE_PATH,
+        env_file_encoding="utf-8",
+        case_sensitive=True,
+        frozen=True,
     )
 
 

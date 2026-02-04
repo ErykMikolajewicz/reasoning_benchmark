@@ -1,12 +1,12 @@
 [project]
-name = "reasoning-benchamrk"
-version = "0.47.2"
+name = "reasoning-benchmark"
+version = "0.47.3"
 description = "Reasoning language models benchmark, by playing chess."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "chess==1.11.*",
-    "litellm==1.80.*",
+    "litellm==1.81.*",
     "pydantic==2.12.*",
     "pydantic-settings==2.12.*",
     "python-dotenv==1.2.1",
@@ -15,26 +15,21 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "black==25.12.*",
+    "ruff==0.15.*",
     "google-auth-oauthlib==1.2.*",
-    "google-cloud-batch==0.19.*",
-    "isort==7.0.*"
+    "google-cloud-batch==0.20.*"
 ]
 google-cloud = [
-    "google-cloud-storage==3.7.*",
-    "google-cloud-aiplatform==1.132.*"
+    "google-cloud-storage==3.9.*",
+    "google-cloud-aiplatform==1.135.*"
 ]
 
-
-[tool.black]
+[tool.ruff]
 line-length = 120
-target-version = ["py313"]
-exclude = '''
-/(
-    \.git
-  | \.venv
-)/
-'''
+target-version = "py313"
 
-[tool.isort]
-skip = [".venv"]
+[tool.ruff.lint]
+select = ["I", "E", "F", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]

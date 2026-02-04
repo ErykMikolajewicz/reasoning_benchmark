@@ -50,7 +50,10 @@ ENGINE_SETTINGS = settings.engine.model_dump()
 settings.benchmark.engine_settings = ENGINE_SETTINGS
 
 benchmarking_result = BenchmarkingResult(
-    model_name=model_name, usage=usage, games_data=games_results, benchmark_settings=settings.benchmark
+    model_name=model_name,
+    usage=usage,
+    games_data=games_results,
+    benchmark_settings=settings.benchmark,
 )
 
 save_result(benchmarking_result)

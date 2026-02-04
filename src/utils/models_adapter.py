@@ -1,6 +1,5 @@
 import json
 import logging
-import os
 import threading
 from decimal import ROUND_UP, Decimal
 from pathlib import Path
@@ -8,7 +7,13 @@ from pathlib import Path
 from dotenv import load_dotenv
 from litellm import ModelResponse, completion, completion_cost
 from litellm.exceptions import InternalServerError, RateLimitError, Timeout
-from tenacity import after_log, retry, retry_if_exception_type, stop_after_attempt, wait_random
+from tenacity import (
+    after_log,
+    retry,
+    retry_if_exception_type,
+    stop_after_attempt,
+    wait_random,
+)
 
 from src.pydantic_models import ModelUsage
 from src.settings import settings
@@ -53,7 +58,7 @@ class LLMAdapter:
     )
     def send_messages(self, model: str, messages: list) -> str:
         for message in messages:
-            log = f'Message type: {message["role"]}, message:\n{message["content"]}'
+            log = f"Message type: {message['role']}, message:\n{message['content']}"
             logger.debug(log)
 
         model_file_name = model.replace("/", "-")

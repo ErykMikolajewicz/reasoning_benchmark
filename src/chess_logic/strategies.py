@@ -16,7 +16,10 @@ logger = logging.getLogger(__name__)
 def simple_move(llm_adapter: LLMAdapter, board_info: str, _: dict) -> str:
     move_and_thinking = llm_adapter.send_messages(
         model=BENCHMARKING_MODEL,
-        messages=[{"role": "system", "content": prompts.move_formated}, {"role": "user", "content": board_info}],
+        messages=[
+            {"role": "system", "content": prompts.move_formated},
+            {"role": "user", "content": board_info},
+        ],
     )
 
     try:

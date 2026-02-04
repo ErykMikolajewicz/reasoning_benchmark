@@ -18,21 +18,21 @@ Chess is a particularly good test because:
 ## How Does the Benchmark Work?
 
 - The LLM plays a game against the weak **Stockfish engine**.
-- When party is ended every move is evaluated.
+- When game is ended every move is evaluated.
 - Moves in debut are discarded.
 - The LLM score is calculated as the average of all positions scores.
 - More about it in [methodology](docs/methodology.md)
 
-## Flag models results
+## Flagship models results
 
-![Box plots and confident intervals](plots/results.png)
+![Box plots and confidence intervals](plots/results.png)
 
-\*Grok 4 was unable to make answers before timeout.
+\*Grok 4 was unable to make answers before timing out.
 
 Gemini 3-pro is currently the best. OpenAI o3 model - is also decent opponent.
 ChatGPT 5 is usable, but newer versions 5.2 not add much improvement, and is disproportionately expensive.
 
-Very good score in one party of deepseek reasoner is probably result of very poor move made by engine. Engine analysis depth is really shallow, what sometimes result in fatally bad moves.
+Very good score in one game of deepseek reasoner is probably result of very poor move made by engine. Engine analysis depth is really shallow, what sometimes result in fatally bad moves.
 
 ## All results
 
