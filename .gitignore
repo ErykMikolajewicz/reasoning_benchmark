@@ -3,8 +3,6 @@ __pycache__/
 
 .venv
 
-settings
-
 .idea
 
 logs/*.log
@@ -14,3 +12,7 @@ results/*.json
 models_params/*.json
 
 cloud_run/.env
+
+.env
+api_keys.env
+logging.json

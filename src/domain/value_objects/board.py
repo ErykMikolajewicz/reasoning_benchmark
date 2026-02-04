@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class BoardInfo:
     ascii_board: str

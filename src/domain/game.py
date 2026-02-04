@@ -5,21 +5,22 @@ from typing import Optional
 import chess.engine
 from chess import WHITE, Board, Color
 
-from src.chess_logic.strategies import available_strategies
-from src.pydantic_models import GameData
-from src.settings import settings
-from src.share.custom_types import GameStrategy
-from src.share.enums import GameResult
-from src.share.exceptions import InvalidMove
-from src.utils.helpers import format_board_info
-from src.utils.models_adapter import LLMAdapter
+from domain.enums import GameResult
+from domain.exceptions import InvalidMove
+from domain.llm.strategies import available_strategies
+from domain.types import GameStrategy
+from domain.utils.helpers import format_board_info
+from domain.value_objects.pydantic_models import GameData
+from src.infrastructure.models_adapter import LLMAdapter
+from src.share.settings.benchmark import benchmark_settings
+from src.share.settings.engine import engine_settings
 
-MAX_ILLEGAL_MOVES = settings.benchmark.MAX_ILLEGAL_MOVES
-MAX_PLY = settings.benchmark.MAX_PLY
+MAX_ILLEGAL_MOVES = benchmark_settings.MAX_ILLEGAL_MOVES
+MAX_PLY = benchmark_settings.MAX_PLY
 
-ANALYSE_DEPTH = settings.engine.ANALYSE_DEPTH
-MOVE_ACCEPTANCE_THRESHOLD_CENTI_PAWS = settings.engine.MOVE_ACCEPTANCE_THRESHOLD_CENTI_PAWS
-MULTI_PV = settings.engine.MULTI_PV
+ANALYSE_DEPTH = engine_settings.ANALYSE_DEPTH
+MOVE_ACCEPTANCE_THRESHOLD_CENTI_PAWS = engine_settings.MOVE_ACCEPTANCE_THRESHOLD_CENTI_PAWS
+MULTI_PV = engine_settings.MULTI_PV
 
 logger = logging.getLogger(__name__)
 

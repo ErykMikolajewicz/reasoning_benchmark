@@ -31,7 +31,7 @@ for envs_file_path in ENVS_FILE_PATHS:
     file_env = dotenv_values(envs_file_path)
     container_envs.update(file_env)
 
-secret_envs_names = list(dotenv_values(SETTINGS_PATH / "api_keys.env"))
+secret_envs_names = list(dotenv_values(SETTINGS_PATH / "api_keys.env.example"))
 secret_envs = {}
 for secret_env_name in secret_envs_names:
     secret_envs[secret_env_name] = f"projects/{PROJECT_ID}/secrets/{secret_env_name}/versions/latest"

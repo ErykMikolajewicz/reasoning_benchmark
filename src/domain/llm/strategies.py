@@ -1,16 +1,16 @@
-import logging
 import json
+import logging
 
 from jinja2 import Environment, StrictUndefined
 
-import src.chess_logic.prompts as prompts
-from src.settings import settings
-from src.share.custom_types import GameStrategy
-from src.utils.models_adapter import LLMAdapter
-from src.chess_logic.llm_schemas import strategy_response, move_response
-from src.domain.schemas import BoardInfo
+import domain.llm.prompts as prompts
+import domain.llm.responses as llm_resp
+from domain.types import GameStrategy
+from domain.value_objects.board import BoardInfo
+from infrastructure.models_adapter import LLMAdapter
+from share.settings.benchmark import benchmark_settings
 
-BENCHMARKING_MODEL = settings.benchmark.BENCHMARKING_MODEL
+BENCHMARKING_MODEL = benchmark_settings.MODEL
 
 logger = logging.getLogger(__name__)
 
@@ -29,7 +29,7 @@ def simple_move(llm_adapter: LLMAdapter, board_info: BoardInfo, _: dict) -> str:
         "ascii_board": board_info.ascii_board,
         "castling_rights": board_info.castling_rights,
         "last_opponent_move": board_info.last_opponent_move,
-        "llm_color": board_info.llm_color
+        "llm_color": board_info.llm_color,
     }
 
     prompt = template.render(**data)
@@ -39,7 +39,7 @@ def simple_move(llm_adapter: LLMAdapter, board_info: BoardInfo, _: dict) -> str:
         messages=[
             {"role": "user", "content": prompt},
         ],
-        response_format=move_response
+        response_format=llm_resp.move,
     )
 
     move = json.loads(move)
@@ -82,7 +82,7 @@ def maintain_strategy(llm_adapter: LLMAdapter, board_info: BoardInfo, game_state
         messages=[
             {"role": "user", "content": prompt},
         ],
-        response_format=strategy_response
+        response_format=llm_resp.strategy,
     )
 
     move_with_strategy = json.loads(move_with_strategy)

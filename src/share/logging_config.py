@@ -1,19 +1,19 @@
 import json
 import logging.config
 
-from src.settings import settings
-from src.share.enums import Environment
+from domain.enums import Environment
+from share.settings.app import application_settings
 
-LOGGING_LEVEL = settings.application.LOGGING_LEVEL
-ENVIRONMENT = settings.application.ENVIRONMENT
+LOGGING_LEVEL = application_settings.LOGGING_LEVEL
+ENVIRONMENT = application_settings.ENVIRONMENT
 
 
 def set_file_logging():
-    with open("settings/logging.json") as f:
+    with open("logging.json") as f:
         config = json.load(f)
 
     if LOGGING_LEVEL:
-        config["loggers"]["src"]["level"] = LOGGING_LEVEL
+        config["loggers"]["domain"]["level"] = LOGGING_LEVEL
     logging.config.dictConfig(config)
 
 

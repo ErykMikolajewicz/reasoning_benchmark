@@ -15,15 +15,15 @@ from tenacity import (
     wait_random,
 )
 
-from src.pydantic_models import ModelUsage
-from src.settings import settings
+from domain.value_objects.pydantic_models import ModelUsage
+from src.share.settings.app import application_settings
 
-load_dotenv("settings/api_keys.env")
+load_dotenv("api_keys.env")
 
-RETRY_NUMBER = settings.application.RETRY_NUMBER
-LLM_TIMEOUT = settings.application.LLM_TIMEOUT
-MINIMUM_WAIT_SECONDS = settings.application.MINIMUM_WAIT_SECONDS
-MAXIMUM_WAIT_SECONDS = settings.application.MAXIMUM_WAIT_SECONDS
+RETRY_NUMBER = application_settings.RETRY_NUMBER
+LLM_TIMEOUT = application_settings.LLM_TIMEOUT
+MINIMUM_WAIT_SECONDS = application_settings.MINIMUM_WAIT_SECONDS
+MAXIMUM_WAIT_SECONDS = application_settings.MAXIMUM_WAIT_SECONDS
 
 logger = logging.getLogger(__name__)
 
@@ -65,11 +65,9 @@ class LLMAdapter:
         model_params = models_extra_config.get(model_file_name, {})
 
         try:
-            response = completion(timeout=LLM_TIMEOUT,
-                                  model=model,
-                                  messages=messages,
-                                  response_format=response_format,
-                                  **model_params)
+            response = completion(
+                timeout=LLM_TIMEOUT, model=model, messages=messages, response_format=response_format, **model_params
+            )
         except Timeout:
             # Grok have problem with stubborn not responding, after several moves, and retries are pointless
             if model.find("grok-4") != -1:

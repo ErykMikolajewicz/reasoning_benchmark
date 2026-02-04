@@ -6,9 +6,9 @@ from typing import Generator
 
 from chess import BLACK, COLORS, WHITE, Board, Color
 
+from domain.enums import ColorGenerator
+from src.domain.value_objects.board import BoardInfo
 from src.share.conts import COLORS_STRING_DICT
-from src.share.enums import ColorGenerator
-from src.domain.schemas import BoardInfo
 
 
 def hash_dict(dict_) -> str:

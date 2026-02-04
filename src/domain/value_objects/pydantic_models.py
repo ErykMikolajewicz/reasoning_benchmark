@@ -3,8 +3,8 @@ from typing import Optional, cast
 
 from pydantic import BaseModel
 
-from src.settings import BenchmarkSettings
-from src.share.enums import GameResult
+from domain.enums import GameResult
+from share.settings.benchmark import BenchmarkSettings
 
 addable_types = {int, float, Decimal, list}
 

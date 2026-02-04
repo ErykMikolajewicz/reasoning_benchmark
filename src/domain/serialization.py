@@ -2,13 +2,13 @@ import json
 import logging
 from pathlib import Path
 
-from src.pydantic_models import BenchmarkingResult
-from src.settings import settings
-from src.share.enums import Environment
-from src.utils.helpers import hash_dict
+from domain.enums import Environment
+from domain.utils.helpers import hash_dict
+from domain.value_objects.pydantic_models import BenchmarkingResult
+from share.settings.app import application_settings
 
-APPEND_RESULTS = settings.application.APPEND_RESULTS
-ENVIRONMENT = settings.application.ENVIRONMENT
+APPEND_RESULTS = application_settings.APPEND_RESULTS
+ENVIRONMENT = application_settings.ENVIRONMENT
 
 logger = logging.getLogger(__name__)
 
