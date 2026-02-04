@@ -1,16 +1,6 @@
-import json
-import logging
-from pathlib import Path
-
-from domain.enums import Environment
+from dependencies.file_storage import get_save_results
 from domain.utils.helpers import hash_dict
 from domain.value_objects.pydantic_models import BenchmarkingResult
-from share.settings.app import application_settings
-
-APPEND_RESULTS = application_settings.APPEND_RESULTS
-ENVIRONMENT = application_settings.ENVIRONMENT
-
-logger = logging.getLogger(__name__)
 
 
 def save_result(benchmark_result: BenchmarkingResult):
@@ -19,48 +9,5 @@ def save_result(benchmark_result: BenchmarkingResult):
 
     file_name = benchmark_result.model_name + "-" + settings_hash + ".json"
 
-    match ENVIRONMENT:
-        case Environment.LOCAL:
-            _save_local(benchmark_result, file_name)
-        case Environment.GOOGLE_CLOUD:
-            _save_google_cloud(benchmark_result, file_name)
-
-
-def _save_local(benchmark_result: BenchmarkingResult, file_name: str):
-    result_dir = Path("results")
-
-    result_path = result_dir / file_name
-
-    if APPEND_RESULTS and result_path.exists():
-        with open(result_path, "r", encoding="utf-8") as previous_result_file:
-            previous_result = json.load(previous_result_file)
-        benchmark_result = _append_results(benchmark_result, previous_result)
-
-    with open(result_path, "w", encoding="utf-8") as result_file:
-        json_str = benchmark_result.model_dump_json(indent=4)
-        result_file.write(json_str)
-
-
-def _save_google_cloud(benchmark_result: BenchmarkingResult, file_name: str):
-    from google.cloud import storage
-
-    client = storage.Client()
-
-    bucket = client.bucket("llm-reasoning-benchmark-results")
-
-    blob = bucket.blob(file_name)
-
-    if APPEND_RESULTS and blob.exists():
-        previous_result = blob.download_as_string()
-        previous_result = json.loads(previous_result)
-        benchmark_result = _append_results(benchmark_result, previous_result)
-
-    json_str = benchmark_result.model_dump_json(indent=4)
-    blob.upload_from_string(json_str, content_type="application/json")
-
-
-def _append_results(benchmark_result: BenchmarkingResult, previous_result: dict) -> BenchmarkingResult:
-    previous_result = BenchmarkingResult(**previous_result)
-    benchmark_result.usage += previous_result.usage
-    benchmark_result.games_data += previous_result.games_data
-    return benchmark_result
+    save_results = get_save_results()
+    save_results(benchmark_result, file_name)

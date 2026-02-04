@@ -5,12 +5,8 @@ from jinja2 import Environment, StrictUndefined
 
 import domain.llm.prompts as prompts
 import domain.llm.responses as llm_resp
-from domain.types import GameStrategy
 from domain.value_objects.board import BoardInfo
 from infrastructure.models_adapter import LLMAdapter
-from share.settings.benchmark import benchmark_settings
-
-BENCHMARKING_MODEL = benchmark_settings.MODEL
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +31,6 @@ def simple_move(llm_adapter: LLMAdapter, board_info: BoardInfo, _: dict) -> str:
     prompt = template.render(**data)
 
     move = llm_adapter.send_messages(
-        model=BENCHMARKING_MODEL,
         messages=[
             {"role": "user", "content": prompt},
         ],
@@ -49,7 +44,7 @@ def simple_move(llm_adapter: LLMAdapter, board_info: BoardInfo, _: dict) -> str:
     return move
 
 
-def human_play(_: LLMAdapter, board_info: BoardInfo, _2: dict):
+def human_play(_: LLMAdapter, board_info: BoardInfo, _2: dict) -> str:
     print(board_info)
     move = input("Write move in SAN notation: ")
     return move
@@ -78,7 +73,6 @@ def maintain_strategy(llm_adapter: LLMAdapter, board_info: BoardInfo, game_state
     prompt = template.render(**data)
 
     move_with_strategy = llm_adapter.send_messages(
-        model=BENCHMARKING_MODEL,
         messages=[
             {"role": "user", "content": prompt},
         ],
@@ -95,11 +89,3 @@ def maintain_strategy(llm_adapter: LLMAdapter, board_info: BoardInfo, game_state
     logger.info(f"LLM strategy: {strategy}")
 
     return move
-
-
-available_strategies: dict[str | None, GameStrategy] = {
-    None: simple_move,
-    "simple_move": simple_move,
-    "human_play": human_play,
-    "maintain_strategy": maintain_strategy,
-}

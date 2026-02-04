@@ -1,7 +1,7 @@
 import json
 import logging.config
 
-from domain.enums import Environment
+from share.enums import Environment
 from share.settings.app import application_settings
 
 LOGGING_LEVEL = application_settings.LOGGING_LEVEL

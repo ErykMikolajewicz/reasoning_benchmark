@@ -2,8 +2,8 @@ import concurrent.futures
 import logging
 from itertools import islice
 
-from domain.game import run_game
 from domain.serialization import save_result
+from domain.services.game import run_game
 from domain.utils.helpers import get_color_generator
 from domain.value_objects.pydantic_models import BenchmarkingResult, GameData
 from infrastructure.models_adapter import LLMAdapter, models_extra_config
@@ -20,7 +20,6 @@ NUM_GAMES = application_settings.PLAYS_NUMBER
 MAX_WORKERS = application_settings.MAX_WORKERS
 COLOR_GENERATOR = application_settings.COLOR_GENERATOR
 
-STRATEGY = benchmark_settings.STRATEGY
 BENCHMARKING_MODEL = benchmark_settings.MODEL
 
 color_generator = get_color_generator(COLOR_GENERATOR)
@@ -28,7 +27,7 @@ games_results: list[GameData] = []
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
     logger.info("Start creating tasks.")
-    futures = [executor.submit(run_game, llm_color, STRATEGY) for llm_color in islice(color_generator, NUM_GAMES)]
+    futures = [executor.submit(run_game, llm_color) for llm_color in islice(color_generator, NUM_GAMES)]
     for future in concurrent.futures.as_completed(futures):
         game_data = future.result()
         games_results.append(game_data)

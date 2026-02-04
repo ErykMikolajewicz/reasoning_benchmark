@@ -17,6 +17,7 @@ from tenacity import (
 
 from domain.value_objects.pydantic_models import ModelUsage
 from src.share.settings.app import application_settings
+from src.share.settings.benchmark import benchmark_settings
 
 load_dotenv("api_keys.env")
 
@@ -24,6 +25,7 @@ RETRY_NUMBER = application_settings.RETRY_NUMBER
 LLM_TIMEOUT = application_settings.LLM_TIMEOUT
 MINIMUM_WAIT_SECONDS = application_settings.MINIMUM_WAIT_SECONDS
 MAXIMUM_WAIT_SECONDS = application_settings.MAXIMUM_WAIT_SECONDS
+model = benchmark_settings.MODEL
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +58,7 @@ class LLMAdapter:
         stop=stop_after_attempt(RETRY_NUMBER),
         after=after_log(logger, logging.WARNING),
     )
-    def send_messages(self, model: str, messages: list, response_format: dict | None = None) -> str:
+    def send_messages(self, messages: list, response_format: dict | None = None) -> str:
         for message in messages:
             log = f"Message type: {message['role']}, message:\n{message['content']}"
             logger.debug(log)

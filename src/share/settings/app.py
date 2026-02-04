@@ -2,7 +2,8 @@ import os
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from domain.enums import ColorGenerator, Environment
+from domain.enums import ColorGenerator
+from share.enums import Environment
 
 
 class ApplicationSettings(BaseSettings):
