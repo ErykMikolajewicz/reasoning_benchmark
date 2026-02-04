@@ -1,60 +1,91 @@
 import logging
-from typing import Dict, Optional
+import json
+
+from jinja2 import Environment, StrictUndefined
 
 import src.chess_logic.prompts as prompts
 from src.settings import settings
 from src.share.custom_types import GameStrategy
-from src.share.exceptions import NoJsonInText
-from src.utils.helpers import extract_json
 from src.utils.models_adapter import LLMAdapter
+from src.chess_logic.llm_schemas import strategy_response, move_response
+from src.domain.schemas import BoardInfo
 
 BENCHMARKING_MODEL = settings.benchmark.BENCHMARKING_MODEL
 
 logger = logging.getLogger(__name__)
 
 
-def simple_move(llm_adapter: LLMAdapter, board_info: str, _: dict) -> str:
-    move_and_thinking = llm_adapter.send_messages(
-        model=BENCHMARKING_MODEL,
-        messages=[
-            {"role": "system", "content": prompts.move_formated},
-            {"role": "user", "content": board_info},
-        ],
+def simple_move(llm_adapter: LLMAdapter, board_info: BoardInfo, _: dict) -> str:
+    env = Environment(
+        undefined=StrictUndefined,
+        autoescape=False,
+        trim_blocks=True,
+        lstrip_blocks=True,
     )
 
-    try:
-        move_json = extract_json(move_and_thinking)
-    except NoJsonInText:
-        return f"Invalid move format: {move_and_thinking}"
+    template = env.from_string(prompts.simple_move)
 
-    move = move_json["move"]
+    data = {
+        "ascii_board": board_info.ascii_board,
+        "castling_rights": board_info.castling_rights,
+        "last_opponent_move": board_info.last_opponent_move,
+        "llm_color": board_info.llm_color
+    }
+
+    prompt = template.render(**data)
+
+    move = llm_adapter.send_messages(
+        model=BENCHMARKING_MODEL,
+        messages=[
+            {"role": "user", "content": prompt},
+        ],
+        response_format=move_response
+    )
+
+    move = json.loads(move)
+
+    move = move["move"]
 
     return move
 
 
-def human_play(_: LLMAdapter, board_info: str, _2: dict):
+def human_play(_: LLMAdapter, board_info: BoardInfo, _2: dict):
     print(board_info)
     move = input("Write move in SAN notation: ")
     return move
 
 
-def maintain_strategy(llm_adapter: LLMAdapter, board_info: str, game_state: dict) -> str:
+def maintain_strategy(llm_adapter: LLMAdapter, board_info: BoardInfo, game_state: dict) -> str:
     strategy = game_state.get("strategy")
 
-    board_and_strategy = board_info + f"\nYour strategy:\n{strategy}"
+    env = Environment(
+        undefined=StrictUndefined,
+        autoescape=False,
+        trim_blocks=True,
+        lstrip_blocks=True,
+    )
+
+    template = env.from_string(prompts.maintain_strategy)
+
+    data = {
+        "ascii_board": board_info.ascii_board,
+        "castling_rights": board_info.castling_rights,
+        "last_opponent_move": board_info.last_opponent_move,
+        "llm_color": board_info.llm_color,
+        "strategy": strategy,
+    }
+
+    prompt = template.render(**data)
 
     move_with_strategy = llm_adapter.send_messages(
         model=BENCHMARKING_MODEL,
         messages=[
-            {"role": "system", "content": prompts.move_with_strategy},
-            {"role": "user", "content": board_and_strategy},
+            {"role": "user", "content": prompt},
         ],
+        response_format=strategy_response
     )
 
-    try:
-        move_with_strategy = extract_json(move_with_strategy)
-    except NoJsonInText:
-        return f"Invalid move format: {move_with_strategy}"
+    move_with_strategy = json.loads(move_with_strategy)
 
     move = move_with_strategy["move"]
 
@@ -66,7 +97,7 @@ def maintain_strategy(llm_adapter: LLMAdapter, board_info: str, game_state: dict
     return move
 
 
-available_strategies: Dict[Optional[str], GameStrategy] = {
+available_strategies: dict[str | None, GameStrategy] = {
     None: simple_move,
     "simple_move": simple_move,
     "human_play": human_play,

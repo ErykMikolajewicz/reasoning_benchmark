@@ -6,10 +6,9 @@ from typing import Generator
 
 from chess import BLACK, COLORS, WHITE, Board, Color
 
-import src.chess_logic.prompts as prompts
 from src.share.conts import COLORS_STRING_DICT
 from src.share.enums import ColorGenerator
-from src.share.exceptions import NoJsonInText
+from src.domain.schemas import BoardInfo
 
 
 def hash_dict(dict_) -> str:
@@ -19,18 +18,18 @@ def hash_dict(dict_) -> str:
     return hash_str
 
 
-def format_board_info(board: Board, llm_color: Color, last_opponent_move: str) -> str:
+def format_board_info(board: Board, llm_color: Color, last_opponent_move: str) -> BoardInfo:
     llm_color = COLORS_STRING_DICT[llm_color]
     castling_rights = board.castling_xfen()
     ascii_board = str(board)
-    full_board_info = prompts.board_prompt.format(
+    board_info = BoardInfo(
         ascii_board=ascii_board,
         castling_rights=castling_rights,
         last_opponent_move=last_opponent_move,
         llm_color=llm_color,
     )
 
-    return full_board_info
+    return board_info
 
 
 def get_color_generator(generator_name: str) -> Generator[Color, None, None]:
@@ -51,17 +50,3 @@ def get_color_generator(generator_name: str) -> Generator[Color, None, None]:
             raise NotImplementedError
 
     return color_generator
-
-
-def extract_json(text: str) -> dict:
-    try:
-        json_start_index = text.rindex("{")
-        json_end_index = text.rindex("}")
-    except (ValueError, AttributeError) as e:
-        raise NoJsonInText(text) from e
-    json_data = text[json_start_index : json_end_index + 1]
-    try:
-        json_data = json.loads(json_data)
-    except json.JSONDecodeError as e:
-        raise NoJsonInText(text) from e
-    return json_data

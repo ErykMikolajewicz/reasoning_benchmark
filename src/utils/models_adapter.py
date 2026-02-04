@@ -56,7 +56,7 @@ class LLMAdapter:
         stop=stop_after_attempt(RETRY_NUMBER),
         after=after_log(logger, logging.WARNING),
     )
-    def send_messages(self, model: str, messages: list) -> str:
+    def send_messages(self, model: str, messages: list, response_format: dict | None = None) -> str:
         for message in messages:
             log = f"Message type: {message['role']}, message:\n{message['content']}"
             logger.debug(log)
@@ -65,7 +65,11 @@ class LLMAdapter:
         model_params = models_extra_config.get(model_file_name, {})
 
         try:
-            response = completion(timeout=LLM_TIMEOUT, model=model, messages=messages, **model_params)
+            response = completion(timeout=LLM_TIMEOUT,
+                                  model=model,
+                                  messages=messages,
+                                  response_format=response_format,
+                                  **model_params)
         except Timeout:
             # Grok have problem with stubborn not responding, after several moves, and retries are pointless
             if model.find("grok-4") != -1:
