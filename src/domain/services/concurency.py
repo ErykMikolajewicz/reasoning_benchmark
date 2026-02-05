@@ -7,15 +7,15 @@ from itertools import islice
 from chess import Color
 
 from domain.services.running import run_game
-from domain.value_objects.pydantic_models import GameData
+from domain.value_objects.game import GameData
 
 logger = logging.getLogger(__name__)
 
 
 @dataclass
 class GamesRunner:
-    num_games: int
     max_workers: int
+    num_games: int
     color_generator: Generator[Color, None, None]
 
     def run_games(self) -> list[GameData]:

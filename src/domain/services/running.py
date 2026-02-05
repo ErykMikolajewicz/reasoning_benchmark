@@ -1,7 +1,7 @@
 from chess import Color
 
 from dependencies.games import get_game
-from domain.value_objects.pydantic_models import GameData
+from domain.value_objects.game import GameData
 
 
 def run_game(llm_color: Color) -> GameData:
