@@ -1,4 +1,5 @@
 from google.cloud import storage
+from google.cloud.exceptions import NotFound
 
 
 class GoogleCloudResultSaver:
@@ -11,9 +12,13 @@ class GoogleCloudResultSaver:
 
         blob.upload_from_string(benchmark_result, content_type="application/json")
 
-    def get_result(self, file_name: str) -> str:
+    def get_result(self, file_name: str) -> str | None:
         blob = self._bucket.blob(file_name)
 
-        benchmark_result = blob.download_as_string()
-        benchmark_result = benchmark_result.decode(encoding="utf-8")
+        try:
+            benchmark_result = blob.download_as_string()
+        except NotFound:
+            benchmark_result = None
+        else:
+            benchmark_result = benchmark_result.decode(encoding="utf-8")
         return benchmark_result

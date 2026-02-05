@@ -1,19 +1,13 @@
-FROM python:3.13-slim-bookworm AS builder
+FROM python:3.13-slim-trixie AS builder
 
 COPY pyproject.toml uv.lock ./
 RUN apt-get update &&  apt-get install -y build-essential python3-dev
 
-RUN pip install --no-cache uv==0.8.*
+RUN pip install --no-cache uv==0.10.*
 RUN uv sync --group google-cloud --no-dev --compile-bytecode
 
 
-FROM python:3.13-slim-bookworm
-
-LABEL org.opencontainers.image.authors="Eryk Mikołajewicz <eryk.mikolajewicz@gmail.com>" \
-      org.opencontainers.image.version="2" \
-      org.opencontainers.image.description="LLM reasoning benchmark, by playing chess." \
-      org.opencontainers.image.source="https://github.com/ErykMikolajewicz/reasoning_benchmark" \
-      maintainer="Eryk Mikołajewicz"
+FROM python:3.13-slim-trixie
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
@@ -30,9 +24,9 @@ ENV PATH="/.venv/bin:$PATH"
 COPY --from=builder .venv /.venv
 
 COPY /src /src
+COPY /prompts /prompts
 COPY /models_params /models_params
-COPY main.py main.py
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
-CMD ["python", "-m", "main"]
+CMD ["python", "src/main.py"]

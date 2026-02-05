@@ -1,5 +1,4 @@
 import os
-from pathlib import Path
 from uuid import uuid4
 
 import google.auth
@@ -23,15 +22,9 @@ CPU_MILLI = 2000
 MEM_MIB = 2000
 MAX_DURATION = str(8 * 60 * 60) + "s"
 
-ENVS_FILE_PATHS = ["application.env", "benchmark.env", "engine.env"]
-SETTINGS_PATH = Path("../settings")
-container_envs = {}
-for envs_file_path in ENVS_FILE_PATHS:
-    envs_file_path = SETTINGS_PATH / envs_file_path
-    file_env = dotenv_values(envs_file_path)
-    container_envs.update(file_env)
+envs = dotenv_values("../.env")
 
-secret_envs_names = list(dotenv_values(SETTINGS_PATH / "api_keys.env.example"))
+secret_envs_names = list(dotenv_values("../api_keys.env"))
 secret_envs = {}
 for secret_env_name in secret_envs_names:
     secret_envs[secret_env_name] = f"projects/{PROJECT_ID}/secrets/{secret_env_name}/versions/latest"
@@ -56,7 +49,7 @@ runnable.container.image_uri = IMAGE_URI
 task = batch_v1.TaskSpec()
 task.runnables = [runnable]
 task.environment = batch_v1.Environment()
-task.environment.variables = container_envs
+task.environment.variables = envs
 task.environment.secret_variables = secret_envs
 
 resources = batch_v1.ComputeResource()
