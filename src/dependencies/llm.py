@@ -23,4 +23,5 @@ def get_llm_strategy() -> domain.types.LlmStrategy:
 
 def get_llm_mover(llm_color: Color) -> LlmMover:
     llm_strategy = get_llm_strategy()
-    return LlmMover(llm_strategy, llm_color)
+    max_illegal_moves = benchmark_settings.MAX_ILLEGAL_MOVES
+    return LlmMover(llm_strategy, llm_color, max_illegal_moves)

@@ -1,12 +1,8 @@
 import hashlib
 import json
-import random
-from itertools import cycle
-from typing import Generator
 
-from chess import BLACK, COLORS, WHITE, Board, Color
+from chess import Board, Color
 
-from domain.enums import ColorGenerator
 from src.domain.value_objects.board import BoardInfo
 from src.share.conts import COLORS_STRING_DICT
 
@@ -30,23 +26,3 @@ def format_board_info(board: Board, llm_color: Color, last_opponent_move: str) -
     )
 
     return board_info
-
-
-def get_color_generator(generator_name: str) -> Generator[Color, None, None]:
-    match generator_name:
-        case ColorGenerator.WHITE:
-            color_generator = cycle((WHITE,))
-        case ColorGenerator.BLACK:
-            color_generator = cycle((BLACK,))
-        case ColorGenerator.BOTH:
-            color_generator = cycle(COLORS)
-        case ColorGenerator.RANDOM:
-
-            def color_generator():
-                while True:
-                    yield random.choice(COLORS)
-
-        case _:
-            raise NotImplementedError
-
-    return color_generator
